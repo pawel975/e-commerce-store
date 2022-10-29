@@ -1,27 +1,43 @@
-import { useQuery, gql } from '@apollo/client';
+import {gql} from '@apollo/client';
+import {Query} from '@apollo/client/react/components';
+import React from 'react';
 
-function App() {
-
-  const GET_CATEGORIES = gql`
-    query {
-      categories {
-        name,
-        products {
-          id
-        }
+const categoriesQuery = gql`
+  {
+    categories {
+      name,
+      products {
+        id
       }
     }
-  `
-  const {loading, error, data} = useQuery(GET_CATEGORIES);
+  }
+`
 
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error :(</p>;
+class App extends React.Component {
 
-  return (
-    <div className="App">
-      <h2>{data.categories[0].name}</h2>
-    </div>
-  );
+  constructor(){
+    super()
+    this.state = {}
+  }
+
+  render() {
+    return (
+      <div className="App">
+        <Query query={categoriesQuery}>
+          {
+            ({loading, data}) => {
+              if (loading) return "Loading...";
+              
+              const {name} = data.categories[0];
+
+              return <h2>{name}</h2>
+
+            }
+          }
+        </Query>
+      </div>
+    )
+  };
 }
 
 export default App;
