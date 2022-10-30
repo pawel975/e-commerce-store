@@ -1,7 +1,7 @@
 @use '../../globalStyle.scss';
 @use '../../variables.scss';
 
-nav {
+header {
     padding: 0px 100px;
     height: 80px;
     width: 100vw;
@@ -38,9 +38,17 @@ nav {
                 border-bottom: 2px solid variables.$clr-accent;
             }
         }
+    }
 
+    .logo-container {
+        margin: 0;
+        padding: 0;
+        background: transparent;
+        border: none;
 
-        
+        img {
+            pointer-events: none
+        }
     }
 
 }
