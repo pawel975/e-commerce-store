@@ -27,10 +27,11 @@ class App extends React.Component {
           {
             ({loading, data}) => {
               if (loading) return "Loading...";
-              
-              const {name} = data.categories[0];
 
-              return <h2>{name}</h2>
+              return data.categories.map(element => (
+                  <h2>{element.name}</h2>
+              ));
+
 
             }
           }
