@@ -1,41 +1,18 @@
-import {gql} from '@apollo/client';
-import {Query} from '@apollo/client/react/components';
-import React from 'react';
+import React, { Component } from 'react';
+import Main from '../../Layouts/Main/Main';
+import Nav from '../../Layouts/Nav/Nav';
+import './App.scss';
 
-const categoriesQuery = gql`
-  {
-    categories {
-      name,
-      products {
-        id
-      }
-    }
-  }
-`
-
-class App extends React.Component {
-
-  constructor(){
-    super()
-    this.state = {}
-  }
+class App extends Component {
 
   render() {
     return (
       <div className="App">
-        <Query query={categoriesQuery}>
-          {
-            ({loading, data}) => {
-              if (loading) return "Loading...";
 
-              return data.categories.map(element => (
-                  <h2>{element.name}</h2>
-              ));
+        <Nav/>
 
+        <Main/>
 
-            }
-          }
-        </Query>
       </div>
     )
   };

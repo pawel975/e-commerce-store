@@ -1,0 +1,47 @@
+@use '../../globalStyle.scss';
+@use '../../variables.scss';
+
+nav {
+    padding: 0px 100px;
+    height: 80px;
+    width: 100vw;
+    position: absolute;
+    left: 0%;
+    right: 0%;
+    top: 0%;
+    bottom: 0%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    font-family: variables.$ff-Raleway;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 19px;
+    letter-spacing: 0px;
+    text-align: center;
+    
+    .categories-list {
+        margin: 0;
+        padding: 0;
+        display: flex;
+        gap: 32px;
+        height: 56px;
+        
+        &__category {
+            text-transform: uppercase;
+            background: transparent;
+            border: none;   
+            height: 100%;
+
+            &[aria-selected=true] {
+                color: variables.$clr-accent;
+                border-bottom: 2px solid variables.$clr-accent;
+            }
+        }
+
+
+        
+    }
+
+}
+
