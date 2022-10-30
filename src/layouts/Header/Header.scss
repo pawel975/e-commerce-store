@@ -32,6 +32,8 @@ header {
             background: transparent;
             border: none;   
             height: 100%;
+            text-decoration: none;
+            color: variables.$clr-primary;
 
             &[aria-selected=true] {
                 color: variables.$clr-accent;

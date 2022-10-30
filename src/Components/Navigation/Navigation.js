@@ -1,6 +1,7 @@
 import { gql } from "@apollo/client";
 import { Query } from "@apollo/client/react/components";
 import { Component } from "react";
+import { NavLink } from "react-router-dom";
 
 const categoriesQuery = gql`
   {
@@ -23,10 +24,18 @@ class Navigation extends Component {
                     const categoriesNavList = categories.map(category => {
                         const {name} = category;
         
-                        return <button className="categories-list__category" role="tab" aria-selected="false" key={name}>{name}</button>
+                        return (
+                            <NavLink 
+                                to={`${name}`}
+                                className="categories-list__category"
+                                role="tab"
+                            >
+                                {name}
+                            </NavLink>
+                        )
                     })
         
-                    return <div role="tablist" className="categories-list">{categoriesNavList}</div>
+                    return <nav role="tablist" className="categories-list">{categoriesNavList}</nav>
                 }}
             </Query>
         )
