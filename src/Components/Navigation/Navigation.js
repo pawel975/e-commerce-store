@@ -25,10 +25,12 @@ class Navigation extends Component {
                         const {name} = category;
         
                         return (
-                            <NavLink 
+                            <NavLink
+                                key={name} 
                                 to={`${name}`}
                                 className="categories-list__category"
                                 role="tab"
+                                aria-selected="false"
                             >
                                 {name}
                             </NavLink>

@@ -2,7 +2,9 @@
 @use '../../variables.scss';
 
 header {
+    outline: 2px solid red;
     padding: 0px 100px;
+    padding-top: 24px;
     height: 80px;
     width: 100vw;
     position: absolute;
@@ -12,7 +14,7 @@ header {
     bottom: 0%;
     display: flex;
     justify-content: space-between;
-    align-items: flex-end;
+    align-items: flex-start;
     font-family: variables.$ff-Raleway;
     font-size: 16px;
     font-weight: 600;
@@ -21,8 +23,11 @@ header {
     text-align: center;
     
     .categories-list {
+        outline: 2px solid red;
         margin: 0;
         padding: 0;
+        padding-top: 4px;
+        padding-inline: 16px;
         display: flex;
         gap: 32px;
         height: 56px;
@@ -43,13 +48,74 @@ header {
     }
 
     .logo-container {
+        outline: 2px solid red;
         margin: 0;
         padding: 0;
         background: transparent;
         border: none;
 
         img {
-            pointer-events: none
+            pointer-events: none;
+            margin-bottom: 15px;
+        }
+    }
+
+    .actions {
+        display: flex;
+        justify-content: flex-end;
+        outline: 2px solid red;
+        height: 40px;
+        width: 204px;
+        padding-block: 5.5px;
+        overflow: visible;
+
+        .currency-picker {
+            outline: 2px solid purple;
+            position: relative;
+            display: flex;
+            justify-content: flex-start;
+            align-items: flex-end;
+            flex-direction: column;
+
+            .show-currencies-container {
+                outline: 2px solid red;
+                height: 100%;
+                flex: 1 0;
+                margin-block: auto;
+                height: 28px;
+                display: flex;
+                justify-content: flex-end;
+                align-items: flex-end;
+
+                .show-currencies {
+                    background: transparent;
+                    border: none;
+                }
+            }
+
+            label {
+                margin: auto;
+            }
+
+            select {
+                margin: auto;
+            }
+
+            
+            .currencies-options-container {
+                display: flex;
+                flex-direction: column;
+                transform: translate(0);
+                bottom: 0;
+                right: 0;
+                outline: 2px solid green;
+                position: relative;
+                display: none;
+            }
+
+            .visible {
+                display: initial;
+            }
         }
     }
 

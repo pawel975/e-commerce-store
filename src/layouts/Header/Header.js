@@ -1,4 +1,5 @@
 import { Component } from "react";
+import Actions from "../../Components/Actions/Actions";
 import Logo from "../../Components/Logo/Logo";
 import Categories from "../../Components/Navigation/Navigation";
 import './Header.scss';
@@ -8,7 +9,8 @@ class Header extends Component {
         return (
             <header>         
                 <Categories/> 
-                <Logo />
+                <Logo/>
+                <Actions/>
             </header>
         )
     }
