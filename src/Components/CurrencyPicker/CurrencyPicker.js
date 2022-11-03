@@ -1,34 +1,55 @@
 import { Component } from "react";
+import {BiChevronDown as CurrencyPickerDash} from 'react-icons/bi';
 
 class CurrencyPicker extends Component {
 
     constructor() {
         super()
         this.state = {
-            isCurrenciesOptionsContainerOpen: false
+            isCurrenciesListOpen: false
         }
-        
     }
 
-    handleCurrenciesOptionsContainerOpen(){
-        if (this.state.isCurrenciesOptionsContainerOpen) {
-            this.setState({isCurrenciesOptionsContainerOpen: false});
+    handleCurrenciesListOpen(){
+        if (this.state.isCurrenciesListOpen) {
+            this.setState({isCurrenciesListOpen: false});
         } else {
-            this.setState({isCurrenciesOptionsContainerOpen: true});
+            this.setState({isCurrenciesListOpen: true});
         }
     }
 
     render() {
         return (
             <div className="currency-picker">
+
                 <div className="show-currencies-container">
+
                     <label htmlFor="show-currencies">$</label>
-                    <button onClick={this.handleCurrenciesOptionsContainerOpen.bind(this)} className="show-currencies">^</button>
+                    <button 
+                        onClick={this.handleCurrenciesListOpen.bind(this)} 
+                        className={`show-currencies ${this.state.isCurrenciesListOpen ? "dash-open" : ""} `}
+                    >
+                        <CurrencyPickerDash/>
+                    </button>
+
                 </div>
-                <div className={`currencies-options-container ${this.state.isCurrenciesOptionsContainerOpen ? "visible" : ""} `}>
-                    <button className="currency-option" value="usd"><span>$</span><span>USD</span></button>
-                    <button className="currency-option" value="eur"><span>€</span><span>EUR</span></button>
-                    <button className="currency-option" value="jpy"><span>¥</span><span>JPY</span></button>
+
+                <div 
+                    className={`currencies-options-container ${this.state.isCurrenciesListOpen ? "currencies-options-container-visible" : ""} `}
+                >
+                    <button className="currency-option" value="usd">
+                        <span className="currency-symbol">$</span>
+                        <span className="currency-code">USD</span>
+                    </button>
+                    <button className="currency-option" value="eur">
+                        <span className="currency-symbol">€</span>
+                        <span className="currency-code">EUR</span>
+                    </button>
+                    <button className="currency-option" value="jpy">
+                        <span className="currency-symbol">¥</span>
+                        <span className="currency-code">JPY</span>
+                    </button>
+
                 </div>
             </div>
         )

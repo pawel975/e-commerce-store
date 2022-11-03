@@ -2,7 +2,7 @@
 @use '../../variables.scss';
 
 header {
-    outline: 2px solid red;
+    // outline: 2px solid red;
     padding: 0px 100px;
     padding-top: 24px;
     height: 80px;
@@ -23,7 +23,7 @@ header {
     text-align: center;
     
     .categories-list {
-        outline: 2px solid red;
+        // outline: 2px solid red;
         margin: 0;
         padding: 0;
         padding-top: 4px;
@@ -48,7 +48,7 @@ header {
     }
 
     .logo-container {
-        outline: 2px solid red;
+        // outline: 2px solid red;
         margin: 0;
         padding: 0;
         background: transparent;
@@ -61,16 +61,17 @@ header {
     }
 
     .actions {
+        font-family: variables.$ff-Raleway;
         display: flex;
         justify-content: flex-end;
-        outline: 2px solid red;
+        // outline: 2px solid red;
         height: 40px;
         width: 204px;
         padding-block: 5.5px;
         overflow: visible;
 
         .currency-picker {
-            outline: 2px solid purple;
+            // outline: 3px solid purple;
             position: relative;
             display: flex;
             justify-content: flex-start;
@@ -78,18 +79,24 @@ header {
             flex-direction: column;
 
             .show-currencies-container {
-                outline: 2px solid red;
-                height: 100%;
-                flex: 1 0;
-                margin-block: auto;
-                height: 28px;
+                // outline: 2px solid red;
+                min-height: 100%;
                 display: flex;
                 justify-content: flex-end;
                 align-items: flex-end;
 
                 .show-currencies {
+                    height: 100%;
                     background: transparent;
                     border: none;
+                    display: grid;
+                    place-items: center;
+                    transition: .2s;
+
+                }
+
+                .dash-open {
+                    transform: rotate(180deg);
                 }
             }
 
@@ -103,18 +110,47 @@ header {
 
             
             .currencies-options-container {
-                display: flex;
+                padding-block: 7px;
+                height: 169px;
+                width: 114px;
                 flex-direction: column;
-                transform: translate(0);
-                bottom: 0;
-                right: 0;
-                outline: 2px solid green;
+                // outline: 2px solid green;
                 position: relative;
                 display: none;
+                box-shadow: 0px 0px 30px 2px #EEEEEE;
+
+                .currency-option {
+                    background: transparent;
+                    border: none;
+                    padding-left: 20px;
+                    height: 45px;
+                    width: 100%;
+                    text-align: left;
+                    font-size: 18px;
+
+                    &:hover,
+                    &:focus-within {
+                        background: #EEEEEE;
+                    }
+
+                    .currency-symbol {
+                        margin-right: 5px;
+                    }
+                }
             }
 
-            .visible {
-                display: initial;
+            .currencies-options-container-visible {
+                display: flex;
+            }
+        }
+
+        .cart {
+
+            .cart__btn {
+                height: 100%;
+                width: 100%;
+                background: transparent;
+                border: none;
             }
         }
     }
