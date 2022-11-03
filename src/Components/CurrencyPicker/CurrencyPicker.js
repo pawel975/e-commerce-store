@@ -1,12 +1,24 @@
+import { gql } from "@apollo/client";
+import { Query } from "@apollo/client/react/components";
 import { Component } from "react";
 import {BiChevronDown as CurrencyPickerDash} from 'react-icons/bi';
+
+const currenciesArray = gql`
+    {
+        currencies {
+            label,
+            symbol
+        }
+    }
+`
 
 class CurrencyPicker extends Component {
 
     constructor() {
         super()
         this.state = {
-            isCurrenciesListOpen: false
+            isCurrenciesListOpen: false,
+            currentCurrencySymbol: "$"
         }
     }
 
@@ -18,13 +30,18 @@ class CurrencyPicker extends Component {
         }
     }
 
+    handleCurrencyChange(e){
+        const currencyOptionSymbol = e.target.children[0].textContent;
+        this.setState({currentCurrencySymbol: currencyOptionSymbol})
+    }
+
     render() {
         return (
             <div className="currency-picker">
 
                 <div className="show-currencies-container">
 
-                    <label htmlFor="show-currencies">$</label>
+                    <label htmlFor="show-currencies">{this.state.currentCurrencySymbol}</label>
                     <button 
                         onClick={this.handleCurrenciesListOpen.bind(this)} 
                         className={`show-currencies ${this.state.isCurrenciesListOpen ? "dash-open" : ""} `}
@@ -34,23 +51,38 @@ class CurrencyPicker extends Component {
 
                 </div>
 
-                <div 
-                    className={`currencies-options-container ${this.state.isCurrenciesListOpen ? "currencies-options-container-visible" : ""} `}
-                >
-                    <button className="currency-option" value="usd">
-                        <span className="currency-symbol">$</span>
-                        <span className="currency-code">USD</span>
-                    </button>
-                    <button className="currency-option" value="eur">
-                        <span className="currency-symbol">€</span>
-                        <span className="currency-code">EUR</span>
-                    </button>
-                    <button className="currency-option" value="jpy">
-                        <span className="currency-symbol">¥</span>
-                        <span className="currency-code">JPY</span>
-                    </button>
+                <Query query={currenciesArray}>
+                    {({loading, data}) => {
+            
+                        if (loading) return "Loading...";
+            
+                        const {currencies} = data;
+            
+                        const currenciList = currencies.map(currency => {
+                            const {label, symbol} = currency;
 
-                </div>
+                            return (
+                                
+                                <button
+                                    key={label} 
+                                    className="currency-option"
+                                    onClick={this.handleCurrencyChange.bind(this)}
+                                >
+                                    <span className="currency-symbol">{symbol}</span>
+                                    <span className="currency-label">{label}</span>
+                                </button>
+                            )
+                        })
+            
+                        return (
+                            <div 
+                                className={`currencies-options-container ${this.state.isCurrenciesListOpen ? "currencies-options-container-visible" : ""} `}
+                            >
+                                {currenciList}
+                            </div> 
+                        )
+                    }}
+                </Query>
             </div>
         )
         

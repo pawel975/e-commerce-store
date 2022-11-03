@@ -136,6 +136,11 @@ header {
                     .currency-symbol {
                         margin-right: 5px;
                     }
+
+                    .currency-symbol,
+                    .currency-label {
+                        pointer-events: none;
+                    }
                 }
             }
 
