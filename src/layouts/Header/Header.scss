@@ -158,7 +158,14 @@ header {
                 border: none;
             }
         }
+
+        .overlay-wrapper {
+            width: 100px;
+            height: 100px;
+            outline: 2px solid red;
+        }
     }
+
 
 }
 
