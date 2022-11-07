@@ -18,7 +18,6 @@ class Actions extends Component {
             <div className="actions">
                 <CurrencyPicker/>
                 <Cart/>
-
             </div>
         )
     }
