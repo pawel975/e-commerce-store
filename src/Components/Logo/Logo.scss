@@ -1,0 +1,15 @@
+@use '../../variables.scss';
+@use '../../globalStyle.scss';
+
+.logo-container {
+    // outline: 2px solid red;
+    margin: 0;
+    padding: 0;
+    background: transparent;
+    border: none;
+
+    img {
+        pointer-events: none;
+        margin-bottom: 15px;
+    }
+}

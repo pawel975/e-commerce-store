@@ -2,6 +2,7 @@ import { gql } from "@apollo/client";
 import { Component } from "react";
 import { Query } from "@apollo/client/react/components";
 import {BiChevronDown as CurrencyPickerDash} from 'react-icons/bi';
+import "./CurrencyPicker.scss";
 
 const currenciesArray = gql`
     {

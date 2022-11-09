@@ -2,6 +2,7 @@ import { gql } from "@apollo/client";
 import { Query } from "@apollo/client/react/components";
 import { Component } from "react";
 import { NavLink } from "react-router-dom";
+import './Navigation.scss';
 
 const categoriesQuery = gql`
   {
