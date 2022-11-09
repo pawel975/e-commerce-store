@@ -9,7 +9,7 @@ class Actions extends Component {
         return (
             <div className="actions">
                 <CurrencyPicker/>
-                <Cart/>
+                <Cart handleCartOverlayVisibleToggle={this.props.handleCartOverlayVisibleToggle}/>
             </div>
         )
     }

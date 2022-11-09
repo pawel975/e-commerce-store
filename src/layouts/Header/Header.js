@@ -5,12 +5,13 @@ import Categories from "../../Components/Navigation/Navigation";
 import './Header.scss';
 
 class Header extends Component {
+
     render(){
         return (
             <header>         
                 <Categories/> 
                 <Logo/>
-                <Actions/>
+                <Actions handleCartOverlayVisibleToggle={this.props.handleCartOverlayVisibleToggle}/>
             </header>
         )
     }

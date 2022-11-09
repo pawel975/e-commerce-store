@@ -4,13 +4,27 @@ import Header from '../../Layouts/Header/Header';
 import './App.scss';
 
 class App extends Component {
+
+  constructor(){
+    super()
+    this.state = {
+      isCartOverlayVisible: false,
+    }
+  }
+  
+  handleCartOverlayVisibleToggle(){
+    this.setState({
+      isCartOverlayVisible: !this.state.isCartOverlayVisible
+    })
+  }
+
   render() {
     return (
       <div className="app">
 
-        <Header/>
+        <Header handleCartOverlayVisibleToggle={this.handleCartOverlayVisibleToggle.bind(this)}/>
 
-        <Main/>
+        <Main isCartOverlayVisible={this.state.isCartOverlayVisible}/>
 
       </div>
     )
