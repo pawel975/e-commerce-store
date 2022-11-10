@@ -9,6 +9,7 @@ class App extends Component {
     super()
     this.state = {
       isCartOverlayVisible: false,
+      currentCategory: "all",
     }
   }
   
@@ -18,13 +19,24 @@ class App extends Component {
     })
   }
 
+  handleCurrentCategoryChange(e){
+    this.setState({
+      currentCategory: e.target.textContent
+    })
+  }
   render() {
     return (
       <div className="app">
 
-        <Header handleCartOverlayVisibleToggle={this.handleCartOverlayVisibleToggle.bind(this)}/>
+        <Header 
+          handleCartOverlayVisibleToggle={this.handleCartOverlayVisibleToggle.bind(this)}
+          handleCurrentCategoryChange={this.handleCurrentCategoryChange.bind(this)}
+        />
 
-        <Main isCartOverlayVisible={this.state.isCartOverlayVisible}/>
+        <Main 
+          isCartOverlayVisible={this.state.isCartOverlayVisible}
+          currentCategory={this.state.currentCategory}
+        />
 
       </div>
     )

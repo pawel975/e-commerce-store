@@ -32,6 +32,7 @@ class Navigation extends Component {
                                 className="categories-list__category"
                                 role="tab"
                                 aria-selected="false"
+                                onClick={this.props.handleCurrentCategoryChange}
                             >
                                 {name}
                             </NavLink>

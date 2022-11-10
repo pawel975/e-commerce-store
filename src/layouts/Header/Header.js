@@ -9,7 +9,7 @@ class Header extends Component {
     render(){
         return (
             <header>         
-                <Navigation/> 
+                <Navigation handleCurrentCategoryChange={this.props.handleCurrentCategoryChange}/> 
                 <Logo/>
                 <Actions handleCartOverlayVisibleToggle={this.props.handleCartOverlayVisibleToggle}/>
             </header>
