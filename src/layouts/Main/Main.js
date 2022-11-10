@@ -8,10 +8,11 @@ class Main extends Component {
     render(){
         return (
             <main>
-                
+
                 {this.props.isCartOverlayVisible && <CartOverlay/>}
 
                 <CategoryProducts currentCategory={this.props.currentCategory}/>
+                
             </main>
         )
     }
