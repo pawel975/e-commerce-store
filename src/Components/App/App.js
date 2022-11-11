@@ -9,7 +9,7 @@ class App extends Component {
     super()
     this.state = {
       isCartOverlayVisible: false,
-      currentCategory: "all"
+      // currentCategory: "all"
     }
   }
   
@@ -31,7 +31,6 @@ class App extends Component {
 
         <Header 
           handleCartOverlayVisibleToggle={this.handleCartOverlayVisibleToggle.bind(this)}
-          handleCurrentCategoryChange={this.handleCurrentCategoryChange.bind(this)}
         />
 
         <Main 

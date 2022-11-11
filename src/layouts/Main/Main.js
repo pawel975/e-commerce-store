@@ -25,7 +25,6 @@ class Main extends Component {
                         element={<CategoryProducts currentCategory="clothes"/>}
                     />
                 </Routes>
-                {/* <CategoryProducts currentCategory={this.props.currentCategory}/> */}
                 
             </main>
         )
