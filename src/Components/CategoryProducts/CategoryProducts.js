@@ -2,44 +2,45 @@ import { gql } from "@apollo/client";
 import { Query } from "@apollo/client/react/components";
 import { Component } from "react";
 import capitalizeWord from "../../helpers/capitalizeWord";
+import ProductCard from "../ProductCard/ProductCard";
 import "./CategoryProducts.scss";
 
 class CategoryProducts extends Component {
 
     queryProducts(category){
         return gql`
-        {
-            category(input: { title: "${category}" }) {
-                name
-                products {
-                    id
+            {
+                category(input: { title: "${category}" }) {
                     name
-                    inStock
-                    gallery
-                    description
-                    category
-                    attributes {
+                    products {
                         id
                         name
-                        type
-                        items {
-                            displayValue
-                            value
+                        inStock
+                        gallery
+                        description
+                        category
+                        attributes {
                             id
+                            name
+                            type
+                            items {
+                                displayValue
+                                value
+                                id
+                            }
                         }
-                    }
-                    prices {
-                        currency {
-                            label
-                            symbol
+                        prices {
+                            currency {
+                                label
+                                symbol
+                            }
+                            amount
                         }
-                        amount
+                        brand
                     }
-                    brand
                 }
             }
-        }
-    `;
+        `;
     }
 
     render(){
@@ -50,28 +51,27 @@ class CategoryProducts extends Component {
                     {capitalizeWord(this.props.currentCategory)}
                 </h2>
 
-                <div className="category-products__products-list">
+                <Query 
+                    query={this.queryProducts(this.props.currentCategory)}
+                >
+                    {({loading, data}) => {
+            
+                        if (loading) return "Loading...";
+            
+                        const {products} = data.category;
+            
+                        const productsList = products.map(productParams => {
 
-                    <Query query={this.queryProducts(this.props.currentCategory)}>
-                        {({loading, data}) => {
-                
-                            if (loading) return "Loading...";
-                
-                            const {products} = data.category;
-                
-                            const productsList = products.map(product => {
-                                const {name} = product;
-                
-                                return (
-                                    <span key={name}>{name}</span>
-                                )
-                            })
-                
-                            return <div>{productsList}</div>
-                        }}
-                    </Query>
-                    
-                </div>
+                            const {id} = productParams;
+
+                            return (
+                                <ProductCard key={id} productParams={productParams}/>
+                            )
+                        })
+            
+                        return <div className="category-products__products-list">{productsList}</div>
+                    }}
+                </Query>
 
             </section>
         )

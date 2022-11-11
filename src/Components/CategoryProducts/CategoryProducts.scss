@@ -2,12 +2,22 @@
 @use "../../globalStyle.scss";
 
 .category-products {
+    display: flex;
+    flex-direction: column;
+    gap: 87px;
     padding: 80px 100px;
 
     &__category-name {
         font-size: 42px;
         font-weight: 400;
         font-family: variables.$ff-Raleway;
+    }
+
+    &__products-list {
+        display: flex;
+        flex-wrap: wrap;
+        row-gap: 100px;
+        column-gap: 56px;
     }
     
 }

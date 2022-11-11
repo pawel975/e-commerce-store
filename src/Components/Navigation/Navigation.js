@@ -23,6 +23,7 @@ class Navigation extends Component {
                     const {categories} = data;
         
                     const categoriesNavList = categories.map(category => {
+                        
                         const {name} = category;
         
                         return (
