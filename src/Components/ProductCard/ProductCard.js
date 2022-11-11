@@ -2,11 +2,16 @@ import { Component } from "react";
 import "./ProductCard.scss";
 
 class ProductCard extends Component {
+
     render(){
 
+        const currentCurrencySymbol = this.props.currentCurrencySymbol
+        
         const {id, name, inStock, gallery, description, category, attributes, prices, brand} = this.props.productParams;
 
-        const {currency, amount} = prices[0];
+        const {currency, amount} = prices.find(price => (
+            price.currency.symbol === currentCurrencySymbol
+        ));
 
         const {label, symbol} = currency;
 

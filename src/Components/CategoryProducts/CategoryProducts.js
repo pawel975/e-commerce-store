@@ -64,13 +64,17 @@ class CategoryProducts extends Component {
                             const {id} = productParams;
 
                             return (
-                                <ProductCard key={id} productParams={productParams}/>
+                                <ProductCard 
+                                    key={id} 
+                                    productParams={productParams}
+                                    currentCurrencySymbol={this.props.currentCurrencySymbol}
+                                />
                             )
                         })
             
                         return <div className="category-products__products-list">{productsList}</div>
                     }}
-                    
+
                 </Query>
 
             </section>

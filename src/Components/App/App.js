@@ -51,6 +51,7 @@ class App extends Component {
 
         <Main 
           isCartOverlayVisible={this.state.isCartOverlayVisible}
+          currentCurrencySymbol={this.state.currentCurrencySymbol}
         />
 
       </div>
