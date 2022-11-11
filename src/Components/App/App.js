@@ -9,7 +9,7 @@ class App extends Component {
     super()
     this.state = {
       isCartOverlayVisible: false,
-      currentCategory: "all",
+      currentCategory: "all"
     }
   }
   
@@ -24,6 +24,7 @@ class App extends Component {
       currentCategory: e.target.textContent
     })
   }
+
   render() {
     return (
       <div className="app">

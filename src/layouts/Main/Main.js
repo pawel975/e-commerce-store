@@ -1,4 +1,5 @@
 import { Component } from "react";
+import { Route, Routes } from "react-router-dom";
 import CartOverlay from "../../Components/CartOverlay/CartOverlay";
 import CategoryProducts from "../../Components/CategoryProducts/CategoryProducts";
 import "./Main.scss";
@@ -10,8 +11,21 @@ class Main extends Component {
             <main>
 
                 {this.props.isCartOverlayVisible && <CartOverlay/>}
-
-                <CategoryProducts currentCategory={this.props.currentCategory}/>
+                <Routes>
+                    <Route
+                        path={`/all`}
+                        element={<CategoryProducts currentCategory="all"/>}
+                    />
+                    <Route
+                        path={`/tech`}
+                        element={<CategoryProducts currentCategory="tech"/>}
+                    />
+                    <Route
+                        path={`/clothes`}
+                        element={<CategoryProducts currentCategory="clothes"/>}
+                    />
+                </Routes>
+                {/* <CategoryProducts currentCategory={this.props.currentCategory}/> */}
                 
             </main>
         )
