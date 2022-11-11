@@ -9,7 +9,8 @@ class App extends Component {
     super()
     this.state = {
       isCartOverlayVisible: false,
-      // currentCategory: "all"
+      isCurrenciesListOpen: false,
+      currentCurrencySymbol: "$",
     }
   }
   
@@ -19,11 +20,22 @@ class App extends Component {
     })
   }
 
-  handleCurrentCategoryChange(e){
+  handleCurrencyChange(e){
+    const currencyOptionSymbol = e.target.children[0].textContent;
     this.setState({
-      currentCategory: e.target.textContent
-    })
+      currentCurrencySymbol: currencyOptionSymbol,
+      isCurrenciesListOpen: !this.state.isCurrenciesListOpen
+    }) 
   }
+
+  handleCurrenciesListOpen(){
+    if (this.state.isCurrenciesListOpen) {
+        this.setState({isCurrenciesListOpen: false});
+    } else {
+        this.setState({isCurrenciesListOpen: true});
+    }
+  }
+
 
   render() {
     return (
@@ -31,11 +43,14 @@ class App extends Component {
 
         <Header 
           handleCartOverlayVisibleToggle={this.handleCartOverlayVisibleToggle.bind(this)}
+          handleCurrencyChange={this.handleCurrencyChange.bind(this)}
+          handleCurrenciesListOpen={this.handleCurrenciesListOpen.bind(this)}
+          currentCurrencySymbol={this.state.currentCurrencySymbol}
+          isCurrenciesListOpen={this.state.isCurrenciesListOpen}
         />
 
         <Main 
           isCartOverlayVisible={this.state.isCartOverlayVisible}
-          currentCategory={this.state.currentCategory}
         />
 
       </div>

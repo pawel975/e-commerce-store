@@ -11,7 +11,13 @@ class Header extends Component {
             <header>         
                 <Navigation/> 
                 <Logo/>
-                <Actions handleCartOverlayVisibleToggle={this.props.handleCartOverlayVisibleToggle}/>
+                <Actions 
+                    handleCartOverlayVisibleToggle={this.props.handleCartOverlayVisibleToggle}
+                    handleCurrencyChange={this.props.handleCurrencyChange}
+                    handleCurrenciesListOpen={this.props.handleCurrenciesListOpen}
+                    currentCurrencySymbol={this.props.currentCurrencySymbol}
+                    isCurrenciesListOpen={this.props.isCurrenciesListOpen}
+                />
             </header>
         )
     }

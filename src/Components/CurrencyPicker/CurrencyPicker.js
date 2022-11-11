@@ -15,44 +15,23 @@ const currenciesArray = gql`
 
 class CurrencyPicker extends Component {
 
-    constructor() {
-        super()
-        this.state = {
-            isCurrenciesListOpen: false,
-            currentCurrencySymbol: "$"
-        }
-    }
-
-    handleCurrenciesListOpen(){
-        if (this.state.isCurrenciesListOpen) {
-            this.setState({isCurrenciesListOpen: false});
-        } else {
-            this.setState({isCurrenciesListOpen: true});
-        }
-    }
-
-    handleCurrencyChange(e){
-        const currencyOptionSymbol = e.target.children[0].textContent;
-        this.setState({currentCurrencySymbol: currencyOptionSymbol})
-    }
-
     render() {
         return (
             <div className="currency-picker">
 
                 <div className="show-currencies-container">
 
-                    <label htmlFor="show-currencies">{this.state.currentCurrencySymbol}</label>
+                    <label htmlFor="show-currencies">{this.props.currentCurrencySymbol}</label>
                     <button 
-                        onClick={this.handleCurrenciesListOpen.bind(this)} 
-                        className={`show-currencies ${this.state.isCurrenciesListOpen ? "dash-open" : ""} `}
+                        onClick={this.props.handleCurrenciesListOpen} 
+                        className={`show-currencies ${this.props.isCurrenciesListOpen ? "dash-open" : ""} `}
                     >
                         <CurrencyPickerDash/>
                     </button>
 
                 </div>
                 {
-                    this.state.isCurrenciesListOpen &&
+                    this.props.isCurrenciesListOpen &&
                     <Query query={currenciesArray}>
                         {({loading, data}) => {
                 
@@ -68,7 +47,7 @@ class CurrencyPicker extends Component {
                                     <button
                                         key={label} 
                                         className="currency-option"
-                                        onClick={this.handleCurrencyChange.bind(this)}
+                                        onClick={this.props.handleCurrencyChange}
                                     >
                                         <span className="currency-symbol">{symbol}</span>
                                         <span className="currency-label">{label}</span>
@@ -78,7 +57,7 @@ class CurrencyPicker extends Component {
                 
                             return (
                                 <div 
-                                    className={`currencies-options-container ${this.state.isCurrenciesListOpen ? "currencies-options-container-visible" : ""} `}
+                                    className={`currencies-options-container ${this.props.isCurrenciesListOpen ? "currencies-options-container-visible" : ""} `}
                                 >
                                     {currencyList}
                                 </div> 

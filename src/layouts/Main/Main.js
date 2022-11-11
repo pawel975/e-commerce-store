@@ -11,6 +11,7 @@ class Main extends Component {
             <main>
 
                 {this.props.isCartOverlayVisible && <CartOverlay/>}
+                
                 <Routes>
                     <Route
                         path={`/all`}

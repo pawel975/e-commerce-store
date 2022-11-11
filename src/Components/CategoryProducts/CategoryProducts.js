@@ -51,9 +51,8 @@ class CategoryProducts extends Component {
                     {capitalizeWord(this.props.currentCategory)}
                 </h2>
 
-                <Query 
-                    query={this.queryProducts(this.props.currentCategory)}
-                >
+                <Query query={this.queryProducts(this.props.currentCategory)}>
+
                     {({loading, data}) => {
             
                         if (loading) return "Loading...";
@@ -71,6 +70,7 @@ class CategoryProducts extends Component {
             
                         return <div className="category-products__products-list">{productsList}</div>
                     }}
+                    
                 </Query>
 
             </section>
