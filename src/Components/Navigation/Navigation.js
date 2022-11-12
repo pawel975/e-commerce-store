@@ -2,6 +2,7 @@ import { gql } from "@apollo/client";
 import { Query } from "@apollo/client/react/components";
 import { Component } from "react";
 import { NavLink } from "react-router-dom";
+import getCurrentRoute from "../../helpers/getCurrentRoute";
 import './Navigation.scss';
 
 const categoriesQuery = gql`
@@ -29,7 +30,7 @@ class Navigation extends Component {
 
                         let isSelected = false;
 
-                        if (name === this.props.currentCategory) isSelected = true;
+                        if (name === getCurrentRoute()) isSelected = true;
         
                         return (
                             <NavLink

@@ -10,7 +10,6 @@ class Header extends Component {
         return (
             <header>         
                 <Navigation
-                    currentCategory={this.props.currentCategory}
                     handleSelectCategory={this.props.handleSelectCategory}
                 /> 
                 <Logo/>
