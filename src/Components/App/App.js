@@ -10,6 +10,7 @@ class App extends Component {
     this.state = {
       isCartOverlayVisible: false,
       isCurrenciesListOpen: false,
+      currentCategory: "all",
       currentCurrencySymbol: "$",
     }
   }
@@ -36,6 +37,9 @@ class App extends Component {
     }
   }
 
+  handleSelectCategory(e){
+    this.setState({currentCategory: e.target.textContent})
+  }
 
   render() {
     return (
@@ -45,8 +49,10 @@ class App extends Component {
           handleCartOverlayVisibleToggle={this.handleCartOverlayVisibleToggle.bind(this)}
           handleCurrencyChange={this.handleCurrencyChange.bind(this)}
           handleCurrenciesListOpen={this.handleCurrenciesListOpen.bind(this)}
+          handleSelectCategory={this.handleSelectCategory.bind(this)}
           currentCurrencySymbol={this.state.currentCurrencySymbol}
           isCurrenciesListOpen={this.state.isCurrenciesListOpen}
+          currentCategory={this.state.currentCategory}
         />
 
         <Main 

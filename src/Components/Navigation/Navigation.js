@@ -13,6 +13,7 @@ const categoriesQuery = gql`
 `
 
 class Navigation extends Component {
+
     render() {
         return (
             <Query query={categoriesQuery}>
@@ -25,6 +26,10 @@ class Navigation extends Component {
                     const categoriesNavList = categories.map(category => {
                         
                         const {name} = category;
+
+                        let isSelected = false;
+
+                        if (name === this.props.currentCategory) isSelected = true;
         
                         return (
                             <NavLink
@@ -32,7 +37,8 @@ class Navigation extends Component {
                                 to={`${name}`}
                                 className="categories-list__category"
                                 role="tab"
-                                aria-selected="false"
+                                aria-selected={isSelected}
+                                onClick={this.props.handleSelectCategory}
                             >
                                 {name}
                             </NavLink>
