@@ -22,6 +22,9 @@ class ProductCard extends Component {
                     <span className="product-card__title">{name}</span>
                     <span className="product-card__price">{symbol}{amount}</span>
                 </div>
+                <button className="product-card__add-to-cart">
+                    <img className="product-card__cart-image" src="/assets/img/cart-white.svg" alt="cart"/>
+                </button>
             </section>
         )
     }
