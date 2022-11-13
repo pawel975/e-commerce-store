@@ -11,7 +11,6 @@ class ProductCard extends Component {
             const allProducts = [...e.target.parentNode.children]
 
             allProducts.forEach(product => {
-                if (product)
                 product.children[2].style.display = "none";
             });
 
