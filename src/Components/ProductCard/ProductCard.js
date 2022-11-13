@@ -5,17 +5,21 @@ class ProductCard extends Component {
 
     showAddToCartBtn(e){
 
-        // Hide add to cart button for all button that has no mouse over
-        const allProducts = [...e.target.parentNode.children]
+        if (e.target.className === "product-card") {
 
-        allProducts.forEach(product => {
-            product.children[2].style.display = "none";
-        });
+            // Hide add to cart button for all button that has no mouse over
+            const allProducts = [...e.target.parentNode.children]
 
-        // Show button for product that has mouse over
-        const activeProduct = [...e.target.children][2]
+            allProducts.forEach(product => {
+                if (product)
+                product.children[2].style.display = "none";
+            });
 
-        activeProduct.style.display = "flex";
+            // Show button for product that has mouse over
+            const activeProduct = [...e.target.children][2]
+
+            activeProduct.style.display = "flex";
+        }
     }
 
     render(){
