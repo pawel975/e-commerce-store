@@ -10,7 +10,7 @@ class Cart extends Component {
                     className="cart__btn"
                     onClick={this.props.handleCartOverlayVisibleToggle.bind(this)}
                 >
-                    <img src="/assets/img/cart.svg" alt="cart" className="cart__image"/>
+                    <img src="/assets/img/cart-dark.svg" alt="cart" className="cart__image"/>
                 </button>
             </div>
         )

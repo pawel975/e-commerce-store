@@ -1,10 +1,21 @@
 import { Component } from "react";
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import CartOverlay from "../../Components/CartOverlay/CartOverlay";
 import CategoryProducts from "../../Components/CategoryProducts/CategoryProducts";
 import "./Main.scss";
 
 class Main extends Component {
+
+    constructor(){
+        super()
+        this.state = {
+            isDefault: "/"
+        }
+    }
+
+    componentDidMount(){
+        this.setState({isDefault: window.location.pathname})
+    }
 
     render(){
         return (
@@ -12,6 +23,8 @@ class Main extends Component {
 
                 {this.props.isCartOverlayVisible && <CartOverlay/>}
 
+                {this.state.isDefault === "/" ? <Navigate to="/all"/> : null}
+                
                 <Routes>
                     <Route
                         path={`/all`}
@@ -21,6 +34,7 @@ class Main extends Component {
                                 currentCurrencySymbol={this.props.currentCurrencySymbol}
                             />
                         }
+
                     />
                     <Route
                         path={`/clothes`}
