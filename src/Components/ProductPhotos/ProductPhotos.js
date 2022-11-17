@@ -10,15 +10,20 @@ class ProductPhotos extends Component {
         }
 
         this.thumbnails = this.props.productPhotos.map(photo => (
-            <button className="product-photos__single-thumbnail">
+            <button 
+                id={this.props.productPhotos.indexOf(photo)}
+                className="product-photos__single-thumbnail"
+                onClick={this.handleActivePhotoChange.bind(this)}
+            >
                 <img src={photo} alt="product"/>
             </button>
         ))
 
-        this.activePhoto = <img src={this.props.productPhotos[this.state.activePhotoGalleryIndex]} alt="product"/>
     }
-
-
+    
+    handleActivePhotoChange(e){
+        this.setState({activePhotoGalleryIndex: e.target.id})
+    }
 
     render(){
         return (
@@ -26,8 +31,10 @@ class ProductPhotos extends Component {
                 <div className="product-photos__thumbnails">
                     {this.thumbnails}
                 </div>
-                <div className="product-photos__active-photo">
-                    {this.activePhoto}
+                <div 
+                    className="product-photos__active-photo"
+                >
+                    <img src={this.props.productPhotos[this.state.activePhotoGalleryIndex]} alt="product"/>
                 </div>
             </div>
         )
