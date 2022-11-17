@@ -1,47 +1,11 @@
-import { gql } from "@apollo/client";
 import { Query } from "@apollo/client/react/components";
 import { Component } from "react";
 import capitalizeWord from "../../helpers/capitalizeWord";
 import ProductCard from "../ProductCard/ProductCard";
 import "./CategoryProducts.scss";
+import queryProducts from "../../queries/queryProducts.js";
 
 class CategoryProducts extends Component {
-
-    queryProducts(category){
-        return gql`
-            {
-                category(input: { title: "${category}" }) {
-                    name
-                    products {
-                        id
-                        name
-                        inStock
-                        gallery
-                        description
-                        category
-                        attributes {
-                            id
-                            name
-                            type
-                            items {
-                                displayValue
-                                value
-                                id
-                            }
-                        }
-                        prices {
-                            currency {
-                                label
-                                symbol
-                            }
-                            amount
-                        }
-                        brand
-                    }
-                }
-            }
-        `;
-    }
 
     render(){
         return (
@@ -51,7 +15,7 @@ class CategoryProducts extends Component {
                     {capitalizeWord(this.props.currentCategory)}
                 </h2>
 
-                <Query query={this.queryProducts(this.props.currentCategory)}>
+                <Query query={queryProducts(this.props.currentCategory)}>
 
                     {({loading, data}) => {
             

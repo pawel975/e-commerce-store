@@ -1,17 +1,8 @@
-import { gql } from "@apollo/client";
 import { Component } from "react";
 import { Query } from "@apollo/client/react/components";
 import {BiChevronDown as CurrencyPickerDash} from 'react-icons/bi';
 import "./CurrencyPicker.scss";
-
-const currenciesArray = gql`
-    {
-        currencies {
-            label,
-            symbol
-        }
-    }
-`
+import queryCurrencies from "../../queries/queryCurrencies";
 
 class CurrencyPicker extends Component {
 
@@ -32,7 +23,7 @@ class CurrencyPicker extends Component {
                 </div>
                 {
                     this.props.isCurrenciesListOpen &&
-                    <Query query={currenciesArray}>
+                    <Query query={queryCurrencies()}>
                         {({loading, data}) => {
                 
                             if (loading) return "Loading...";

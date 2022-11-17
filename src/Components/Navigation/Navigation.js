@@ -1,23 +1,15 @@
-import { gql } from "@apollo/client";
 import { Query } from "@apollo/client/react/components";
 import { Component } from "react";
-import { NavLink } from "react-router-dom";
+import { BrowserRouter, NavLink } from "react-router-dom";
 import getCurrentRoute from "../../helpers/getCurrentRoute";
+import queryCategories from "../../queries/queryCategories";
 import './Navigation.scss';
-
-const categoriesQuery = gql`
-  {
-    categories {
-      name
-    }
-  }
-`
 
 class Navigation extends Component {
 
     render() {
         return (
-            <Query query={categoriesQuery}>
+            <Query query={queryCategories()}>
                 {({loading, data}) => {
         
                     if (loading) return "Loading...";
@@ -33,16 +25,18 @@ class Navigation extends Component {
                         if (name === getCurrentRoute()) isSelected = true;
         
                         return (
-                            <NavLink
-                                key={name} 
-                                to={`${name}`}
-                                className="categories-list__category"
-                                role="tab"
-                                aria-selected={isSelected}
-                                onClick={this.props.handleSelectCategory}
-                            >
-                                {name}
-                            </NavLink>
+                            <BrowserRouter>
+                                <NavLink
+                                    key={name} 
+                                    to={`${name}`}
+                                    className="categories-list__category"
+                                    role="tab"
+                                    aria-selected={isSelected}
+                                    onClick={this.props.handleSelectCategory}
+                                    >
+                                    {name}
+                                </NavLink>
+                            </BrowserRouter>
                         )
                     })
         
