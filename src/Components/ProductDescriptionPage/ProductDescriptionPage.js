@@ -1,5 +1,6 @@
 import { Component } from "react";
 import { Query } from "@apollo/client/react/components";
+import "./ProductDescriptionPage.scss";
 import ProductDetails from "../ProductDetails/ProductDetails";
 import ProductPhotos from "../ProductPhotos/ProductPhotos";
 import queryProducts from "../../queries/queryProducts";

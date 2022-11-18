@@ -1,0 +1,48 @@
+@use "../../variables.scss";
+@use "../../globalStyle.scss";
+
+.product-details {
+    width: 300px;
+    height: auto;
+    gap: 45px;
+    display: flex;
+    flex-direction: column;
+
+    &__header {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        font-family: variables.$ff-Raleway;
+        width: 100%;
+
+        h1, h2 {
+            font-size: 30px;
+            line-height: 27px;
+        }
+        
+        h1 {
+            font-weight: 600;
+        }
+
+        h2 {
+            font-weight: 400;
+        }   
+    }
+
+    &__size-picker {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    &__all-sizes {
+        display: flex;
+        flex-direction: row;
+        gap: 12px;
+    }
+    
+    h3 {
+        font-size: 18px;
+        line-height: 18px;
+    }
+}

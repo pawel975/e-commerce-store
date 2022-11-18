@@ -8,12 +8,12 @@ class Header extends Component {
 
     render(){
         return (
-            <header>         
+            <header className="header">         
                 <Navigation
                     handleSelectCategory={this.props.handleSelectCategory}
                 /> 
                 <Logo/>
-                <Actions 
+                <Actions
                     handleCartOverlayVisibleToggle={this.props.handleCartOverlayVisibleToggle}
                     handleCurrencyChange={this.props.handleCurrencyChange}
                     handleCurrenciesListOpen={this.props.handleCurrenciesListOpen}

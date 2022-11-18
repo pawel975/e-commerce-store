@@ -1,0 +1,18 @@
+@use "../../variables.scss";
+@use "../../globalStyle.scss";
+
+.size-option {
+    height: 45px;
+    width: 63px;
+    border: 1px solid #1D1F22;
+    background: variables.$background;
+    color: variables.$clr-primary;
+    font-size: 16px;
+    line-height: 18px;
+    text-align: center;
+
+    &[aria-pressed=true] {
+        background: variables.$clr-primary;
+        color: variables.$clr-light;
+    }
+}
