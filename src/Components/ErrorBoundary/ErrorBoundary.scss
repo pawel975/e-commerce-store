@@ -1,0 +1,7 @@
+@use "../../variables.scss";
+@use "../../globalStyle.scss";
+
+.error-boundary {
+    font-size: 24px;
+    font-family: variables.$ff-Roboto;
+}

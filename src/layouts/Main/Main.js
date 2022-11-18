@@ -2,6 +2,7 @@ import { Component } from "react";
 import { createBrowserRouter, createRoutesFromElements, redirect, Route, RouterProvider } from "react-router-dom";
 import CartOverlay from "../../Components/CartOverlay/CartOverlay";
 import CategoryProducts from "../../Components/CategoryProducts/CategoryProducts";
+import ErrorBoundary from "../../Components/ErrorBoundary/ErrorBoundary";
 import ProductDescriptionPage from "../../Components/ProductDescriptionPage/ProductDescriptionPage";
 import "./Main.scss";
 
@@ -36,6 +37,7 @@ class Main extends Component {
                                     loader={() => {
                                         throw redirect("/all");
                                     }}
+                                    errorElement={<ErrorBoundary/>}
                                 />
                                 <Route
                                     path={`/all`}
