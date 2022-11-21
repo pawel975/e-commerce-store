@@ -25,22 +25,26 @@ class Navigation extends Component {
                         if (name === getCurrentRoute()) isSelected = true;
         
                         return (
-                            <BrowserRouter>
-                                <NavLink
-                                    key={name} 
-                                    to={`${name}`}
-                                    className="categories-list__category"
-                                    role="tab"
-                                    aria-selected={isSelected}
-                                    onClick={this.props.handleSelectCategory}
-                                    >
-                                    {name}
-                                </NavLink>
-                            </BrowserRouter>
+                            <NavLink
+                                key={name} 
+                                to={name}
+                                className="categories-list__category"
+                                role="tab"
+                                aria-selected={isSelected}
+                                onClick={this.props.handleSelectCategory}
+                                >
+                                {name}
+                            </NavLink>
                         )
                     })
         
-                    return <nav role="tablist" className="categories-list">{categoriesNavList}</nav>
+                    return (
+                        <nav role="tablist" className="categories-list">
+                            <BrowserRouter>
+                                {categoriesNavList}
+                            </BrowserRouter>
+                        </nav>
+                    )
                 }}
             </Query>
         )
