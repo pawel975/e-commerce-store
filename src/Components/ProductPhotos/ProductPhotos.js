@@ -9,15 +9,21 @@ class ProductPhotos extends Component {
             activePhotoGalleryIndex: 0
         }
 
-        this.thumbnails = this.props.productPhotos.map(photo => (
-            <button 
-                id={this.props.productPhotos.indexOf(photo)}
-                className="product-photos__single-thumbnail"
-                onClick={this.handleActivePhotoChange.bind(this)}
-            >
-                <img src={photo} alt="product"/>
-            </button>
-        ))
+        this.thumbnails = this.props.productPhotos.map(photo => {
+            
+            const photoId = this.props.productPhotos.indexOf(photo);
+            
+            return (
+                <button 
+                    key={photoId}
+                    id={photoId}
+                    className="product-photos__single-thumbnail"
+                    onClick={this.handleActivePhotoChange.bind(this)}
+                >
+                    <img src={photo} alt="product"/>
+                </button>
+            )   
+        })
 
     }
     

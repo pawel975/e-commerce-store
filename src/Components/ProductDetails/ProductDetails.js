@@ -12,25 +12,28 @@ class ProductDetails extends Component {
     }
 
     handleSizeChange(e){
-        this.setState({size: e.target.textContent});
-
+        
+        // Reset all size buttons to default not pressed state
         const allSizes = [...e.target.parentNode.children];
-
+        
         allSizes.forEach(size => {
             size.setAttribute("aria-pressed", false);
         });
-
+        
+        // Set clicked button as a choosed size
         const chosenSize = e.target;
-
+        
         chosenSize.setAttribute("aria-pressed", true);
+        this.setState({size: chosenSize.textContent});
     }
-
+    
     render(){
 
         const {name, brand, attributes} = this.props.productDetails;
 
         const productSizes = attributes[0].items.map(size => (
             <SizeOption 
+                key={size.id}
                 sizeParams={size}
                 handleSizeChange={this.handleSizeChange.bind(this)}
             />
