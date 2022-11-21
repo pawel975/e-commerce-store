@@ -2,6 +2,7 @@
 @use "../../globalStyle.scss";
 
 .size-option {
+    cursor: pointer;
     height: 45px;
     width: 63px;
     border: 1px solid #1D1F22;
@@ -14,5 +15,9 @@
     &[aria-pressed=true] {
         background: variables.$clr-primary;
         color: variables.$clr-light;
+    }
+
+    span {
+        pointer-events: none;
     }
 }

@@ -3,12 +3,37 @@ import SizeOption from "../SizeOption/SizeOption";
 import "./ProductDetails.scss";
 
 class ProductDetails extends Component {
+
+    constructor(){
+        super()
+        this.state = {
+            size: null,
+        }
+    }
+
+    handleSizeChange(e){
+        this.setState({size: e.target.textContent});
+
+        const allSizes = [...e.target.parentNode.children];
+
+        allSizes.forEach(size => {
+            size.setAttribute("aria-pressed", false);
+        });
+
+        const chosenSize = e.target;
+
+        chosenSize.setAttribute("aria-pressed", true);
+    }
+
     render(){
 
         const {name, brand, attributes} = this.props.productDetails;
 
         const productSizes = attributes[0].items.map(size => (
-            <SizeOption sizeParams={size}/>
+            <SizeOption 
+                sizeParams={size}
+                handleSizeChange={this.handleSizeChange.bind(this)}
+            />
         ))
 
         return (

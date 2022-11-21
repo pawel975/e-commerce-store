@@ -7,7 +7,10 @@ class SizeOption extends Component {
         const {displayValue} = this.props.sizeParams;
 
         return(
-            <button className="size-option">
+            <button 
+                className="size-option"
+                onClick={this.props.handleSizeChange}
+            >
                 <span className="size-option__name">{displayValue}</span>
             </button>
         )
