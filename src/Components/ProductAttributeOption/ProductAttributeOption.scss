@@ -1,7 +1,7 @@
 @use "../../variables.scss";
 @use "../../globalStyle.scss";
 
-.size-option {
+.product-attribute-option {
     cursor: pointer;
     height: 45px;
     width: 63px;
@@ -17,7 +17,7 @@
         color: variables.$clr-light;
     }
 
-    span {
+    &__name {
         pointer-events: none;
     }
 }

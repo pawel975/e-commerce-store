@@ -29,16 +29,10 @@
         }   
     }
 
-    &__size-picker {
+    &__all-attributes {
         display: flex;
         flex-direction: column;
-        gap: 8px;
-    }
-
-    &__all-sizes {
-        display: flex;
-        flex-direction: row;
-        gap: 12px;
+        gap: 1.5rem;
     }
     
     h3 {

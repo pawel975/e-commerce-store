@@ -1,0 +1,15 @@
+@use "../../variables.scss";
+@use "../../globalStyle.scss";
+
+.product-attribute {
+
+    display: flex;
+    gap: 0.75rem;
+    flex-direction: column;
+
+    &__all-options {
+        display: flex;
+        flex-direction: row;
+        gap: 1rem;
+    }
+}
