@@ -2,19 +2,37 @@
 @use "../../globalStyle.scss";
 
 .product-attribute-option {
-    cursor: pointer;
-    height: 45px;
-    width: 63px;
-    border: 1px solid #1D1F22;
-    background: variables.$background;
-    color: variables.$clr-primary;
-    font-size: 16px;
-    line-height: 18px;
-    text-align: center;
 
-    &[aria-pressed=true] {
+    cursor: pointer;
+    border: none;
+
+    &[data-type=text] {
+        height: 45px;
+        width: 63px;
+        border: 1px solid #1D1F22;
+        background: variables.$background;
+        color: variables.$clr-primary;
+        font-size: 16px;
+        line-height: 18px;
+        text-align: center;
+    }
+
+    &[data-type=swatch] {
+        height: 32px;
+        width: 32px;
+    }
+
+    &[aria-pressed=true][data-type=text] {
         background: variables.$clr-primary;
         color: variables.$clr-light;
+    }
+
+    &[aria-pressed=true][data-type=swatch] {
+        box-shadow: 
+            0 0 0 1px #FFFFFF,
+            0 0 0 2px #5ECE7B
+        ;
+        
     }
 
     &__name {

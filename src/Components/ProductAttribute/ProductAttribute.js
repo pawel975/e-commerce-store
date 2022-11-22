@@ -32,6 +32,7 @@ class ProductAttribute extends Component {
                     key={id}
                     displayValue={displayValue}
                     value={value}
+                    type={type}
                     handleAttrStatusChange={this.handleAttrStatusChange.bind(this)}
                 />
             )
