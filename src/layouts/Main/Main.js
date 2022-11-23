@@ -72,7 +72,12 @@ class Main extends Component {
                                 {/* It causes infinite loop if setState is activenp */}
                                 <Route
                                     path={`/product/:productId`}
-                                    element={<ProductDescriptionPage productId={window.location.pathname.slice(9)}/>}
+                                    element={
+                                        <ProductDescriptionPage 
+                                            currentCurrencySymbol={this.props.currentCurrencySymbol}
+                                            productId={window.location.pathname.slice(9)}
+                                        />
+                                    }
                                 />
                             </>
                         )

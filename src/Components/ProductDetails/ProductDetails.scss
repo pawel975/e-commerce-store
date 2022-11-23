@@ -34,8 +34,18 @@
         flex-direction: column;
         gap: 1.5rem;
     }
+
+    &__price {
+        font-weight: 700;
+        
+        span {
+            font-size: 24px;
+            font-family: variables.$ff-Raleway;
+        }
+    }
     
     h3 {
+        font-family: variables.$ff-RobotoCondensed;
         font-size: 18px;
         line-height: 18px;
     }

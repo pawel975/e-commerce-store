@@ -24,7 +24,10 @@ class ProductDescriptionPage extends Component {
                         return (
                             <>
                                 <ProductPhotos productPhotos={productParams.gallery}/>
-                                <ProductDetails productDetails={productParams}/>
+                                <ProductDetails 
+                                    productDetails={productParams}
+                                    currentCurrencySymbol={this.props.currentCurrencySymbol}
+                                />
                             </>
                         )
                     }}

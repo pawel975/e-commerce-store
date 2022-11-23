@@ -6,7 +6,7 @@ class ProductDetails extends Component {
     
     render(){
 
-        const {name, brand, attributes} = this.props.productDetails;
+        const {name, brand, attributes, prices} = this.props.productDetails;
 
         const productAttributes = attributes.map(attribute => {
 
@@ -22,6 +22,8 @@ class ProductDetails extends Component {
                 )
             })
 
+        const price = prices.find(price => price.currency.symbol === this.props.currentCurrencySymbol)
+
         return (
             <div className="product-details">
 
@@ -33,6 +35,11 @@ class ProductDetails extends Component {
                 <div className="product-details__all-attributes">
                     {productAttributes}
                 </div>
+
+                <header className="product-details__price">
+                    <h3>Price:</h3>
+                    <span>{price.currency.symbol}{price.amount}</span>
+                </header>
 
             </div>
         )
