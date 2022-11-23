@@ -1,12 +1,13 @@
 import { Component } from "react";
 import ProductAttribute from "../ProductAttribute/ProductAttribute";
 import "./ProductDetails.scss";
+import parse from "html-react-parser";
 
 class ProductDetails extends Component {
     
     render(){
 
-        const {name, brand, attributes, prices} = this.props.productDetails;
+        const {name, brand, attributes, prices, description} = this.props.productDetails;
 
         const productAttributes = attributes.map(attribute => {
 
@@ -15,7 +16,7 @@ class ProductDetails extends Component {
                 return (
                     <ProductAttribute 
                         key={id}
-                        name={name}
+                        name={name.toUpperCase()}
                         type={type}
                         options={items}
                     />
@@ -37,7 +38,7 @@ class ProductDetails extends Component {
                 </div>
 
                 <header className="product-details__price">
-                    <h3>Price:</h3>
+                    <h3>PRICE:</h3>
                     <span>{price.currency.symbol}{price.amount}</span>
                 </header>
 
@@ -47,6 +48,8 @@ class ProductDetails extends Component {
                 >
                     ADD TO CART
                 </a>
+
+                {parse(description)}
 
             </div>
         )
