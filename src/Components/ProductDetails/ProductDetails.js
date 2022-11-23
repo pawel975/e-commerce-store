@@ -41,6 +41,13 @@ class ProductDetails extends Component {
                     <span>{price.currency.symbol}{price.amount}</span>
                 </header>
 
+                <a 
+                    className="product-details__add-to-cart"
+                    href="/cart"
+                >
+                    ADD TO CART
+                </a>
+
             </div>
         )
     }
