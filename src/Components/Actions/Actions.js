@@ -1,5 +1,5 @@
 import { Component } from "react";
-import Cart from "../Cart/Cart";
+import Cart from "../CartButton/CartButton";
 import CurrencyPicker from "../CurrencyPicker/CurrencyPicker";
 import "./Actions.scss";
 

@@ -1,9 +1,9 @@
 @use '../../variables.scss';
 @use '../../globalStyle.scss';
 
-.cart {
+.cart-button {
 
-    .cart__btn {
+    &__btn {
         height: 100%;
         width: 100%;
         background: transparent;

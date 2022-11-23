@@ -1,16 +1,16 @@
 import { Component } from "react";
-import './Cart.scss'
+import './CartButton.scss'
 
 class Cart extends Component {
 
     render() {
         return (
-            <div className="cart">
+            <div className="cart-button">
                 <button 
-                    className="cart__btn"
+                    className="cart-button__btn"
                     onClick={this.props.handleCartOverlayVisibleToggle.bind(this)}
                 >
-                    <img src="/assets/img/cart-dark.svg" alt="cart" className="cart__image"/>
+                    <img src="/assets/img/cart-dark.svg" alt="cart" className="cart-button__image"/>
                 </button>
             </div>
         )
