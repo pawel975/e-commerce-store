@@ -46,13 +46,19 @@ class ProductCard extends Component {
                 onClick={this.handleRedirectToDetails.bind(this)}
             >
                 <img className="product-card__photo" src={gallery[0]} alt="product"/>
+                
                 <div className="product-card__description">
                     <span className="product-card__title">{name}</span>
                     <span className="product-card__price">{symbol}{amount}</span>
                 </div>
-                <button className="product-card__add-to-cart">
+
+                <a 
+                    className="product-card__add-to-cart"
+                    href="/cart"
+                >
                     <img className="product-card__cart-image" src="/assets/img/cart-white.svg" alt="cart"/>
-                </button>
+                </a>
+
             </section>
         )
     }
