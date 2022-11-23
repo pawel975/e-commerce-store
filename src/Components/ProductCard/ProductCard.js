@@ -21,6 +21,11 @@ class ProductCard extends Component {
         }
     }
 
+    handleRedirectToDetails(e){
+        const productId = e.target.id;
+        window.location.pathname = `/product/${productId}`
+    }
+
     render(){
 
         const currentCurrencySymbol = this.props.currentCurrencySymbol
@@ -38,6 +43,7 @@ class ProductCard extends Component {
                 id={id} 
                 className="product-card"
                 onMouseOver={this.showAddToCartBtn.bind(this)}
+                onClick={this.handleRedirectToDetails.bind(this)}
             >
                 <img className="product-card__photo" src={gallery[0]} alt="product"/>
                 <div className="product-card__description">
