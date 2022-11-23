@@ -1,5 +1,6 @@
 import { Component } from "react";
 import { createBrowserRouter, createRoutesFromElements, redirect, Route, RouterProvider } from "react-router-dom";
+import Cart from "../../Components/Cart/Cart";
 import CartOverlay from "../../Components/CartOverlay/CartOverlay";
 import CategoryProducts from "../../Components/CategoryProducts/CategoryProducts";
 import ErrorBoundary from "../../Components/ErrorBoundary/ErrorBoundary";
@@ -69,7 +70,6 @@ class Main extends Component {
                                     }
                                 />
 
-                                {/* It causes infinite loop if setState is activenp */}
                                 <Route
                                     path={`/product/:productId`}
                                     element={
@@ -78,6 +78,11 @@ class Main extends Component {
                                             productId={window.location.pathname.slice(9)}
                                         />
                                     }
+                                />
+
+                                <Route
+                                    path={`/cart`}
+                                    element={<Cart/>}
                                 />
                             </>
                         )

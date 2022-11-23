@@ -1,0 +1,15 @@
+@use "../../globalStyle.scss";
+@use '../../variables.scss';
+
+.cart {
+
+    &__header {
+        width: 84px;
+        height: 40px;
+        font-family: variables.$Raleway;
+        font-weight: 700;
+        font-size: 32px;
+        line-height: 40px;
+        color: #1D1F22;
+    }
+}
