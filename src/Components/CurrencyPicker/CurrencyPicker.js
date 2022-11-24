@@ -21,6 +21,7 @@ class CurrencyPicker extends Component {
                     </button>
 
                 </div>
+                
                 {
                     this.props.isCurrenciesListOpen &&
                     <Query query={queryCurrencies()}>

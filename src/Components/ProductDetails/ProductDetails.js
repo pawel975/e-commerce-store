@@ -2,26 +2,13 @@ import { Component } from "react";
 import ProductAttribute from "../ProductAttribute/ProductAttribute";
 import "./ProductDetails.scss";
 import parse from "html-react-parser";
+import ProductAllAttributes from "../ProductAllAttributes/ProductAllAttributes";
 
 class ProductDetails extends Component {
     
     render(){
 
         const {name, brand, attributes, prices, description} = this.props.productDetails;
-
-        const productAttributes = attributes.map(attribute => {
-
-                const {id, name, type, items} = attribute;
-
-                return (
-                    <ProductAttribute 
-                        key={id}
-                        name={name.toUpperCase()}
-                        type={type}
-                        options={items}
-                    />
-                )
-            })
 
         const price = prices.find(price => price.currency.symbol === this.props.currentCurrencySymbol)
 
@@ -33,9 +20,7 @@ class ProductDetails extends Component {
                     <h2>{brand}</h2>
                 </header>
 
-                <div className="product-details__all-attributes">
-                    {productAttributes}
-                </div>
+                <ProductAllAttributes attributes={attributes}/>
 
                 <header className="product-details__price">
                     <h3>PRICE:</h3>

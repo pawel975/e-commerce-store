@@ -30,13 +30,13 @@ class ProductCard extends Component {
 
         const currentCurrencySymbol = this.props.currentCurrencySymbol
         
-        const {id, name, inStock, gallery, description, category, attributes, prices, brand} = this.props.productParams;
+        const {id, name, gallery, prices} = this.props.productParams;
 
         const {currency, amount} = prices.find(price => (
             price.currency.symbol === currentCurrencySymbol
         ));
 
-        const {label, symbol} = currency;
+        const {symbol} = currency;
 
         return(
             <section 
