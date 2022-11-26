@@ -82,7 +82,11 @@ class Main extends Component {
 
                                 <Route
                                     path={`/cart`}
-                                    element={<Cart/>}
+                                    element={
+                                        <Cart
+                                            cartElements={this.props.cartElements}
+                                        />
+                                    }
                                 />
                             </>
                         )

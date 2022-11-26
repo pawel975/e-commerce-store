@@ -11,6 +11,7 @@ class App extends Component {
       isCartOverlayVisible: false,
       isCurrenciesListOpen: false,
       currentCurrencySymbol: "$",
+      cartElements: []
     }
   }
   
@@ -56,6 +57,7 @@ class App extends Component {
         <Main 
           isCartOverlayVisible={this.state.isCartOverlayVisible}
           currentCurrencySymbol={this.state.currentCurrencySymbol}
+          cartElements={this.state.cartElements}
         />
 
       </div>
