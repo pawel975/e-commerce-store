@@ -1,15 +1,15 @@
 import { Component } from "react";
 import { Query } from "@apollo/client/react/components";
-import "./ProductDescriptionPage.scss";
+import "./ProductPage.scss";
 import ProductDetails from "../ProductDetails/ProductDetails";
 import ProductPhotos from "../ProductPhotos/ProductPhotos";
 import queryProducts from "../../queries/queryProducts";
 
-class ProductDescriptionPage extends Component {
+class ProductPage extends Component {
 
     render(){
         return (
-            <section className="product-description-page">
+            <section className="product-page">
                 <Query query={queryProducts("all")}>
                     {({loading, data}) => {
 
@@ -27,6 +27,7 @@ class ProductDescriptionPage extends Component {
                                 <ProductDetails 
                                     productDetails={productParams}
                                     currentCurrencySymbol={this.props.currentCurrencySymbol}
+                                    addProductToCart={this.props.addProductToCart}
                                 />
                             </>
                         )
@@ -37,4 +38,4 @@ class ProductDescriptionPage extends Component {
     }
 }
 
-export default ProductDescriptionPage;
+export default ProductPage;

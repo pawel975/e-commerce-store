@@ -1,5 +1,4 @@
 import { Component } from "react";
-import ProductAttribute from "../ProductAttribute/ProductAttribute";
 import "./ProductDetails.scss";
 import parse from "html-react-parser";
 import ProductAllAttributes from "../ProductAllAttributes/ProductAllAttributes";
@@ -8,12 +7,15 @@ class ProductDetails extends Component {
     
     render(){
 
-        const {name, brand, attributes, prices, description} = this.props.productDetails;
+        const {id, name, brand, attributes, prices, description} = this.props.productDetails;
 
         const price = prices.find(price => price.currency.symbol === this.props.currentCurrencySymbol)
 
         return (
-            <div className="product-details">
+            <div 
+                className="product-details"
+                id={id}
+            >
 
                 <header className="product-details__header">
                     <h1>{name}</h1>
@@ -29,7 +31,8 @@ class ProductDetails extends Component {
 
                 <a 
                     className="product-details__add-to-cart"
-                    href="/cart"
+                    // href="/cart"
+                    onClick={() => this.props.addProductToCart(id)}
                 >
                     ADD TO CART
                 </a>

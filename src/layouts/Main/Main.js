@@ -4,7 +4,7 @@ import Cart from "../../Components/Cart/Cart";
 import CartOverlay from "../../Components/CartOverlay/CartOverlay";
 import CategoryProducts from "../../Components/CategoryProducts/CategoryProducts";
 import ErrorBoundary from "../../Components/ErrorBoundary/ErrorBoundary";
-import ProductDescriptionPage from "../../Components/ProductDescriptionPage/ProductDescriptionPage";
+import ProductPage from "../../Components/ProductPage/ProductPage";
 import "./Main.scss";
 
 class Main extends Component {
@@ -44,8 +44,9 @@ class Main extends Component {
                                     path={`/all`}
                                     element={
                                         <CategoryProducts 
-                                        currentCategory="all"
-                                        currentCurrencySymbol={this.props.currentCurrencySymbol}
+                                            currentCategory="all"
+                                            currentCurrencySymbol={this.props.currentCurrencySymbol}
+                                            addProductToCart={this.props.addProductToCart}
                                         />
                                     }
                                 />
@@ -54,8 +55,9 @@ class Main extends Component {
                                     path={`/clothes`}
                                     element={
                                         <CategoryProducts 
-                                        currentCategory="clothes"
-                                        currentCurrencySymbol={this.props.currentCurrencySymbol}
+                                            currentCategory="clothes"
+                                            currentCurrencySymbol={this.props.currentCurrencySymbol}
+                                            addProductToCart={this.props.addProductToCart}
                                         />
                                     }
                                 />
@@ -64,8 +66,9 @@ class Main extends Component {
                                     path={`/tech`}
                                     element={
                                         <CategoryProducts 
-                                        currentCategory="tech"
-                                        currentCurrencySymbol={this.props.currentCurrencySymbol}
+                                            currentCategory="tech"
+                                            currentCurrencySymbol={this.props.currentCurrencySymbol}
+                                            addProductToCart={this.props.addProductToCart}
                                         />
                                     }
                                 />
@@ -73,9 +76,10 @@ class Main extends Component {
                                 <Route
                                     path={`/product/:productId`}
                                     element={
-                                        <ProductDescriptionPage 
+                                        <ProductPage 
                                             currentCurrencySymbol={this.props.currentCurrencySymbol}
                                             productId={window.location.pathname.slice(9)}
+                                            addProductToCart={this.props.addProductToCart}
                                         />
                                     }
                                 />
@@ -146,7 +150,7 @@ export default Main;
 //                         // this.setState({productId: params.productId})
 //                         console.log("XDAGAEG")
 //                     }}
-//                     element={<ProductDescriptionPage productId={"huarache-x-stussy-le"}/>}
+//                     element={<ProductPage productId={"huarache-x-stussy-le"}/>}
 //                 />
 
 //             </Routes>

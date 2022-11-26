@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Main from '../../Layouts/Main/Main';
 import Header from '../../Layouts/Header/Header';
 import './App.scss';
+import querySingleProduct from '../../queries/querySingleProduct';
 
 class App extends Component {
 
@@ -11,7 +12,7 @@ class App extends Component {
       isCartOverlayVisible: false,
       isCurrenciesListOpen: false,
       currentCurrencySymbol: "$",
-      cartElements: []
+      cartElements: [],
     }
   }
   
@@ -41,7 +42,15 @@ class App extends Component {
     this.setState({currentCategory: e.target.textContent})
   }
 
-  render() {
+  addProductToCart = async (productId) =>{
+    const product = await querySingleProduct(productId);
+
+    this.setState({cartElements: [...this.state.cartElements, product]});
+
+    console.log(this.state.cartElements)
+  }
+
+  render(){
     return (
       <div className="app">
 
@@ -58,11 +67,12 @@ class App extends Component {
           isCartOverlayVisible={this.state.isCartOverlayVisible}
           currentCurrencySymbol={this.state.currentCurrencySymbol}
           cartElements={this.state.cartElements}
+          addProductToCart={this.addProductToCart}
         />
 
       </div>
     )
-  };
+  }
 }
 
 export default App;
