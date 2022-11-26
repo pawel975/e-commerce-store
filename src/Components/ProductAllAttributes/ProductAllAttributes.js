@@ -1,5 +1,6 @@
 import { Component } from "react";
 import ProductAttribute from "../ProductAttribute/ProductAttribute";
+import './ProductAllAttributes.scss';
 
 class ProductAllAttributes extends Component {
 
