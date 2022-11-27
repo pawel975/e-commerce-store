@@ -3,12 +3,14 @@ import Main from '../../Layouts/Main/Main';
 import Header from '../../Layouts/Header/Header';
 import './App.scss';
 import querySingleProduct from '../../queries/querySingleProduct';
+import getFromLocalStorage from '../../helpers/getFromLocalStorage';
+import saveToLocalStorage from '../../helpers/saveToLocalStorage';
 
 class App extends Component {
 
   constructor(){
     super()
-    this.state = {
+    this.state = getFromLocalStorage("state") || {
       isCartOverlayVisible: false,
       isCurrenciesListOpen: false,
       currentCurrencySymbol: "$",
@@ -42,12 +44,20 @@ class App extends Component {
     this.setState({currentCategory: e.target.textContent})
   }
 
-  addProductToCart = async (productId) =>{
+  addProductToCart = async (productId) => {
     const product = await querySingleProduct(productId);
 
     this.setState({cartElements: [...this.state.cartElements, product]});
+  }
 
-    console.log(this.state.cartElements)
+  componentDidMount(){
+    console.log("init");
+    saveToLocalStorage("state", this.state)
+  }
+
+  componentDidUpdate(){
+    console.log("rerender");
+    saveToLocalStorage("state", this.state);
   }
 
   render(){
