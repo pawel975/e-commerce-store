@@ -51,12 +51,10 @@ class App extends Component {
   }
 
   componentDidMount(){
-    console.log("init");
     saveToLocalStorage("state", this.state)
   }
 
   componentDidUpdate(){
-    console.log("rerender");
     saveToLocalStorage("state", this.state);
   }
 
