@@ -5,9 +5,11 @@ import './ProductAllAttributes.scss';
 class ProductAllAttributes extends Component {
 
     constructor(props){
-        super(props)
-        this.attributes = this.props.attributes
+        super(props);
+        this.attributes = this.props.attributes;
+        this.handleAttrValueChange = this.props.handleAttrValueChange;
     }
+
     render(){
 
         const productAttributes = this.attributes.map(attribute => {
@@ -20,6 +22,7 @@ class ProductAllAttributes extends Component {
                     name={name.toUpperCase()}
                     type={type}
                     options={items}
+                    handleAttrValueChange={this.handleAttrValueChange}
                 />
             )
         })

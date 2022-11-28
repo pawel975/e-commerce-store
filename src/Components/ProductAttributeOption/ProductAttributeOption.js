@@ -2,28 +2,33 @@ import { Component } from "react";
 import "./ProductAttributeOption.scss";
 
 class ProductAttributeOption extends Component {
+
+    constructor(props){
+        super(props);
+        this.handleAttrStatusChange = this.props.handleAttrStatusChange;
+        this.type = this.props.type;
+        this.optionParams = this.props.optionParams;
+    }
     
     render(){
-    
-        const {handleAttrStatusChange, displayValue, value, type} = this.props;
         
-        const optionType = type === "swatch" ? 
+        const optionType = this.type === "swatch" ? 
 
             <button 
                 className="product-attribute-option"
-                onClick={handleAttrStatusChange}
+                onClick={() => this.handleAttrStatusChange(this.optionParams)}
                 data-type="swatch"
-                style={{backgroundColor: value}}
+                style={{backgroundColor: this.optionParams.value}}
             />
             
             :
 
             <button 
                 className="product-attribute-option"
-                onClick={handleAttrStatusChange}
+                onClick={() => this.handleAttrStatusChange(this.optionParams)}
                 data-type="text"
             >
-                <span className="product-attribute-option__name">{displayValue}</span>
+                <span className="product-attribute-option__name">{this.optionParams.displayValue}</span>
             </button>
 
         return optionType;

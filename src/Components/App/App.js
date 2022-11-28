@@ -44,10 +44,15 @@ class App extends Component {
     this.setState({currentCategory: e.target.textContent})
   }
 
-  addProductToCart = async (productId) => {
+  addProductToCart = async (productId, selectedAttributes) => {
     const product = await querySingleProduct(productId);
 
-    this.setState({cartElements: [...this.state.cartElements, product]});
+    const orderedProduct = {
+      product: product,
+      selectedAttributes: selectedAttributes,
+    }
+
+    this.setState({cartElements: [...this.state.cartElements, orderedProduct]});
   }
 
   componentDidMount(){

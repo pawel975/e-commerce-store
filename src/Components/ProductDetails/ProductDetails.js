@@ -4,10 +4,37 @@ import parse from "html-react-parser";
 import ProductAllAttributes from "../ProductAllAttributes/ProductAllAttributes";
 
 class ProductDetails extends Component {
+
+    constructor(props){
+        super(props)
+        this.productDetails = this.props.productDetails;
+        this.state = {
+            selectedAttributes: null,
+        }
+    }
+
+    componentDidMount(){
+        // Set all attributes to first value by default
+        const attrs = this.productDetails.attributes.map(attr => (attr.items[0]))
+
+        this.setState({selectedAttributes: attrs})
+    }
+
+    handleAttrValueChange(newSelectedAttribute){
+        const newSelectedAttributes = this.state.selectedAttributes.forEach(selectedAttribute => {
+            if (selectedAttribute.id === newSelectedAttribute.id) {
+                return newSelectedAttribute
+            } else {
+                return selectedAttribute
+            }
+        })
+        this.setState({selectedAttributes: newSelectedAttributes})
+
+    }
     
     render(){
 
-        const {id, name, brand, attributes, prices, description} = this.props.productDetails;
+        const {id, name, brand, attributes, prices, description} = this.productDetails;
 
         const price = prices.find(price => price.currency.symbol === this.props.currentCurrencySymbol)
 
@@ -22,7 +49,10 @@ class ProductDetails extends Component {
                     <h2>{brand}</h2>
                 </header>
 
-                <ProductAllAttributes attributes={attributes}/>
+                <ProductAllAttributes 
+                    attributes={attributes}
+                    handleAttrValueChange={this.handleAttrValueChange.bind(this)}
+                />
 
                 <header className="product-details__price">
                     <h3>PRICE:</h3>
@@ -32,7 +62,7 @@ class ProductDetails extends Component {
                 <a 
                     className="product-details__add-to-cart"
                     href="/cart"
-                    onClick={() => this.props.addProductToCart(id)}
+                    onClick={() => this.props.addProductToCart(id, this.state.selectedAttributes)}
                 >
                     ADD TO CART
                 </a>

@@ -3,8 +3,17 @@ import ProductAttributeOption from "../ProductAttributeOption/ProductAttributeOp
 import "./ProductAttribute.scss";
 
 class ProductAttribute extends Component {
+
+    constructor(props){
+        super(props)
+        this.id = this.props.id
+        this.name = this.props.name
+        this.type = this.props.type
+        this.options = this.props.options
+        this.handleAttrValueChange = this.props.handleAttrValueChange;
+    }
     
-    handleAttrStatusChange(e){
+    handleAttrStatusChange(e, optionParams){
         
         // Reset all size buttons to default not pressed state
         const allAttrOptions = [...e.target.parentNode.children];
@@ -17,22 +26,19 @@ class ProductAttribute extends Component {
         const chosenOption = e.target;
         
         chosenOption.setAttribute("aria-pressed", true);
+
+        this.handleAttrValueChange(optionParams)
     }
 
     render(){
 
-        const {name, type, options} = this.props;
-
-        const allAttrOptions = options.map(option => {
-
-            const {id, displayValue, value} = option;
+        const allAttrOptions = this.options.map(option => {
 
             return (
                 <ProductAttributeOption
-                    key={id}
-                    displayValue={displayValue}
-                    value={value}
-                    type={type}
+                    key={this.id}
+                    type={this.type}
+                    optionParams={option}
                     handleAttrStatusChange={this.handleAttrStatusChange.bind(this)}
                 />
             )
