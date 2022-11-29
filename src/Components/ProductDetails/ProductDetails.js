@@ -21,13 +21,17 @@ class ProductDetails extends Component {
     }
 
     handleAttrValueChange(newSelectedAttribute){
-        const newSelectedAttributes = this.state.selectedAttributes.forEach(selectedAttribute => {
-            if (selectedAttribute.id === newSelectedAttribute.id) {
+
+        // Check if any of attributes has changed it's value and save it if so
+        const newSelectedAttributes = this.state.selectedAttributes.map((selectedAttribute) => {
+
+            if (selectedAttribute.id !== newSelectedAttribute.id) {
                 return newSelectedAttribute
             } else {
                 return selectedAttribute
             }
         })
+
         this.setState({selectedAttributes: newSelectedAttributes})
 
     }

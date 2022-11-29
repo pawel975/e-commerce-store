@@ -16,7 +16,7 @@ class ProductAttributeOption extends Component {
 
             <button 
                 className="product-attribute-option"
-                onClick={() => this.handleAttrStatusChange(this.optionParams)}
+                onClick={(e) => this.handleAttrStatusChange(e, this.optionParams)}
                 data-type="swatch"
                 style={{backgroundColor: this.optionParams.value}}
             />
@@ -25,7 +25,7 @@ class ProductAttributeOption extends Component {
 
             <button 
                 className="product-attribute-option"
-                onClick={() => this.handleAttrStatusChange(this.optionParams)}
+                onClick={(e) => this.handleAttrStatusChange(e, this.optionParams)}
                 data-type="text"
             >
                 <span className="product-attribute-option__name">{this.optionParams.displayValue}</span>

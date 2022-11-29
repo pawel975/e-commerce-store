@@ -18,6 +18,7 @@ class ProductAllAttributes extends Component {
 
             return (
                 <ProductAttribute 
+                    id={id}
                     key={id}
                     name={name.toUpperCase()}
                     type={type}

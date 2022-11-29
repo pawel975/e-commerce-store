@@ -12,7 +12,7 @@ class ProductAttribute extends Component {
         this.options = this.props.options
         this.handleAttrValueChange = this.props.handleAttrValueChange;
     }
-    
+
     handleAttrStatusChange(e, optionParams){
         
         // Reset all size buttons to default not pressed state
@@ -27,6 +27,8 @@ class ProductAttribute extends Component {
         
         chosenOption.setAttribute("aria-pressed", true);
 
+        console.log(optionParams, "option params")
+
         this.handleAttrValueChange(optionParams)
     }
 
@@ -36,7 +38,7 @@ class ProductAttribute extends Component {
 
             return (
                 <ProductAttributeOption
-                    key={this.id}
+                    key={this.id + option.value}
                     type={this.type}
                     optionParams={option}
                     handleAttrStatusChange={this.handleAttrStatusChange.bind(this)}
@@ -46,7 +48,7 @@ class ProductAttribute extends Component {
 
         return(
             <section className="product-attribute">
-                <h3>{name}:</h3>
+                <h3>{this.name}:</h3>
                 <div className="product-attribute__all-options">
                     {allAttrOptions}
                 </div>
