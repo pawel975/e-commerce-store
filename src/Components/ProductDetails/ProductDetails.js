@@ -9,31 +9,41 @@ class ProductDetails extends Component {
         super(props)
         this.productDetails = this.props.productDetails;
         this.state = {
-            selectedAttributes: null,
+            currentAttributesStates: null,
         }
     }
 
     componentDidMount(){
         // Set all attributes to first value by default
-        const attrs = this.productDetails.attributes.map(attr => (attr.items[0]))
+        const attrs = this.productDetails.attributes.map(attr => (
+            {
+                attrId: attr.id,
+                attrValue: attr.items[0]
+            }
+        ))
 
-        this.setState({selectedAttributes: attrs})
+        this.setState({currentAttributesStates: attrs})
     }
 
-    handleAttrValueChange(newSelectedAttribute){
+    changeAttrValue(attrId, selectedOptionParams){
 
         // Check if any of attributes has changed it's value and save it if so
-        const newSelectedAttributes = this.state.selectedAttributes.map((selectedAttribute) => {
+        const newAttributesStates = this.state.currentAttributesStates.map(attribute => {
 
-            if (selectedAttribute.id !== newSelectedAttribute.id) {
-                return newSelectedAttribute
+            if (attribute.attrId === attrId) {
+                return {
+                    attrId: attrId,
+                    attrValue: selectedOptionParams.value
+                }
             } else {
-                return selectedAttribute
+                return attribute
             }
         })
 
-        this.setState({selectedAttributes: newSelectedAttributes})
+        console.log(newAttributesStates, "new attributes states");
+        console.log(this.state.currentAttributesStates, "old attributes states");
 
+        this.setState({currentAttributesStates: newAttributesStates})
     }
     
     render(){
@@ -55,7 +65,7 @@ class ProductDetails extends Component {
 
                 <ProductAllAttributes 
                     attributes={attributes}
-                    handleAttrValueChange={this.handleAttrValueChange.bind(this)}
+                    changeAttrValue={this.changeAttrValue.bind(this)}
                 />
 
                 <header className="product-details__price">
@@ -65,8 +75,8 @@ class ProductDetails extends Component {
 
                 <a 
                     className="product-details__add-to-cart"
-                    href="/cart"
-                    onClick={() => this.props.addProductToCart(id, this.state.selectedAttributes)}
+                    // href="/cart"
+                    onClick={() => this.props.addProductToCart(id, this.state.currentAttributesStates)}
                 >
                     ADD TO CART
                 </a>

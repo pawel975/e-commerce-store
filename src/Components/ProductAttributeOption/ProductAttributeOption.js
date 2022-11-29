@@ -5,9 +5,9 @@ class ProductAttributeOption extends Component {
 
     constructor(props){
         super(props);
-        this.handleAttrStatusChange = this.props.handleAttrStatusChange;
+        this.changeActiveOption = this.props.changeActiveOption;
         this.type = this.props.type;
-        this.optionParams = this.props.optionParams;
+        this.attrOptionParams = this.props.attrOptionParams;
     }
     
     render(){
@@ -16,19 +16,19 @@ class ProductAttributeOption extends Component {
 
             <button 
                 className="product-attribute-option"
-                onClick={(e) => this.handleAttrStatusChange(e, this.optionParams)}
+                onClick={(e) => this.changeActiveOption(e, this.attrOptionParams)}
                 data-type="swatch"
-                style={{backgroundColor: this.optionParams.value}}
+                style={{backgroundColor: this.attrOptionParams.value}}
             />
             
             :
 
             <button 
                 className="product-attribute-option"
-                onClick={(e) => this.handleAttrStatusChange(e, this.optionParams)}
+                onClick={(e) => this.changeActiveOption(e, this.attrOptionParams)}
                 data-type="text"
             >
-                <span className="product-attribute-option__name">{this.optionParams.displayValue}</span>
+                <span className="product-attribute-option__name">{this.attrOptionParams.displayValue}</span>
             </button>
 
         return optionType;

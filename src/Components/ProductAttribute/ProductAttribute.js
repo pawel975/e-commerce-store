@@ -10,10 +10,10 @@ class ProductAttribute extends Component {
         this.name = this.props.name
         this.type = this.props.type
         this.options = this.props.options
-        this.handleAttrValueChange = this.props.handleAttrValueChange;
+        this.changeAttrValue = this.props.changeAttrValue;
     }
 
-    handleAttrStatusChange(e, optionParams){
+    changeActiveOption(e, attrOptionParams){
         
         // Reset all size buttons to default not pressed state
         const allAttrOptions = [...e.target.parentNode.children];
@@ -27,9 +27,8 @@ class ProductAttribute extends Component {
         
         chosenOption.setAttribute("aria-pressed", true);
 
-        console.log(optionParams, "option params")
-
-        this.handleAttrValueChange(optionParams)
+        // Change attr value based on selected one
+        this.changeAttrValue(this.id, attrOptionParams)
     }
 
     render(){
@@ -40,8 +39,8 @@ class ProductAttribute extends Component {
                 <ProductAttributeOption
                     key={this.id + option.value}
                     type={this.type}
-                    optionParams={option}
-                    handleAttrStatusChange={this.handleAttrStatusChange.bind(this)}
+                    attrOptionParams={option}
+                    changeActiveOption={this.changeActiveOption.bind(this)}
                 />
             )
         })
