@@ -25,23 +25,20 @@ class ProductDetails extends Component {
         this.setState({currentAttributesStates: attrs})
     }
 
-    changeAttrValue(attrId, selectedOptionParams){
+    changeAttrValue(selectedOptionAttrId, selectedOptionParams){
 
         // Check if any of attributes has changed it's value and save it if so
         const newAttributesStates = this.state.currentAttributesStates.map(attribute => {
 
-            if (attribute.attrId === attrId) {
+            if (attribute.attrId === selectedOptionAttrId) {
                 return {
-                    attrId: attrId,
+                    attrId: selectedOptionAttrId,
                     attrValue: selectedOptionParams.value
                 }
             } else {
                 return attribute
             }
         })
-
-        console.log(newAttributesStates, "new attributes states");
-        console.log(this.state.currentAttributesStates, "old attributes states");
 
         this.setState({currentAttributesStates: newAttributesStates})
     }
