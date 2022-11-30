@@ -72,7 +72,7 @@ class ProductDetails extends Component {
 
                 <a 
                     className="product-details__add-to-cart"
-                    // href="/cart"
+                    href="/cart"
                     onClick={() => this.props.addProductToCart(id, this.state.currentAttributesStates)}
                 >
                     ADD TO CART
