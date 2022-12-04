@@ -1,0 +1,11 @@
+@use "../../globalStyle.scss";
+@use "../../variables.scss";
+
+.price {
+    font-weight: 700;
+    
+    span {
+        font-size: 24px;
+        font-family: variables.$ff-Raleway;
+    }
+}

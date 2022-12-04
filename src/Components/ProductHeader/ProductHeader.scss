@@ -1,0 +1,23 @@
+@use "../../globalStyle.scss";
+@use "../../variables.scss";
+
+.product-header {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    font-family: variables.$ff-Raleway;
+    width: 100%;
+
+    h1, h2 {
+        font-size: 30px;
+        line-height: 27px;
+    }
+    
+    h1 {
+        font-weight: 600;
+    }
+
+    h2 {
+        font-weight: 400;
+    }   
+}

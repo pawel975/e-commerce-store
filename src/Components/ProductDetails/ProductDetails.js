@@ -2,6 +2,8 @@ import { Component } from "react";
 import "./ProductDetails.scss";
 import parse from "html-react-parser";
 import ProductAllAttributes from "../ProductAllAttributes/ProductAllAttributes";
+import Price from "../Price/Price";
+import ProductHeader from "../ProductHeader/ProductHeader";
 
 class ProductDetails extends Component {
 
@@ -57,20 +59,20 @@ class ProductDetails extends Component {
                 id={id}
             >
 
-                <header className="product-details__header">
-                    <h1>{name}</h1>
-                    <h2>{brand}</h2>
-                </header>
+                <ProductHeader 
+                    name={name} 
+                    brand={brand}
+                />
 
                 <ProductAllAttributes 
                     attributes={attributes}
                     changeAttrValue={this.changeAttrValue.bind(this)}
                 />
 
-                <header className="product-details__price">
-                    <h3>PRICE:</h3>
-                    <span>{price.currency.symbol}{price.amount}</span>
-                </header>
+                <Price 
+                    symbol={price.currency.symbol} 
+                    amount={price.amount}
+                />
 
                 <a 
                     className="product-details__add-to-cart"
