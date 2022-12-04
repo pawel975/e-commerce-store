@@ -7,6 +7,14 @@ import queryProducts from "../../queries/queryProducts";
 
 class ProductPage extends Component {
 
+    constructor(props){
+        super(props)
+        this.changeAttrValue = this.props.changeAttrValue;
+        this.currentCurrencySymbol = this.props.currentCurrencySymbol;
+        this.addProductToCart = this.props.addProductToCart;
+        this.productId = this.props.productId;
+    }
+
     render(){
         return (
             <section className="product-page">
@@ -18,7 +26,7 @@ class ProductPage extends Component {
                         const {products} = data.category;
 
                         const productParams = products.find(product => 
-                            product.id === this.props.productId
+                            product.id === this.productId
                         );
 
                         return (
@@ -26,8 +34,9 @@ class ProductPage extends Component {
                                 <ProductPhotos productPhotos={productParams.gallery}/>
                                 <ProductDetails 
                                     productDetails={productParams}
-                                    currentCurrencySymbol={this.props.currentCurrencySymbol}
-                                    addProductToCart={this.props.addProductToCart}
+                                    currentCurrencySymbol={this.currentCurrencySymbol}
+                                    addProductToCart={this.addProductToCart}
+                                    changeAttrValue={this.changeAttrValue}
                                 />
                             </>
                         )

@@ -6,7 +6,9 @@ class Cart extends Component {
     constructor(props){
         super(props)
         this.cartElements = this.props.cartElements;
+        this.currentCurrencySymbol = this.props.currentCurrencySymbol;
         this.allCartElements = null;
+        this.changeAttrValue = this.props.changeAttrValue;
     }
 
     componentDidMount(){
@@ -16,6 +18,7 @@ class Cart extends Component {
                     <CartElement
                         product={cartElement.product}
                         selectedAttributes={cartElement.selectedAttributes}
+                        currentCurrencySymbol={this.currentCurrencySymbol}
                     />
                     <hr/>
                 </React.Fragment>

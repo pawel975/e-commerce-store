@@ -12,16 +12,57 @@ class Main extends Component {
     constructor(props){
         super(props)
         this.addProductToCart = this.props.addProductToCart;
+        this.changeAttrValue = this.changeAttrValue.bind(this);
         this.currentCurrencySymbol = this.props.currentCurrencySymbol
         this.cartElements = this.props.cartElements;
         this.state = {
             currentRoute: "/",
-            productId: ""
+            productId: "",
+            currentAttributesStates: null
         }
     }
 
     componentDidMount(){
         this.setState({currentRoute: window.location.pathname})
+
+        // Set all attributes to first value by default
+        const initAttributeStates = this.cartElements.map(element => {
+
+            const {id, attributes} = element.product;
+
+            const attrs = attributes.map(attr => (
+                {
+                    attrId: attr.id,
+                    attrValue: attr.items[0]
+                }
+            ))
+            
+            return {
+                productId: id,
+                productAttrs: attrs
+            }
+            
+        })
+
+        this.setState({currentAttributesStates: initAttributeStates})
+    }
+
+    changeAttrValue(selectedOptionAttrId, selectedOptionParams){
+
+        // Check if any of attributes has changed it's value and save it if so
+        const newAttributesStates = this.state.currentAttributesStates.map(attribute => {
+
+            if (attribute.attrId === selectedOptionAttrId) {
+                return {
+                    attrId: selectedOptionAttrId,
+                    attrValue: selectedOptionParams.value
+                }
+            } else {
+                return attribute
+            }
+        })
+
+        this.setState({currentAttributesStates: newAttributesStates})
     }
 
     render(){
@@ -82,6 +123,7 @@ class Main extends Component {
                                             currentCurrencySymbol={this.currentCurrencySymbol}
                                             productId={window.location.pathname.slice(9)}
                                             addProductToCart={this.addProductToCart}
+                                            changeAttrValue={this.changeAttrValue}
                                         />
                                     }
                                 />
@@ -91,6 +133,7 @@ class Main extends Component {
                                     element={
                                         <Cart
                                             cartElements={this.cartElements}
+                                            currentCurrencySymbol={this.currentCurrencySymbol}
                                         />
                                     }
                                 />

@@ -1,4 +1,5 @@
 import { Component } from "react";
+import CartElementDetails from "../CartElementDetails/CartElementDetails";
 
 
 class CartElement extends Component {
@@ -7,12 +8,19 @@ class CartElement extends Component {
         super(props)
         this.product = this.props.product;
         this.selectedAttributes = this.props.selectedAttributes;
+        this.currentCurrencySymbol = this.props.currentCurrencySymbol;
+        this.changeAttrValue = this.props.changeAttrValue;
     }
 
     render(){
         return (
             <div className="cart-element">
-                {this.product.name}
+                <CartElementDetails 
+                    product={this.product}
+                    selectedAttributes={this.selectedAttributes}
+                    currentCurrencySymbol={this.currentCurrencySymbol}
+                    
+                />
             </div>
         )
     }

@@ -7,24 +7,4 @@
     gap: 45px;
     display: flex;
     flex-direction: column;
-
-    &__add-to-cart {
-        padding: 16px 32px;
-        background: variables.$clr-accent;
-        text-decoration: none;
-        color: variables.$clr-light;
-        font-family: variables.$ff-Raleway;
-        font-weight: 600;
-        font-size: 16px;
-        line-height: 19px;
-        letter-spacing: 0em;
-        text-align: center;
-
-    }
-    
-    h3 {
-        font-family: variables.$ff-RobotoCondensed;
-        font-size: 18px;
-        line-height: 18px;
-    }
 }
