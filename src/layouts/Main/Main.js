@@ -9,8 +9,11 @@ import "./Main.scss";
 
 class Main extends Component {
 
-    constructor(){
-        super()
+    constructor(props){
+        super(props)
+        this.addProductToCart = this.props.addProductToCart;
+        this.currentCurrencySymbol = this.props.currentCurrencySymbol
+        this.cartElements = this.props.cartElements;
         this.state = {
             currentRoute: "/",
             productId: ""
@@ -32,7 +35,6 @@ class Main extends Component {
                     createBrowserRouter(
                         createRoutesFromElements(
                             <>
-
                                 <Route
                                     path={"/"}
                                     loader={() => {
@@ -45,8 +47,8 @@ class Main extends Component {
                                     element={
                                         <CategoryProducts 
                                             currentCategory="all"
-                                            currentCurrencySymbol={this.props.currentCurrencySymbol}
-                                            addProductToCart={this.props.addProductToCart}
+                                            currentCurrencySymbol={this.currentCurrencySymbol}
+                                            addProductToCart={this.addProductToCart}
                                         />
                                     }
                                 />
@@ -56,8 +58,8 @@ class Main extends Component {
                                     element={
                                         <CategoryProducts 
                                             currentCategory="clothes"
-                                            currentCurrencySymbol={this.props.currentCurrencySymbol}
-                                            addProductToCart={this.props.addProductToCart}
+                                            currentCurrencySymbol={this.currentCurrencySymbol}
+                                            addProductToCart={this.addProductToCart}
                                         />
                                     }
                                 />
@@ -67,8 +69,8 @@ class Main extends Component {
                                     element={
                                         <CategoryProducts 
                                             currentCategory="tech"
-                                            currentCurrencySymbol={this.props.currentCurrencySymbol}
-                                            addProductToCart={this.props.addProductToCart}
+                                            currentCurrencySymbol={this.currentCurrencySymbol}
+                                            addProductToCart={this.addProductToCart}
                                         />
                                     }
                                 />
@@ -77,9 +79,9 @@ class Main extends Component {
                                     path={`/product/:productId`}
                                     element={
                                         <ProductPage 
-                                            currentCurrencySymbol={this.props.currentCurrencySymbol}
+                                            currentCurrencySymbol={this.currentCurrencySymbol}
                                             productId={window.location.pathname.slice(9)}
-                                            addProductToCart={this.props.addProductToCart}
+                                            addProductToCart={this.addProductToCart}
                                         />
                                     }
                                 />
@@ -88,7 +90,7 @@ class Main extends Component {
                                     path={`/cart`}
                                     element={
                                         <Cart
-                                            cartElements={this.props.cartElements}
+                                            cartElements={this.cartElements}
                                         />
                                     }
                                 />

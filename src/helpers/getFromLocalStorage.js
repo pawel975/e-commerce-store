@@ -1,5 +1,10 @@
 
-const getFromLocalStorage = (key) => {
+/**
+ * 
+ * @param {string} key of the local storage data
+ * @returns data for particular key from local storage
+ */
+const getFromLocalStorage = (key = "state") => {
 
     const data = JSON.parse(localStorage.getItem(key));
 

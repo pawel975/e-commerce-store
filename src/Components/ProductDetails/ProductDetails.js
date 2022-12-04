@@ -8,6 +8,8 @@ class ProductDetails extends Component {
     constructor(props){
         super(props)
         this.productDetails = this.props.productDetails;
+        this.addProductToCart = this.props.addProductToCart;
+        this.currentCurrencySymbol = this.props.currentCurrencySymbol;
         this.state = {
             currentAttributesStates: null,
         }
@@ -47,7 +49,7 @@ class ProductDetails extends Component {
 
         const {id, name, brand, attributes, prices, description} = this.productDetails;
 
-        const price = prices.find(price => price.currency.symbol === this.props.currentCurrencySymbol)
+        const price = prices.find(price => price.currency.symbol === this.currentCurrencySymbol)
 
         return (
             <div 
@@ -73,7 +75,7 @@ class ProductDetails extends Component {
                 <a 
                     className="product-details__add-to-cart"
                     href="/cart"
-                    onClick={() => this.props.addProductToCart(id, this.state.currentAttributesStates)}
+                    onClick={() => this.addProductToCart(id, this.state.currentAttributesStates)}
                 >
                     ADD TO CART
                 </a>

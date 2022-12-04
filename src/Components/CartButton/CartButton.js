@@ -1,7 +1,7 @@
 import { Component } from "react";
 import './CartButton.scss'
 
-class Cart extends Component {
+class CartButton extends Component {
 
     render() {
         return (
@@ -17,4 +17,4 @@ class Cart extends Component {
     }
 }
 
-export default Cart;
+export default CartButton;

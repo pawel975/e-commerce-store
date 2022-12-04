@@ -1,5 +1,5 @@
 import { Component } from "react";
-import Cart from "../CartButton/CartButton";
+import CartButton from "../CartButton/CartButton";
 import CurrencyPicker from "../CurrencyPicker/CurrencyPicker";
 import "./Actions.scss";
 
@@ -14,7 +14,7 @@ class Actions extends Component {
                     currentCurrencySymbol={this.props.currentCurrencySymbol}
                     isCurrenciesListOpen={this.props.isCurrenciesListOpen}
                 />
-                <Cart handleCartOverlayVisibleToggle={this.props.handleCartOverlayVisibleToggle}/>
+                <CartButton handleCartOverlayVisibleToggle={this.props.handleCartOverlayVisibleToggle}/>
             </div>
         )
     }

@@ -10,6 +10,13 @@ class App extends Component {
 
   constructor(){
     super()
+
+    this.addProductToCart = this.addProductToCart.bind(this);
+    this.handleCartOverlayVisibleToggle = this.handleCartOverlayVisibleToggle.bind(this);
+    this.handleCurrencyChange = this.handleCurrencyChange.bind(this);
+    this.handleCurrenciesListOpen = this.handleCurrenciesListOpen.bind(this);
+    this.handleSelectCategory = this.handleSelectCategory.bind(this);
+
     this.state = getFromLocalStorage("state") || {
       isCartOverlayVisible: false,
       isCurrenciesListOpen: false,
@@ -68,10 +75,10 @@ class App extends Component {
       <div className="app">
 
         <Header 
-          handleCartOverlayVisibleToggle={this.handleCartOverlayVisibleToggle.bind(this)}
-          handleCurrencyChange={this.handleCurrencyChange.bind(this)}
-          handleCurrenciesListOpen={this.handleCurrenciesListOpen.bind(this)}
-          handleSelectCategory={this.handleSelectCategory.bind(this)}
+          handleCartOverlayVisibleToggle={this.handleCartOverlayVisibleToggle}
+          handleCurrencyChange={this.handleCurrencyChange}
+          handleCurrenciesListOpen={this.handleCurrenciesListOpen}
+          handleSelectCategory={this.handleSelectCategory}
           currentCurrencySymbol={this.state.currentCurrencySymbol}
           isCurrenciesListOpen={this.state.isCurrenciesListOpen}
         />
@@ -80,7 +87,7 @@ class App extends Component {
           isCartOverlayVisible={this.state.isCartOverlayVisible}
           currentCurrencySymbol={this.state.currentCurrencySymbol}
           cartElements={this.state.cartElements}
-          addProductToCart={this.addProductToCart}
+          addProductToCart={this.addProductToCart.bind(this)}
         />
 
       </div>
