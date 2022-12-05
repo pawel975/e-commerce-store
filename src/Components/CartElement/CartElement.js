@@ -1,7 +1,6 @@
 import { Component } from "react";
 import CartElementDetails from "../CartElementDetails/CartElementDetails";
 
-
 class CartElement extends Component {
 
     constructor(props){

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import CartElement from "../CartElement/CartElement";
+import "./Cart.scss";
 
 class Cart extends Component {
 

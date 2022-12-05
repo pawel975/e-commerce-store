@@ -33,7 +33,7 @@ class CartElementDetails extends Component {
                 />
                 <ProductAllAttributes 
                     attributes={attributes}
-                    changeAttrValue={this.changeAttrValue.bind(this)}
+                    changeAttrValue={this.changeAttrValue}
                 />
 
             </div>

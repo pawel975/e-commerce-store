@@ -48,6 +48,7 @@ class ProductDetails extends Component {
                 <AddToCatBtn 
                     productId={id}
                     currentAttributesStates={this.currentAttributesStates}    
+                    addProductToCart={this.addProductToCart}
                 />
 
                 <ParsedHtml

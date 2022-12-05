@@ -6,6 +6,7 @@ class AddToCartBtn extends Component {
     constructor(props){
         super(props)
         this.productId = this.props.productId;
+        this.addProductToCart = this.props.addProductToCart;
         this.currentAttributesStates = this.props.currentAttributesStates;
     }
 
@@ -14,7 +15,7 @@ class AddToCartBtn extends Component {
             <a 
                 className="add-to-cart-btn"
                 href="/cart"
-                onClick={() => this.addProductToCart(this.productId, this.state.currentAttributesStates)}
+                onClick={() => this.addProductToCart(this.productId, this.currentAttributesStates)}
             >
                 ADD TO CART
             </a>
