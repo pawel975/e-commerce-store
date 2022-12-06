@@ -20,6 +20,7 @@ class Cart extends Component {
                         product={cartElement.product}
                         selectedAttributes={cartElement.selectedAttributes}
                         currentCurrencySymbol={this.currentCurrencySymbol}
+                        changeAttrValue={this.changeAttrValue}
                     />
                     <hr/>
                 </React.Fragment>

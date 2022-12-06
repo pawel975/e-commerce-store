@@ -71,7 +71,6 @@ class Main extends Component {
 
                 {this.props.isCartOverlayVisible && <CartOverlay/>}
 
-
                 <RouterProvider router={
                     createBrowserRouter(
                         createRoutesFromElements(
@@ -134,6 +133,7 @@ class Main extends Component {
                                         <Cart
                                             cartElements={this.cartElements}
                                             currentCurrencySymbol={this.currentCurrencySymbol}
+                                            changeAttrValue={this.changeAttrValue}
                                         />
                                     }
                                 />

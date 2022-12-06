@@ -16,9 +16,9 @@ class CartElement extends Component {
             <div className="cart-element">
                 <CartElementDetails 
                     product={this.product}
+                    changeAttrValue={this.changeAttrValue}
                     selectedAttributes={this.selectedAttributes}
                     currentCurrencySymbol={this.currentCurrencySymbol}
-                    
                 />
             </div>
         )
