@@ -14,7 +14,7 @@ class AddToCartBtn extends Component {
         return (
             <a 
                 className="add-to-cart-btn"
-                href="/cart"
+                // href="/cart"
                 onClick={() => this.addProductToCart(this.productId, this.currentAttributesStates)}
             >
                 ADD TO CART

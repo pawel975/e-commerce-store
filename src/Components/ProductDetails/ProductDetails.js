@@ -3,8 +3,8 @@ import "./ProductDetails.scss";
 import ProductAllAttributes from "../ProductAllAttributes/ProductAllAttributes";
 import Price from "../Price/Price";
 import ProductHeader from "../ProductHeader/ProductHeader";
-import AddToCatBtn from "../AddToCartBtn/AddToCartBtn";
 import ParsedHtml from "../ParsedHtml/ParsedHtml";
+import AddToCartBtn from "../AddToCartBtn/AddToCartBtn";
 
 class ProductDetails extends Component {
 
@@ -13,7 +13,7 @@ class ProductDetails extends Component {
         this.productDetails = this.props.productDetails;
         this.addProductToCart = this.props.addProductToCart;
         this.currentCurrencySymbol = this.props.currentCurrencySymbol;
-        this.changeAttrValue = this.props.changeAttrValue;
+        this.setAttrValue = this.props.setAttrValue;
         this.currentAttributesStates = this.props.currentAttributesStates;
     }
     
@@ -36,7 +36,7 @@ class ProductDetails extends Component {
 
                 <ProductAllAttributes 
                     attributes={attributes}
-                    changeAttrValue={this.changeAttrValue}
+                    setAttrValue={this.setAttrValue}
 
                 />
 
@@ -45,7 +45,7 @@ class ProductDetails extends Component {
                     amount={price.amount}
                 />
 
-                <AddToCatBtn 
+                <AddToCartBtn 
                     productId={id}
                     currentAttributesStates={this.currentAttributesStates}    
                     addProductToCart={this.addProductToCart}

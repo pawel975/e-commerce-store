@@ -59,6 +59,15 @@ class App extends Component {
       selectedAttributes: selectedAttributes,
     }
 
+    // const isProductInCart = this.state.cartElements.find(element => {
+
+    //   const hasSameId = element.product.id === orderedProduct.product.id;
+
+    //   const hasSameAttrs = element.selectedAttributes.find(attr => attr);
+
+    //   return Boolean(hasSameId && hasSameAttrs);
+    // })
+
     this.setState({cartElements: [...this.state.cartElements, orderedProduct]});
   }
 
@@ -87,7 +96,7 @@ class App extends Component {
           isCartOverlayVisible={this.state.isCartOverlayVisible}
           currentCurrencySymbol={this.state.currentCurrencySymbol}
           cartElements={this.state.cartElements}
-          addProductToCart={this.addProductToCart.bind(this)}
+          addProductToCart={this.addProductToCart}
         />
 
       </div>
