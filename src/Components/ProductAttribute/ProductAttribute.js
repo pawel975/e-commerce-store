@@ -9,8 +9,8 @@ class ProductAttribute extends Component {
         this.id = this.props.id
         this.name = this.props.name
         this.type = this.props.type
-        this.options = this.props.options
-        this.setAttrValue = this.props.setAttrValue;
+        this.attrOptions = this.props.attrOptions
+        this.changeProductAttributesStates = this.props.changeProductAttributesStates;
         this.changeActiveOption = this.changeActiveOption.bind(this);
     }
 
@@ -23,24 +23,24 @@ class ProductAttribute extends Component {
             option.setAttribute("aria-pressed", false);
         });
         
-        // Set clicked button as a choosed size
+        // Set clicked button as a choosed attr option
         const chosenOption = e.target;
         
         chosenOption.setAttribute("aria-pressed", true);
 
-        // Change attr value based on selected one
-        this.setAttrValue(this.id, attrOptionParams)
+        // Change attr value based on selected attr option
+        this.changeProductAttributesStates(this.id, attrOptionParams)
     }
 
     render(){
 
-        const allAttrOptions = this.options.map(option => {
+        const allAttrOptions = this.attrOptions.map(attrSingleOption => {
 
             return (
                 <ProductAttributeOption
-                    key={this.id + option.value}
+                    key={this.id + attrSingleOption.value}
                     type={this.type}
-                    attrOptionParams={option}
+                    attrSingleOption={attrSingleOption}
                     changeActiveOption={this.changeActiveOption}
                 />
             )

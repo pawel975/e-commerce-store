@@ -7,7 +7,7 @@ class ProductAllAttributes extends Component {
     constructor(props){
         super(props);
         this.attributes = this.props.attributes;
-        this.setAttrValue = this.props.setAttrValue;
+        this.changeProductAttributesStates = this.props.changeProductAttributesStates;
     }
 
     render(){
@@ -22,8 +22,8 @@ class ProductAllAttributes extends Component {
                     key={id}
                     name={name.toUpperCase()}
                     type={type}
-                    options={items}
-                    setAttrValue={this.setAttrValue}
+                    attrOptions={items}
+                    changeProductAttributesStates={this.changeProductAttributesStates}
                 />
             )
         })

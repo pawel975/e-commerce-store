@@ -54,6 +54,8 @@ class App extends Component {
   addProductToCart = async (productId, selectedAttributes) => {
     const product = await querySingleProduct(productId);
 
+    console.log(productId, selectedAttributes, "- addProductToCart()")
+
     const orderedProduct = {
       product: product,
       selectedAttributes: selectedAttributes,

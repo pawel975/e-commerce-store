@@ -9,8 +9,6 @@ class ProductPage extends Component {
 
     constructor(props){
         super(props)
-        this.currentAttributesStates = this.props.currentAttributesStates;
-        this.setAttrValue = this.props.setAttrValue;
         this.currentCurrencySymbol = this.props.currentCurrencySymbol;
         this.addProductToCart = this.props.addProductToCart;
         this.productId = this.props.productId;
@@ -35,10 +33,8 @@ class ProductPage extends Component {
                                 <ProductPhotos productPhotos={productParams.gallery}/>
                                 <ProductDetails 
                                     productDetails={productParams}
-                                    currentAttributesStates={this.currentAttributesStates}
                                     currentCurrencySymbol={this.currentCurrencySymbol}
                                     addProductToCart={this.addProductToCart}
-                                    setAttrValue={this.setAttrValue}
                                 />
                             </>
                         )

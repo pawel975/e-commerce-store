@@ -7,7 +7,7 @@ class ProductAttributeOption extends Component {
         super(props);
         this.changeActiveOption = this.props.changeActiveOption;
         this.type = this.props.type;
-        this.attrOptionParams = this.props.attrOptionParams;
+        this.attrSingleOption = this.props.attrSingleOption;
     }
     
     render(){
@@ -16,19 +16,19 @@ class ProductAttributeOption extends Component {
 
             <button 
                 className="product-attribute-option"
-                onClick={(e) => this.changeActiveOption(e, this.attrOptionParams)}
+                onClick={(e) => this.changeActiveOption(e, this.attrSingleOption)}
                 data-type="swatch"
-                style={{backgroundColor: this.attrOptionParams.value}}
+                style={{backgroundColor: this.attrSingleOption.value}}
             />
             
             :
 
             <button 
                 className="product-attribute-option"
-                onClick={(e) => this.changeActiveOption(e, this.attrOptionParams)}
+                onClick={(e) => this.changeActiveOption(e, this.attrSingleOption)}
                 data-type="text"
             >
-                <span className="product-attribute-option__name">{this.attrOptionParams.displayValue}</span>
+                <span className="product-attribute-option__name">{this.attrSingleOption.displayValue}</span>
             </button>
 
         return optionType;

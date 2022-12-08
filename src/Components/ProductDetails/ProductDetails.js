@@ -13,8 +13,39 @@ class ProductDetails extends Component {
         this.productDetails = this.props.productDetails;
         this.addProductToCart = this.props.addProductToCart;
         this.currentCurrencySymbol = this.props.currentCurrencySymbol;
-        this.setAttrValue = this.props.setAttrValue;
-        this.currentAttributesStates = this.props.currentAttributesStates;
+        this.changeProductAttributesStates = this.changeProductAttributesStates.bind(this);
+        this.handleAddProductToCartButtonClick = this.handleAddProductToCartButtonClick.bind(this);
+        this.state = {
+            productAttributesStates: []
+        }
+    }
+
+    componentDidMount(){
+
+        // Set init product attributes states to default values
+        const initProductAttributesStates = this.productDetails.attributes.map(attr => {
+
+            const {id, items} = attr;
+
+            return (
+                {
+                    attrId: id,
+                    optionParams: items[0]
+                }
+            )
+                
+        })
+
+        this.setState({productAttributesStates: initProductAttributesStates})
+    }
+
+    handleAddProductToCartButtonClick(){
+        this.addProductToCart(this.productDetails.id, this.state.productAttributesStates)
+    }
+
+    changeProductAttributesStates(attrId, newOptionParams){
+        // Changes current attribute value to new picked option
+
     }
     
     render(){
@@ -36,8 +67,7 @@ class ProductDetails extends Component {
 
                 <ProductAllAttributes 
                     attributes={attributes}
-                    setAttrValue={this.setAttrValue}
-
+                    changeProductAttributesStates={this.changeProductAttributesStates}
                 />
 
                 <Price 
@@ -46,9 +76,7 @@ class ProductDetails extends Component {
                 />
 
                 <AddToCartBtn 
-                    productId={id}
-                    currentAttributesStates={this.currentAttributesStates}    
-                    addProductToCart={this.addProductToCart}
+                    handleAddProductToCartButtonClick={this.handleAddProductToCartButtonClick}
                 />
 
                 <ParsedHtml

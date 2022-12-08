@@ -15,50 +15,51 @@ class Main extends Component {
         this.addProductToCart = this.props.addProductToCart;
         this.currentCurrencySymbol = this.props.currentCurrencySymbol
         this.cartElements = this.props.cartElements;
-        this.setAttrValue = this.setAttrValue.bind(this);
+        this.changeAttrValue = this.changeAttrValue.bind(this);
         this.state = {
-            currentRoute: "/",
             productId: "",
-            currentAttributesStates: []
+            cartProdcutsAttributesStates: []
         }
     }
 
     componentDidMount(){
-        this.setState({currentRoute: window.location.pathname})
 
-        if (this.cartElements.length > 0) {
-            // Set all attributes to first value by default
-            const initAttributeStates = this.cartElements.map(element => {
-    
-                const {id, attributes} = element.product;
-    
-                const attrs = attributes.map(attr => (
-                    {
-                        attrId: attr.id,
-                        attrValue: attr.items[0]
-                    }
-                ))
-                
-                return {
-                    productId: id,
-                    productAttrs: attrs
-                }
-                
-            })
-    
-            this.setState({currentAttributesStates: initAttributeStates})
+        // // If there are any products in cart, set all cart products attributes to default value
+        // if (this.cartElements.length > 0) {
 
-        }
+        //     const initAttributeStates = this.cartElements.map(element => {
+    
+        //         const {id, attributes} = element.product;
+    
+        //         const attrs = attributes.map(attr => (
+        //             {
+        //                 attrId: attr.id,
+        //                 attrValue: attr.items[0]
+        //             }
+        //         ))
+                
+        //         return {
+        //             productId: id,
+        //             productAttrs: attrs
+        //         }
+                
+        //     })
+    
+        //     this.setState({cartProdcutsAttributesStates: initAttributeStates})
+
+        //     console.log(this.state.cartProdcutsAttributesStates, "main component - currentAttributeStates")
+        // }
+
 
     }
     
-    setAttrValue(selectedOptionAttrId, selectedOptionParams){
+    changeAttrValue(selectedOptionAttrId, selectedOptionParams){
         
         // Continue if any attribute is set
-        if (this.state.currentAttributesStates.length > 0) {
+        if (this.state.cartProdcutsAttributesStates.length > 0) {
 
             // Check if any of attributes has changed it's value and save it if so
-            const newAttributesStates = this.state.currentAttributesStates.map(attribute => {
+            const newAttributesStates = this.state.cartProdcutsAttributesStates.map(attribute => {
     
                 if (attribute.attrId === selectedOptionAttrId) {
                     return {
@@ -70,11 +71,11 @@ class Main extends Component {
                 }
             })
     
-            this.setState({currentAttributesStates: newAttributesStates})
+            this.setState({cartProdcutsAttributesStates: newAttributesStates})
 
         } else {
 
-            this.setState({currentAttributesStates: [
+            this.setState({cartProdcutsAttributesStates: [
                 {
                     attrId: selectedOptionAttrId,
                     attrValue: selectedOptionParams.value
@@ -138,11 +139,9 @@ class Main extends Component {
                                     path={`/product/:productId`}
                                     element={
                                         <ProductPage 
-                                            currentAttributesStates={this.state.currentAttributesStates}
                                             currentCurrencySymbol={this.currentCurrencySymbol}
                                             productId={window.location.pathname.slice(9)}
                                             addProductToCart={this.addProductToCart}
-                                            setAttrValue={this.setAttrValue}
                                         />
                                     }
                                 />
@@ -153,7 +152,7 @@ class Main extends Component {
                                         <Cart
                                             cartElements={this.cartElements}
                                             currentCurrencySymbol={this.currentCurrencySymbol}
-                                            setAttrValue={this.setAttrValue}
+                                            changeAttrValue={this.changeAttrValue}
                                         />
                                     }
                                 />
