@@ -1,5 +1,7 @@
 import { Component } from "react";
 import CartElementDetails from "../CartElementDetails/CartElementDetails";
+import CartProductQuantity from "../CartProductQuantity/CartProductQuantity";
+import './CartElement.scss';
 
 class CartElement extends Component {
 
@@ -19,6 +21,9 @@ class CartElement extends Component {
                     changeAttrValue={this.changeAttrValue}
                     selectedAttributes={this.selectedAttributes}
                     currentCurrencySymbol={this.currentCurrencySymbol}
+                />
+                <CartProductQuantity
+                    productQuantity={this.product.quantity}
                 />
             </div>
         )

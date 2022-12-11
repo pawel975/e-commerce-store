@@ -15,6 +15,10 @@ class ProductAttribute extends Component {
         this.changeActiveOption = this.changeActiveOption.bind(this);
     }
 
+    componentDidMount(){
+        
+    }
+
     changeActiveOption(e, attrOptionParams){
         
         // Reset all size buttons to default not pressed state

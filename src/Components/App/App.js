@@ -55,23 +55,65 @@ class App extends Component {
   addProductToCart = async (productId, selectedAttributes) => {
     const product = await querySingleProduct(productId);
 
-    console.log(product.attributes[0].items, "add product to cart");
+    if (this.state.cartElements.length > 0) {
 
-    const orderedProduct = {
-      product: product,
-      selectedAttributes: selectedAttributes,
+        const newCartElements = this.state.cartElements.map(element => {
+    
+          if (element.product.id === product.id) {
+            
+            const newProductAttributesStates = JSON.stringify(selectedAttributes);
+            const cartElementAttributesStates = JSON.stringify(element.selectedAttributes);
+
+            if (newProductAttributesStates === cartElementAttributesStates) {
+
+                const orderedProduct = {
+                    product: element.product,
+                    selectedAttributes: element.selectedAttributes,
+                    quantity: element.quantity + 1
+                  };
+          
+                  return orderedProduct;
+
+            } else {
+
+                const orderedProduct = {
+                    product: product,
+                    selectedAttributes: selectedAttributes,
+                    quantity: 1
+                };
+        
+                return orderedProduct;
+
+            }
+    
+          } else {
+    
+            const orderedProduct = {
+              product: product,
+              selectedAttributes: selectedAttributes,
+              quantity: 1
+            };
+    
+            return orderedProduct;
+          }
+          
+        })
+
+        console.log(newCartElements, "new cart elements");
+        
+        this.setState({cartElements: newCartElements});
+    } else {
+
+        const orderedProduct = {
+            product: product,
+            selectedAttributes: selectedAttributes,
+            quantity: 1
+          };
+          
+        this.setState({cartElements: [...this.state.cartElements, orderedProduct]})
     }
 
-    // const isProductInCart = this.state.cartElements.find(element => {
 
-    //   const hasSameId = element.product.id === orderedProduct.product.id;
-
-    //   const hasSameAttrs = element.selectedAttributes.find(attr => attr);
-
-    //   return Boolean(hasSameId && hasSameAttrs);
-    // })
-
-    this.setState({cartElements: [...this.state.cartElements, orderedProduct]});
   }
 
   componentDidMount(){

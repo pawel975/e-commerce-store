@@ -1,0 +1,16 @@
+@use '../../globalStyle.scss';
+@use '../../variables.scss';
+
+.cart-product-quantity {
+    width: 30px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    outline: 2px solid purple;
+    align-items: center;
+    justify-content: space-around;
+
+    &__quantity  {
+        height: 100%;
+    }
+}
