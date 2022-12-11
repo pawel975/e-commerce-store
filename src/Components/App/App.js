@@ -33,6 +33,7 @@ class App extends Component {
 
   handleCurrencyChange(e){
     const currencyOptionSymbol = e.target.children[0].textContent;
+    
     this.setState({
       currentCurrencySymbol: currencyOptionSymbol,
       isCurrenciesListOpen: !this.state.isCurrenciesListOpen
@@ -54,7 +55,7 @@ class App extends Component {
   addProductToCart = async (productId, selectedAttributes) => {
     const product = await querySingleProduct(productId);
 
-    console.log(productId, selectedAttributes, "- addProductToCart()")
+    console.log(product.attributes[0].items, "add product to cart");
 
     const orderedProduct = {
       product: product,

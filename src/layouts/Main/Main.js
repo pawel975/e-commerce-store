@@ -21,37 +21,6 @@ class Main extends Component {
             cartProdcutsAttributesStates: []
         }
     }
-
-    componentDidMount(){
-
-        // // If there are any products in cart, set all cart products attributes to default value
-        // if (this.cartElements.length > 0) {
-
-        //     const initAttributeStates = this.cartElements.map(element => {
-    
-        //         const {id, attributes} = element.product;
-    
-        //         const attrs = attributes.map(attr => (
-        //             {
-        //                 attrId: attr.id,
-        //                 attrValue: attr.items[0]
-        //             }
-        //         ))
-                
-        //         return {
-        //             productId: id,
-        //             productAttrs: attrs
-        //         }
-                
-        //     })
-    
-        //     this.setState({cartProdcutsAttributesStates: initAttributeStates})
-
-        //     console.log(this.state.cartProdcutsAttributesStates, "main component - currentAttributeStates")
-        // }
-
-
-    }
     
     changeAttrValue(selectedOptionAttrId, selectedOptionParams){
         

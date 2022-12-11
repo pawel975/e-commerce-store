@@ -24,7 +24,7 @@ class ProductDetails extends Component {
 
         // Set init product attributes states to default values
         const initProductAttributesStates = this.productDetails.attributes.map(attr => {
-
+            
             const {id, items} = attr;
 
             return (
@@ -43,9 +43,8 @@ class ProductDetails extends Component {
         this.addProductToCart(this.productDetails.id, this.state.productAttributesStates)
     }
 
+    // Changes current attribute value to new picked option
     changeProductAttributesStates(attrId, newOptionParams){
-        console.log(this.state.productAttributesStates, "product attributes states")
-        // Changes current attribute value to new picked option
 
         const newProductAttributesStates = this.state.productAttributesStates.map(attr => {
 

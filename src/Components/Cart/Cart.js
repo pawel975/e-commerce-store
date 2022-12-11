@@ -8,24 +8,7 @@ class Cart extends Component {
         super(props)
         this.cartElements = this.props.cartElements;
         this.currentCurrencySymbol = this.props.currentCurrencySymbol;
-        this.allCartElements = null;
         this.changeAttrValue = this.props.changeAttrValue;
-    }
-
-    componentDidMount(){
-        this.allCartElements = this.cartElements.map((cartElement, index) => {
-            return (
-                <React.Fragment key={"cartelement" + index}>
-                    <CartElement
-                        product={cartElement.product}
-                        selectedAttributes={cartElement.selectedAttributes}
-                        currentCurrencySymbol={this.currentCurrencySymbol}
-                        changeAttrValue={this.changeAttrValue}
-                    />
-                    <hr/>
-                </React.Fragment>
-            )
-        })
     }
 
     render(){
@@ -33,7 +16,19 @@ class Cart extends Component {
             <section className="cart">
                 <h2 className="cart__header">CART</h2>
                 <hr/>
-                {this.allCartElements}
+                {this.cartElements.map((cartElement, index) => {
+                    return (
+                        <React.Fragment key={"cartelement" + index}>
+                            <CartElement
+                                product={cartElement.product}
+                                selectedAttributes={cartElement.selectedAttributes}
+                                currentCurrencySymbol={this.currentCurrencySymbol}
+                                changeAttrValue={this.changeAttrValue}
+                            />
+                            <hr/>
+                        </React.Fragment>
+                    )
+                })}
             </section>
         )
     }

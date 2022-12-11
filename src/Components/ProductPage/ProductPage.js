@@ -1,9 +1,8 @@
 import { Component } from "react";
-import { Query } from "@apollo/client/react/components";
 import "./ProductPage.scss";
 import ProductDetails from "../ProductDetails/ProductDetails";
 import ProductPhotos from "../ProductPhotos/ProductPhotos";
-import queryProducts from "../../queries/queryProducts";
+import querySingleProduct from "../../queries/querySingleProduct";
 
 class ProductPage extends Component {
 
@@ -12,34 +11,33 @@ class ProductPage extends Component {
         this.currentCurrencySymbol = this.props.currentCurrencySymbol;
         this.addProductToCart = this.props.addProductToCart;
         this.productId = this.props.productId;
+        this.state = {
+            productDetails: null
+        }
+    }
+
+    async componentDidMount(){
+        this.setState({productDetails: await querySingleProduct(this.productId)});
     }
 
     render(){
+
+        const {productDetails} = this.state;
+
         return (
             <section className="product-page">
-                <Query query={queryProducts("all")}>
-                    {({loading, data}) => {
-
-                        if (loading) return "Loading..."
-
-                        const {products} = data.category;
-
-                        const productParams = products.find(product => 
-                            product.id === this.productId
-                        );
-
-                        return (
-                            <>
-                                <ProductPhotos productPhotos={productParams.gallery}/>
-                                <ProductDetails 
-                                    productDetails={productParams}
-                                    currentCurrencySymbol={this.currentCurrencySymbol}
-                                    addProductToCart={this.addProductToCart}
-                                />
-                            </>
-                        )
-                    }}
-                </Query>
+                {
+                    productDetails && 
+                    <>
+                        <ProductPhotos productPhotos={productDetails.gallery}/>
+                        <ProductDetails 
+                            productDetails={productDetails}
+                            currentCurrencySymbol={this.currentCurrencySymbol}
+                            addProductToCart={this.addProductToCart}
+                        />
+                    </>
+                }
+                
             </section>
         )
     }
