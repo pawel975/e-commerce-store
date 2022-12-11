@@ -44,8 +44,17 @@ class ProductDetails extends Component {
     }
 
     changeProductAttributesStates(attrId, newOptionParams){
+        console.log(this.state.productAttributesStates, "product attributes states")
         // Changes current attribute value to new picked option
 
+        const newProductAttributesStates = this.state.productAttributesStates.map(attr => {
+
+            if (attr.attrId === attrId) attr.optionParams = newOptionParams;
+
+            return attr;
+        }) 
+
+        this.setState({productAttributesStates: newProductAttributesStates});
     }
     
     render(){
@@ -67,6 +76,7 @@ class ProductDetails extends Component {
 
                 <ProductAllAttributes 
                     attributes={attributes}
+                    productAttributesStates={this.state.productAttributesStates}
                     changeProductAttributesStates={this.changeProductAttributesStates}
                 />
 

@@ -10,6 +10,7 @@ class ProductAttribute extends Component {
         this.name = this.props.name
         this.type = this.props.type
         this.attrOptions = this.props.attrOptions
+        this.productAttributesStates = this.props.productAttributesStates;
         this.changeProductAttributesStates = this.props.changeProductAttributesStates;
         this.changeActiveOption = this.changeActiveOption.bind(this);
     }
