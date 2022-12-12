@@ -1,5 +1,6 @@
 import { Component } from "react";
 import CartElementDetails from "../CartElementDetails/CartElementDetails";
+import CartProductPhotos from "../CartProductPhotos/CartProductPhotos";
 import CartProductQuantity from "../CartProductQuantity/CartProductQuantity";
 import './CartElement.scss';
 
@@ -24,6 +25,10 @@ class CartElement extends Component {
                 />
                 <CartProductQuantity
                     productQuantity={this.product.quantity}
+                />
+
+                <CartProductPhotos
+                    productPhotos={this.product.gallery}
                 />
             </div>
         )

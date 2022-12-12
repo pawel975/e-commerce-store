@@ -1,0 +1,8 @@
+@use '../../globalStyle.scss';
+@use '../../variables.scss';
+
+.cart-product-photos {
+    width: 200px;
+    height: 288px;
+    overflow-y: scroll;
+}

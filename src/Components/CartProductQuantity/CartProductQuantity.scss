@@ -2,15 +2,27 @@
 @use '../../variables.scss';
 
 .cart-product-quantity {
-    width: 30px;
-    height: 100%;
+    padding-inline: 10px;
+    width: fit-content;
     display: flex;
     flex-direction: column;
-    outline: 2px solid purple;
     align-items: center;
-    justify-content: space-around;
 
-    &__quantity  {
-        height: 100%;
+    &__change-amount {
+        display: grid;
+        place-items: center;
+        background: transparent;
+        border: none;
     }
+
+    &__quantity {
+        font-family: variables.$ff-Raleway;
+        font-size: 24px;
+        font-weight: 500;
+        line-height: 38px;
+        letter-spacing: 0em;
+        text-align: center;
+        margin-block: auto;
+    }
+
 }
