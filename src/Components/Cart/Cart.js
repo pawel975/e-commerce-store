@@ -20,6 +20,7 @@ class Cart extends Component {
                     return (
                         <React.Fragment key={"cartelement" + index}>
                             <CartElement
+                                cartElementParams={cartElement}
                                 product={cartElement.product}
                                 selectedAttributes={cartElement.selectedAttributes}
                                 currentCurrencySymbol={this.currentCurrencySymbol}

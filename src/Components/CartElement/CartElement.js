@@ -8,6 +8,7 @@ class CartElement extends Component {
 
     constructor(props){
         super(props)
+        this.cartElementParams = this.props.cartElementParams;
         this.product = this.props.product;
         this.selectedAttributes = this.props.selectedAttributes;
         this.currentCurrencySymbol = this.props.currentCurrencySymbol;
@@ -15,6 +16,9 @@ class CartElement extends Component {
     }
 
     render(){
+
+        console.log(this.cartElementParams, "product");
+
         return (
             <div className="cart-element">
                 <CartElementDetails 
@@ -24,7 +28,7 @@ class CartElement extends Component {
                     currentCurrencySymbol={this.currentCurrencySymbol}
                 />
                 <CartProductQuantity
-                    productQuantity={this.product.quantity}
+                    productQuantity={this.cartElementParams.quantity}
                 />
 
                 <CartProductPhotos
