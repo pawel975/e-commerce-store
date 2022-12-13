@@ -17,8 +17,6 @@ class CartElement extends Component {
 
     render(){
 
-        console.log(this.cartElementParams, "product");
-
         return (
             <div className="cart-element">
                 <CartElementDetails 

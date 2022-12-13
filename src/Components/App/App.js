@@ -26,9 +26,7 @@ class App extends Component {
   }
   
   handleCartOverlayVisibleToggle(){
-    this.setState({
-      isCartOverlayVisible: !this.state.isCartOverlayVisible
-    })
+    this.setState({isCartOverlayVisible: !this.state.isCartOverlayVisible})
   }
 
   handleCurrencyChange(e){
