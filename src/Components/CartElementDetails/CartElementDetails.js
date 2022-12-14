@@ -16,12 +16,13 @@ class CartElementDetails extends Component {
     
     render(){
 
-        const {id, name, attributes, prices, brand} = this.product;
+        const {name, attributes, prices, brand} = this.product;
 
         const price = prices.find(price => price.currency.symbol === this.currentCurrencySymbol)
 
         return (
             <div className='cart-element-details'>
+                
                 <ProductHeader 
                     name={name} 
                     brand={brand}

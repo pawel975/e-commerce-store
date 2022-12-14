@@ -12,6 +12,7 @@ class App extends Component {
     super()
 
     this.addProductToCart = this.addProductToCart.bind(this);
+    this.updateProductCartQuantity = this.updateProductCartQuantity.bind(this);
     this.handleCartOverlayVisibleToggle = this.handleCartOverlayVisibleToggle.bind(this);
     this.handleCurrencyChange = this.handleCurrencyChange.bind(this);
     this.handleCurrenciesListOpen = this.handleCurrenciesListOpen.bind(this);
@@ -39,21 +40,32 @@ class App extends Component {
   }
 
   handleCurrenciesListOpen(){
-
-    if (this.state.isCurrenciesListOpen) {
-
-        this.setState({isCurrenciesListOpen: false});
-
-    } else {
-
-        this.setState({isCurrenciesListOpen: true});
-        
-    }
+    if (this.state.isCurrenciesListOpen) this.setState({isCurrenciesListOpen: false});
+    else this.setState({isCurrenciesListOpen: true});
   }
 
   handleSelectCategory(e){
-
     this.setState({currentCategory: e.target.textContent})
+  }
+
+  updateProductCartQuantity = (product, quantity) => {
+
+    const cartElements = this.state.cartElements;
+    const productToUpdate = JSON.stringify(product);
+
+    const updatedCartElements = cartElements.map(element => {
+
+      if (JSON.stringify(element) === productToUpdate) {
+        element.quantity = quantity;
+      }
+
+      return element;
+    })
+
+    this.setState({cartElements: updatedCartElements})
+
+    console.log(product, quantity)
+    
   }
 
   addProductToCart = async (productId, selectedAttributes) => {
@@ -77,7 +89,6 @@ class App extends Component {
           if (newProductAttributesStates === cartElementAttributesStates) {
             
             element.quantity += 1;
-            
             isExistingProductQuantityUpdated = true;
             
           }
@@ -85,7 +96,6 @@ class App extends Component {
         }
 
         updatedCartElements.push(element);
-
       })
 
       // If we don't update existing product order quantity, add new product to cart 
@@ -98,7 +108,6 @@ class App extends Component {
         };
 
         updatedCartElements.push(orderedProduct);
-
       }
       
       this.setState({cartElements: updatedCartElements});
@@ -113,7 +122,6 @@ class App extends Component {
           
         this.setState({cartElements: [...this.state.cartElements, orderedProduct]})
     }
-
 
   }
 
@@ -139,6 +147,7 @@ class App extends Component {
         />
 
         <Main 
+          updateProductCartQuantity={this.updateProductCartQuantity}
           isCartOverlayVisible={this.state.isCartOverlayVisible}
           currentCurrencySymbol={this.state.currentCurrencySymbol}
           cartElements={this.state.cartElements}

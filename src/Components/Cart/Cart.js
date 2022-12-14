@@ -6,6 +6,7 @@ class Cart extends Component {
 
     constructor(props){
         super(props)
+        this.updateProductCartQuantity = this.props.updateProductCartQuantity;
         this.cartElements = this.props.cartElements;
         this.currentCurrencySymbol = this.props.currentCurrencySymbol;
         this.changeAttrValue = this.props.changeAttrValue;
@@ -20,6 +21,7 @@ class Cart extends Component {
                     return (
                         <React.Fragment key={"cartelement" + index}>
                             <CartElement
+                                updateProductCartQuantity={this.updateProductCartQuantity}
                                 cartElementParams={cartElement}
                                 product={cartElement.product}
                                 selectedAttributes={cartElement.selectedAttributes}
