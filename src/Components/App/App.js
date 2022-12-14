@@ -59,13 +59,31 @@ class App extends Component {
         element.quantity = quantity;
       }
 
-      return element;
+      if (quantity > 0) {
+        return element;
+      }
+
+      // TODO: Delete item when it's quantity is equal to 0
     })
 
     this.setState({cartElements: updatedCartElements})
 
-    console.log(product, quantity)
     
+  }
+  
+  deleteProductFromCart = (product) => {
+    const productToDelete = JSON.stringify(product);
+
+    const productIndex = this.state.cartElements.find((element, index) => {
+
+      if (JSON.stringify(element) === productToDelete) {
+        return index;
+      } else {
+        return false;
+      }
+    })
+
+    console.log(productIndex, product)
   }
 
   addProductToCart = async (productId, selectedAttributes) => {

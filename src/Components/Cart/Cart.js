@@ -7,6 +7,7 @@ class Cart extends Component {
     constructor(props){
         super(props)
         this.updateProductCartQuantity = this.props.updateProductCartQuantity;
+        this.deleteProductFromCart = this.props.deleteProductFromCart;
         this.cartElements = this.props.cartElements;
         this.currentCurrencySymbol = this.props.currentCurrencySymbol;
         this.changeAttrValue = this.props.changeAttrValue;

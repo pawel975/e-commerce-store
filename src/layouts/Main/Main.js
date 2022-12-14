@@ -14,6 +14,7 @@ class Main extends Component {
         this.updateProductCartQuantity = this.props.updateProductCartQuantity;
         this.isCartOverlayVisible = this.props.isCartOverlayVisible
         this.addProductToCart = this.props.addProductToCart;
+        this.deleteProductFromCart = this.props.deleteProductFromCart;
         this.currentCurrencySymbol = this.props.currentCurrencySymbol
         this.cartElements = this.props.cartElements;
         this.changeAttrValue = this.changeAttrValue.bind(this);
