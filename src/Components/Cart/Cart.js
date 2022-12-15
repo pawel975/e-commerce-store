@@ -18,21 +18,29 @@ class Cart extends Component {
             <section className="cart">
                 <h2 className="cart__header">CART</h2>
                 <hr/>
-                {this.cartElements.map((cartElement, index) => {
-                    return (
-                        <React.Fragment key={"cartelement" + index}>
-                            <CartElement
-                                updateProductCartQuantity={this.updateProductCartQuantity}
-                                cartElementParams={cartElement}
-                                product={cartElement.product}
-                                selectedAttributes={cartElement.selectedAttributes}
-                                currentCurrencySymbol={this.currentCurrencySymbol}
-                                changeAttrValue={this.changeAttrValue}
-                            />
-                            <hr/>
-                        </React.Fragment>
-                    )
-                })}
+                {
+                    this.cartElements.map((cartElement, index) => {
+
+                        if (cartElement.quantity > 0) {
+                            return (
+                                <React.Fragment key={"cartelement" + index}>
+                                    <CartElement
+                                        updateProductCartQuantity={this.updateProductCartQuantity}
+                                        cartElementParams={cartElement}
+                                        product={cartElement.product}
+                                        selectedAttributes={cartElement.selectedAttributes}
+                                        currentCurrencySymbol={this.currentCurrencySymbol}
+                                        changeAttrValue={this.changeAttrValue}
+                                    />
+                                    <hr/>
+                                </React.Fragment>
+                            )
+                        } else {
+                            return false
+                        }   
+                        
+                    }).filter(Boolean)
+                }
             </section>
         )
     }

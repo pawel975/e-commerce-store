@@ -53,37 +53,24 @@ class App extends Component {
     const cartElements = this.state.cartElements;
     const productToUpdate = JSON.stringify(product);
 
+    // Update quantity of particular product and delete if from cart if it's quantity is 0
     const updatedCartElements = cartElements.map(element => {
 
       if (JSON.stringify(element) === productToUpdate) {
         element.quantity = quantity;
       }
 
-      if (quantity > 0) {
+      if (element.quantity > 0) {
         return element;
-      }
-
-      // TODO: Delete item when it's quantity is equal to 0
-    })
-
-    this.setState({cartElements: updatedCartElements})
-
-    
-  }
-  
-  deleteProductFromCart = (product) => {
-    const productToDelete = JSON.stringify(product);
-
-    const productIndex = this.state.cartElements.find((element, index) => {
-
-      if (JSON.stringify(element) === productToDelete) {
-        return index;
       } else {
         return false;
       }
-    })
 
-    console.log(productIndex, product)
+    });
+
+    console.log(updatedCartElements);
+
+    this.setState({cartElements: updatedCartElements.filter(Boolean)}); 
   }
 
   addProductToCart = async (productId, selectedAttributes) => {
