@@ -6,16 +6,25 @@ import queryCurrencies from "../../queries/queryCurrencies";
 
 class CurrencyPicker extends Component {
 
+    constructor(props){
+        super(props)
+        this.handleCurrencyChange = this.props.handleCurrencyChange;
+        this.handleCurrenciesListOpen = this.props.handleCurrenciesListOpen;
+        this.currentCurrencySymbol = this.props.currentCurrencySymbol;
+        this.isCurrenciesListOpen = this.props.isCurrenciesListOpen;
+    }
+
     render() {
+        
         return (
             <div className="currency-picker">
 
                 <div className="show-currencies-container">
 
-                    <label htmlFor="show-currencies">{this.props.currentCurrencySymbol}</label>
+                    <label htmlFor="show-currencies">{this.currentCurrencySymbol}</label>
                     <button 
-                        onClick={this.props.handleCurrenciesListOpen} 
-                        className={`show-currencies ${this.props.isCurrenciesListOpen ? "dash-open" : ""} `}
+                        onClick={this.handleCurrenciesListOpen} 
+                        className={`show-currencies ${this.isCurrenciesListOpen ? "dash-open" : ""} `}
                     >
                         <CurrencyPickerDash/>
                     </button>
@@ -23,7 +32,7 @@ class CurrencyPicker extends Component {
                 </div>
                 
                 {
-                    this.props.isCurrenciesListOpen &&
+                    !this.isCurrenciesListOpen &&
                     <Query query={queryCurrencies()}>
                         {({loading, data}) => {
                 
@@ -39,7 +48,7 @@ class CurrencyPicker extends Component {
                                     <button
                                         key={label} 
                                         className="currency-option"
-                                        onClick={this.props.handleCurrencyChange}
+                                        onClick={this.handleCurrencyChange}
                                     >
                                         <span className="currency-symbol">{symbol}</span>
                                         <span className="currency-label">{label}</span>

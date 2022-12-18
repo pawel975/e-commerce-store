@@ -31,6 +31,7 @@ class App extends Component {
   }
 
   handleCurrencyChange(e){
+    
     const currencyOptionSymbol = e.target.children[0].textContent;
     
     this.setState({
@@ -40,8 +41,7 @@ class App extends Component {
   }
 
   handleCurrenciesListOpen(){
-    if (this.state.isCurrenciesListOpen) this.setState({isCurrenciesListOpen: false});
-    else this.setState({isCurrenciesListOpen: true});
+    this.setState({isCurrenciesListOpen: !this.state.isCurrenciesListOpen});
   }
 
   handleSelectCategory(e){
@@ -67,8 +67,6 @@ class App extends Component {
       }
 
     });
-
-    console.log(updatedCartElements);
 
     this.setState({cartElements: updatedCartElements.filter(Boolean)}); 
   }

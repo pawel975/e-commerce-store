@@ -6,17 +6,26 @@ import './Header.scss';
 
 class Header extends Component {
 
+    constructor(props){
+        super(props);
+            this.handleCartOverlayVisibleToggle = this.props.handleCartOverlayVisibleToggle;
+            this.handleCurrencyChange = this.props.handleCurrencyChange;
+            this.handleCurrenciesListOpen = this.props.handleCurrenciesListOpen;
+            this.handleSelectCategory = this.props.handleSelectCategory;
+    }
+
     render(){
+
         return (
             <header className="header">         
                 <Navigation
-                    handleSelectCategory={this.props.handleSelectCategory}
+                    handleSelectCategory={this.handleSelectCategory}
                 /> 
                 <Logo/>
                 <Actions
-                    handleCartOverlayVisibleToggle={this.props.handleCartOverlayVisibleToggle}
-                    handleCurrencyChange={this.props.handleCurrencyChange}
-                    handleCurrenciesListOpen={this.props.handleCurrenciesListOpen}
+                    handleCartOverlayVisibleToggle={this.handleCartOverlayVisibleToggle}
+                    handleCurrencyChange={this.handleCurrencyChange}
+                    handleCurrenciesListOpen={this.handleCurrenciesListOpen}
                     currentCurrencySymbol={this.props.currentCurrencySymbol}
                     isCurrenciesListOpen={this.props.isCurrenciesListOpen}
                 />

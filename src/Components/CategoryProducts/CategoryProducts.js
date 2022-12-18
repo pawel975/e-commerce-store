@@ -7,15 +7,21 @@ import queryProducts from "../../queries/queryProducts.js";
 
 class CategoryProducts extends Component {
 
+    constructor(props){
+        super(props);
+        this.currentCurrencySymbol = this.props.currentCurrencySymbol;
+        this.currentCategory = this.props.currentCategory;
+    }
+
     render(){
         return (
             <section className="category-products">
 
                 <h2 className="category-products__category-name">
-                    {capitalizeWord(this.props.currentCategory)}
+                    {capitalizeWord(this.currentCategory)}
                 </h2>
 
-                <Query query={queryProducts(this.props.currentCategory)}>
+                <Query query={queryProducts(this.currentCategory)}>
 
                     {({loading, data}) => {
             
@@ -31,7 +37,7 @@ class CategoryProducts extends Component {
                                 <ProductCard 
                                     key={id} 
                                     productParams={productParams}
-                                    currentCurrencySymbol={this.props.currentCurrencySymbol}
+                                    currentCurrencySymbol={this.currentCurrencySymbol}
                                 />
                             )
                         })
