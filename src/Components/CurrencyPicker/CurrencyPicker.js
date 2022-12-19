@@ -12,10 +12,6 @@ class CurrencyPicker extends Component {
         this.handleCurrenciesListOpen = this.props.handleCurrenciesListOpen;
     }
 
-    componentDidUpdate(){
-        console.log(this.props)
-    }
-
     render() {
         
         return (
@@ -26,6 +22,7 @@ class CurrencyPicker extends Component {
                     <label htmlFor="show-currencies">{this.props.currentCurrencySymbol}</label>
                     <button 
                         onClick={this.handleCurrenciesListOpen} 
+                        id="show-currencies"
                         className={`show-currencies ${this.props.isCurrenciesListOpen ? "dash-open" : ""} `}
                     >
                         <CurrencyPickerDash/>
