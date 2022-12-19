@@ -7,9 +7,9 @@ class Actions extends Component {
 
     constructor(props){
         super(props)
-            this.handleCurrencyChange = this.props.handleCurrencyChange;
-            this.handleCurrenciesListOpen = this.props.handleCurrenciesListOpen;
-            this.handleCartOverlayVisibleToggle = this.props.handleCartOverlayVisibleToggle;
+        this.handleCurrencyChange = this.props.handleCurrencyChange;
+        this.handleCurrenciesListOpen = this.props.handleCurrenciesListOpen;
+        this.handleCartOverlayVisibleToggle = this.props.handleCartOverlayVisibleToggle;
     }
 
     render() {

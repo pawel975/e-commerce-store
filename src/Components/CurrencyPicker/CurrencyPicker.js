@@ -10,8 +10,10 @@ class CurrencyPicker extends Component {
         super(props)
         this.handleCurrencyChange = this.props.handleCurrencyChange;
         this.handleCurrenciesListOpen = this.props.handleCurrenciesListOpen;
-        this.currentCurrencySymbol = this.props.currentCurrencySymbol;
-        this.isCurrenciesListOpen = this.props.isCurrenciesListOpen;
+    }
+
+    componentDidUpdate(){
+        console.log(this.props)
     }
 
     render() {
@@ -21,10 +23,10 @@ class CurrencyPicker extends Component {
 
                 <div className="show-currencies-container">
 
-                    <label htmlFor="show-currencies">{this.currentCurrencySymbol}</label>
+                    <label htmlFor="show-currencies">{this.props.currentCurrencySymbol}</label>
                     <button 
                         onClick={this.handleCurrenciesListOpen} 
-                        className={`show-currencies ${this.isCurrenciesListOpen ? "dash-open" : ""} `}
+                        className={`show-currencies ${this.props.isCurrenciesListOpen ? "dash-open" : ""} `}
                     >
                         <CurrencyPickerDash/>
                     </button>
@@ -32,7 +34,7 @@ class CurrencyPicker extends Component {
                 </div>
                 
                 {
-                    !this.isCurrenciesListOpen &&
+                    this.props.isCurrenciesListOpen &&
                     <Query query={queryCurrencies()}>
                         {({loading, data}) => {
                 
