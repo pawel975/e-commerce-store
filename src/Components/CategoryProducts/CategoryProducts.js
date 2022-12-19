@@ -9,7 +9,6 @@ class CategoryProducts extends Component {
 
     constructor(props){
         super(props);
-        this.currentCurrencySymbol = this.props.currentCurrencySymbol;
         this.currentCategory = this.props.currentCategory;
     }
 
@@ -37,7 +36,7 @@ class CategoryProducts extends Component {
                                 <ProductCard 
                                     key={id} 
                                     productParams={productParams}
-                                    currentCurrencySymbol={this.currentCurrencySymbol}
+                                    currentCurrencySymbol={this.props.currentCurrencySymbol}
                                 />
                             )
                         })

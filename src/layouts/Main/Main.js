@@ -12,12 +12,11 @@ class Main extends Component {
     constructor(props){
         super(props)
         this.updateProductCartQuantity = this.props.updateProductCartQuantity;
-        this.isCartOverlayVisible = this.props.isCartOverlayVisible
         this.addProductToCart = this.props.addProductToCart;
         this.deleteProductFromCart = this.props.deleteProductFromCart;
-        this.currentCurrencySymbol = this.props.currentCurrencySymbol
         this.cartElements = this.props.cartElements;
         this.changeAttrValue = this.changeAttrValue.bind(this);
+
         this.state = {
             productId: "",
             cartProdcutsAttributesStates: []
@@ -78,7 +77,7 @@ class Main extends Component {
                                     element={
                                         <CategoryProducts 
                                             currentCategory="all"
-                                            currentCurrencySymbol={this.currentCurrencySymbol}
+                                            currentCurrencySymbol={this.props.currentCurrencySymbol}
                                             addProductToCart={this.addProductToCart}
                                         />
                                     }
@@ -89,7 +88,7 @@ class Main extends Component {
                                     element={
                                         <CategoryProducts 
                                             currentCategory="clothes"
-                                            currentCurrencySymbol={this.currentCurrencySymbol}
+                                            currentCurrencySymbol={this.props.currentCurrencySymbol}
                                             addProductToCart={this.addProductToCart}
                                         />
                                     }
@@ -100,7 +99,7 @@ class Main extends Component {
                                     element={
                                         <CategoryProducts 
                                             currentCategory="tech"
-                                            currentCurrencySymbol={this.currentCurrencySymbol}
+                                            currentCurrencySymbol={this.props.currentCurrencySymbol}
                                             addProductToCart={this.addProductToCart}
                                         />
                                     }
@@ -110,7 +109,7 @@ class Main extends Component {
                                     path={`/product/:productId`}
                                     element={
                                         <ProductPage 
-                                            currentCurrencySymbol={this.currentCurrencySymbol}
+                                            currentCurrencySymbol={this.props.currentCurrencySymbol}
                                             productId={window.location.pathname.slice(9)}
                                             addProductToCart={this.addProductToCart}
                                         />
@@ -123,7 +122,7 @@ class Main extends Component {
                                         <Cart
                                             updateProductCartQuantity={this.updateProductCartQuantity}
                                             cartElements={this.cartElements}
-                                            currentCurrencySymbol={this.currentCurrencySymbol}
+                                            currentCurrencySymbol={this.props.currentCurrencySymbol}
                                             changeAttrValue={this.changeAttrValue}
                                         />
                                     }

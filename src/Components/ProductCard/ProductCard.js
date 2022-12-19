@@ -3,11 +3,6 @@ import "./ProductCard.scss";
 
 class ProductCard extends Component {
 
-    constructor(props){
-        super(props);
-        this.currentCurrencySymbol = this.props.currentCurrencySymbol;
-    }
-
     showAddToCartBtn(e){
 
         if (e.target.className === "product-card") {
@@ -37,7 +32,7 @@ class ProductCard extends Component {
         const {id, name, gallery, prices} = this.props.productParams;
 
         const {currency, amount} = prices.find(price => (
-            price.currency.symbol === this.currentCurrencySymbol
+            price.currency.symbol === this.props.currentCurrencySymbol
         ));
 
         const {symbol} = currency;
