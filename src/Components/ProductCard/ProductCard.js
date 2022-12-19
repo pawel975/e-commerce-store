@@ -1,4 +1,5 @@
 import { Component } from "react";
+import AddToCartLink from "../AddToCartLink/AddToCartLink";
 import "./ProductCard.scss";
 
 class ProductCard extends Component {
@@ -51,12 +52,9 @@ class ProductCard extends Component {
                     <span className="product-card__price">{symbol}{amount}</span>
                 </div>
 
-                <a 
-                    className="product-card__add-to-cart"
-                    href="/cart"
-                >
+                <AddToCartLink>
                     <img className="product-card__cart-image" src="/assets/img/cart-white.svg" alt="cart"/>
-                </a>
+                </AddToCartLink>
 
             </section>
         )

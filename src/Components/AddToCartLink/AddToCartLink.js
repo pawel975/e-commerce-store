@@ -1,7 +1,7 @@
 import { Component } from "react";
-import "./AddToCartBtn.scss";
+import './AddToCartLink.scss';
 
-class AddToCartBtn extends Component {
+class AddToCartLink extends Component {
 
     constructor(props){
         super(props)
@@ -9,21 +9,21 @@ class AddToCartBtn extends Component {
         this.addProductToCart = this.props.addProductToCart;
     }
 
-    handleAddProductToCartButtonClick(){
+    handleAddProductToCartButtonClick(e){
         this.addProductToCart(this.props.productId, this.props.selectedAttributes)
     }
 
     render(){
         return (
             <a 
-                className="add-to-cart-btn"
-                href="/cart"
+                className="add-to-cart-link"
                 onClick={this.handleAddProductToCartButtonClick}
+                href="/cart"
             >
-                ADD TO CART
+                {this.props.children}
             </a>
         )
     }
 }
 
-export default AddToCartBtn;
+export default AddToCartLink;

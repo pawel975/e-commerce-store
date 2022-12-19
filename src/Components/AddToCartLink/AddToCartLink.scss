@@ -1,0 +1,9 @@
+@use '../../globalStyle.scss';
+@use '../../variables.scss';
+
+.add-to-cart-link {
+    position: relative;
+    outline: 2px solid red;
+    width: fit-content;
+    height: fit-content;
+}

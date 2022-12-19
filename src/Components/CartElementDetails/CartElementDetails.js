@@ -13,10 +13,6 @@ class CartElementDetails extends Component {
         this.changeAttrValue = this.props.changeAttrValue;
     }
     
-    componentDidUpdate(){
-        console.log(this.props)
-    }
-    
     render(){
 
         const {name, attributes, prices, brand} = this.product;

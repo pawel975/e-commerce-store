@@ -4,7 +4,7 @@ import ProductAllAttributes from "../ProductAllAttributes/ProductAllAttributes";
 import Price from "../Price/Price";
 import ProductHeader from "../ProductHeader/ProductHeader";
 import ParsedHtml from "../ParsedHtml/ParsedHtml";
-import AddToCartBtn from "../AddToCartBtn/AddToCartBtn";
+import AddToCartLink from "../AddToCartLink/AddToCartLink";
 
 class ProductDetails extends Component {
 
@@ -78,11 +78,16 @@ class ProductDetails extends Component {
                     amount={price.amount}
                 />
 
-                <AddToCartBtn 
+                <AddToCartLink 
                     addProductToCart={this.addProductToCart}
                     productId={this.productDetails.id}
                     selectedAttributes={this.state.productAttributesStates}
-                />
+                >
+                    <button className="product-details__add-to-cart">
+                        ADD TO CART
+                    </button>
+                </AddToCartLink>
+
 
                 <ParsedHtml
                     html={description}    
