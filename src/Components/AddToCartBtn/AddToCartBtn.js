@@ -5,7 +5,12 @@ class AddToCartBtn extends Component {
 
     constructor(props){
         super(props)
-        this.handleAddProductToCartButtonClick = this.props.handleAddProductToCartButtonClick;
+        this.handleAddProductToCartButtonClick = this.handleAddProductToCartButtonClick.bind(this);
+        this.addProductToCart = this.props.addProductToCart;
+    }
+
+    handleAddProductToCartButtonClick(){
+        this.addProductToCart(this.props.productId, this.props.selectedAttributes)
     }
 
     render(){

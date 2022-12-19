@@ -8,7 +8,6 @@ class ProductPage extends Component {
 
     constructor(props){
         super(props)
-        this.currentCurrencySymbol = this.props.currentCurrencySymbol;
         this.addProductToCart = this.props.addProductToCart;
         this.productId = this.props.productId;
         this.state = {
@@ -32,7 +31,7 @@ class ProductPage extends Component {
                         <ProductPhotos productPhotos={productDetails.gallery}/>
                         <ProductDetails 
                             productDetails={productDetails}
-                            currentCurrencySymbol={this.currentCurrencySymbol}
+                            currentCurrencySymbol={this.props.currentCurrencySymbol}
                             addProductToCart={this.addProductToCart}
                         />
                     </>

@@ -12,7 +12,6 @@ class CartElement extends Component {
         this.cartElementParams = this.props.cartElementParams;
         this.product = this.props.product;
         this.selectedAttributes = this.props.selectedAttributes;
-        this.currentCurrencySymbol = this.props.currentCurrencySymbol;
         this.changeAttrValue = this.props.changeAttrValue;
 
         this.handleQuantityIncrease = this.handleQuantityIncrease.bind(this);
@@ -35,7 +34,7 @@ class CartElement extends Component {
                     product={this.product}
                     changeAttrValue={this.changeAttrValue}
                     selectedAttributes={this.selectedAttributes}
-                    currentCurrencySymbol={this.currentCurrencySymbol}
+                    currentCurrencySymbol={this.props.currentCurrencySymbol}
                 />
                 <CartProductQuantity
                     handleQuantityIncrease={this.handleQuantityIncrease}

@@ -12,9 +12,7 @@ class ProductDetails extends Component {
         super(props)
         this.productDetails = this.props.productDetails;
         this.addProductToCart = this.props.addProductToCart;
-        this.currentCurrencySymbol = this.props.currentCurrencySymbol;
         this.changeProductAttributesStates = this.changeProductAttributesStates.bind(this);
-        this.handleAddProductToCartButtonClick = this.handleAddProductToCartButtonClick.bind(this);
         this.state = {
             productAttributesStates: []
         }
@@ -39,10 +37,6 @@ class ProductDetails extends Component {
         this.setState({productAttributesStates: initProductAttributesStates})
     }
 
-    handleAddProductToCartButtonClick(){
-        this.addProductToCart(this.productDetails.id, this.state.productAttributesStates)
-    }
-
     // Changes current attribute value to new picked option
     changeProductAttributesStates(attrId, newOptionParams){
 
@@ -60,7 +54,7 @@ class ProductDetails extends Component {
 
         const {id, name, brand, attributes, prices, description} = this.productDetails;
 
-        const price = prices.find(price => price.currency.symbol === this.currentCurrencySymbol)
+        const price = prices.find(price => price.currency.symbol === this.props.currentCurrencySymbol)
 
         return (
             <div 
@@ -85,7 +79,9 @@ class ProductDetails extends Component {
                 />
 
                 <AddToCartBtn 
-                    handleAddProductToCartButtonClick={this.handleAddProductToCartButtonClick}
+                    addProductToCart={this.addProductToCart}
+                    productId={this.productDetails.id}
+                    selectedAttributes={this.state.productAttributesStates}
                 />
 
                 <ParsedHtml

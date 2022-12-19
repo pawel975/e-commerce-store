@@ -7,20 +7,15 @@ import queryProducts from "../../queries/queryProducts.js";
 
 class CategoryProducts extends Component {
 
-    constructor(props){
-        super(props);
-        this.currentCategory = this.props.currentCategory;
-    }
-
     render(){
         return (
             <section className="category-products">
 
                 <h2 className="category-products__category-name">
-                    {capitalizeWord(this.currentCategory)}
+                    {capitalizeWord(this.props.currentCategory)}
                 </h2>
 
-                <Query query={queryProducts(this.currentCategory)}>
+                <Query query={queryProducts(this.props.currentCategory)}>
 
                     {({loading, data}) => {
             

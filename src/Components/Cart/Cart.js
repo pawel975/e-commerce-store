@@ -8,8 +8,6 @@ class Cart extends Component {
         super(props)
         this.updateProductCartQuantity = this.props.updateProductCartQuantity;
         this.deleteProductFromCart = this.props.deleteProductFromCart;
-        this.cartElements = this.props.cartElements;
-        this.currentCurrencySymbol = this.props.currentCurrencySymbol;
         this.changeAttrValue = this.props.changeAttrValue;
     }
 
@@ -19,7 +17,7 @@ class Cart extends Component {
                 <h2 className="cart__header">CART</h2>
                 <hr/>
                 {
-                    this.cartElements.map((cartElement, index) => {
+                    this.props.cartElements.map((cartElement, index) => {
 
                         if (cartElement.quantity > 0) {
                             return (
@@ -29,7 +27,7 @@ class Cart extends Component {
                                         cartElementParams={cartElement}
                                         product={cartElement.product}
                                         selectedAttributes={cartElement.selectedAttributes}
-                                        currentCurrencySymbol={this.currentCurrencySymbol}
+                                        currentCurrencySymbol={this.props.currentCurrencySymbol}
                                         changeAttrValue={this.changeAttrValue}
                                     />
                                     <hr/>

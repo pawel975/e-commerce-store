@@ -14,7 +14,6 @@ class Main extends Component {
         this.updateProductCartQuantity = this.props.updateProductCartQuantity;
         this.addProductToCart = this.props.addProductToCart;
         this.deleteProductFromCart = this.props.deleteProductFromCart;
-        this.cartElements = this.props.cartElements;
         this.changeAttrValue = this.changeAttrValue.bind(this);
 
         this.state = {
@@ -121,7 +120,7 @@ class Main extends Component {
                                     element={
                                         <Cart
                                             updateProductCartQuantity={this.updateProductCartQuantity}
-                                            cartElements={this.cartElements}
+                                            cartElements={this.props.cartElements}
                                             currentCurrencySymbol={this.props.currentCurrencySymbol}
                                             changeAttrValue={this.changeAttrValue}
                                         />

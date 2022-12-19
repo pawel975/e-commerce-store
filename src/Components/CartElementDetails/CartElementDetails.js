@@ -10,15 +10,18 @@ class CartElementDetails extends Component {
         super(props)
         this.product = this.props.product;
         this.selectedAttributes = this.props.selectedAttributes;
-        this.currentCurrencySymbol = this.props.currentCurrencySymbol;
         this.changeAttrValue = this.props.changeAttrValue;
+    }
+    
+    componentDidUpdate(){
+        console.log(this.props)
     }
     
     render(){
 
         const {name, attributes, prices, brand} = this.product;
 
-        const price = prices.find(price => price.currency.symbol === this.currentCurrencySymbol)
+        const price = prices.find(price => price.currency.symbol === this.props.currentCurrencySymbol)
 
         return (
             <div className='cart-element-details'>
