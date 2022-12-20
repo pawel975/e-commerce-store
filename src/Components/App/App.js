@@ -5,6 +5,7 @@ import './App.scss';
 import querySingleProduct from '../../queries/querySingleProduct';
 import getFromLocalStorage from '../../helpers/getFromLocalStorage';
 import saveToLocalStorage from '../../helpers/saveToLocalStorage';
+import getDefaultProductAttributes from '../../helpers/getDefaultProductAttributes';
 
 class App extends Component {
 
@@ -74,6 +75,10 @@ class App extends Component {
   addProductToCart = async (productId, selectedAttributes) => {
     const product = await querySingleProduct(productId);
 
+    console.log(selectedAttributes);
+
+    const productAttributes = selectedAttributes ? selectedAttributes : await getDefaultProductAttributes(productId);
+
     if (this.state.cartElements.length > 0) {
 
       let isExistingProductQuantityUpdated = false;
@@ -85,7 +90,7 @@ class App extends Component {
         // Check if that type of product exists in cart by comparing ID's
         if (element.product.id === product.id) {
 
-          const newProductAttributesStates = JSON.stringify(selectedAttributes);
+          const newProductAttributesStates = JSON.stringify(productAttributes);
           const cartElementAttributesStates = JSON.stringify(element.selectedAttributes);
           
           // If product exists and has the same attributes, increment it's quantity
@@ -106,7 +111,7 @@ class App extends Component {
 
         const orderedProduct = {
           product: product,
-          selectedAttributes: selectedAttributes,
+          selectedAttributes: productAttributes,
           quantity: 1
         };
 
@@ -119,7 +124,7 @@ class App extends Component {
 
         const orderedProduct = {
             product: product,
-            selectedAttributes: selectedAttributes,
+            selectedAttributes: productAttributes,
             quantity: 1
           };
           

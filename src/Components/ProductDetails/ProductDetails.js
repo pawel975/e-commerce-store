@@ -5,6 +5,7 @@ import Price from "../Price/Price";
 import ProductHeader from "../ProductHeader/ProductHeader";
 import ParsedHtml from "../ParsedHtml/ParsedHtml";
 import AddToCartBtn from "../AddToCartBtn/AddToCartBtn";
+import getDefaultProductAttributes from "../../helpers/getDefaultProductAttributes";
 
 class ProductDetails extends Component {
 
@@ -18,21 +19,10 @@ class ProductDetails extends Component {
         }
     }
 
-    componentDidMount(){
+    async componentDidMount(){
 
         // Set init product attributes states to default values
-        const initProductAttributesStates = this.productDetails.attributes.map(attr => {
-            
-            const {id, items} = attr;
-
-            return (
-                {
-                    attrId: id,
-                    optionParams: items[0]
-                }
-            )
-                
-        })
+        const initProductAttributesStates = await getDefaultProductAttributes(this.productDetails.id);
 
         this.setState({productAttributesStates: initProductAttributesStates})
     }
