@@ -9,12 +9,29 @@ class CartElementDetails extends Component {
     constructor(props){
         super(props)
         this.product = this.props.product;
-        this.selectedAttributes = this.props.selectedAttributes;
         this.changeAttrValue = this.props.changeAttrValue;
+        this.changeProductAttributesStates = this.changeProductAttributesStates.bind(this);
+        this.updateElementInCart = this.props.updateElementInCart;
+        this.state = {
+            productAttributesStates: this.props.selectedAttributes
+        }
     }
-    
+
     componentDidUpdate(){
-        console.log(this.props)
+    }   
+    
+    // Changes current attribute value to new picked option
+    changeProductAttributesStates(attrId, newOptionParams){
+        
+        const newProductAttributesStates = this.state.productAttributesStates.map(attr => {
+            
+            if (attr.attrId === attrId) attr.optionParams = newOptionParams;
+            
+            return attr;
+        }) 
+        
+        this.setState({productAttributesStates: newProductAttributesStates});
+        this.updateElementInCart(this.product, this.state.productAttributesStates)
     }
     
     render(){
@@ -38,6 +55,7 @@ class CartElementDetails extends Component {
                 <ProductAllAttributes 
                     attributes={attributes}
                     changeAttrValue={this.changeAttrValue}
+                    changeProductAttributesStates={this.changeProductAttributesStates}
                 />
 
             </div>

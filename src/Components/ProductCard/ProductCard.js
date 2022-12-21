@@ -36,7 +36,6 @@ class ProductCard extends Component {
     }
 
     render(){
-
         
         const {id, name, gallery, prices} = this.props.productParams;
 

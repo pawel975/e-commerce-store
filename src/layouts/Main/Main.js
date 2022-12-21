@@ -12,6 +12,7 @@ class Main extends Component {
     constructor(props){
         super(props)
         this.updateProductCartQuantity = this.props.updateProductCartQuantity;
+        this.updateElementInCart = this.props.updateElementInCart;
         this.addProductToCart = this.props.addProductToCart;
         this.deleteProductFromCart = this.props.deleteProductFromCart;
         this.changeAttrValue = this.changeAttrValue.bind(this);
@@ -120,6 +121,7 @@ class Main extends Component {
                                     element={
                                         <Cart
                                             updateProductCartQuantity={this.updateProductCartQuantity}
+                                            updateElementInCart={this.updateElementInCart}
                                             cartElements={this.props.cartElements}
                                             currentCurrencySymbol={this.props.currentCurrencySymbol}
                                             changeAttrValue={this.changeAttrValue}

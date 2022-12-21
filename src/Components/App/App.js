@@ -14,6 +14,8 @@ class App extends Component {
 
     this.addProductToCart = this.addProductToCart.bind(this);
     this.updateProductCartQuantity = this.updateProductCartQuantity.bind(this);
+    this.updateElementInCart = this.updateElementInCart.bind(this);
+
     this.handleCartOverlayVisibleToggle = this.handleCartOverlayVisibleToggle.bind(this);
     this.handleCurrencyChange = this.handleCurrencyChange.bind(this);
     this.handleCurrenciesListOpen = this.handleCurrenciesListOpen.bind(this);
@@ -75,8 +77,6 @@ class App extends Component {
   addProductToCart = async (productId, selectedAttributes) => {
     const product = await querySingleProduct(productId);
 
-    console.log(selectedAttributes);
-
     const productAttributes = selectedAttributes ? selectedAttributes : await getDefaultProductAttributes(productId);
 
     if (this.state.cartElements.length > 0) {
@@ -133,6 +133,26 @@ class App extends Component {
 
   }
 
+  updateElementInCart(product, newAttributes){
+    
+    const cartElements = this.state.cartElements;
+    const productToUpdate = JSON.stringify(product);
+
+    
+    // Update attributes of element to update
+    const updatedCartElements = cartElements.map(element => {
+
+      if (JSON.stringify(element) === productToUpdate) {
+        element.selectedAttributes = newAttributes;
+      }
+
+      return element;
+
+    });
+
+    this.setState({cartElements: updatedCartElements}); 
+  }
+
   componentDidMount(){
     saveToLocalStorage("state", this.state)
   }
@@ -156,6 +176,7 @@ class App extends Component {
 
         <Main 
           updateProductCartQuantity={this.updateProductCartQuantity}
+          updateElementInCart={this.updateElementInCart}
           isCartOverlayVisible={this.state.isCartOverlayVisible}
           currentCurrencySymbol={this.state.currentCurrencySymbol}
           cartElements={this.state.cartElements}

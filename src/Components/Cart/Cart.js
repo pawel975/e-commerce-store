@@ -7,6 +7,7 @@ class Cart extends Component {
     constructor(props){
         super(props)
         this.updateProductCartQuantity = this.props.updateProductCartQuantity;
+        this.updateElementInCart = this.props.updateElementInCart;
         this.deleteProductFromCart = this.props.deleteProductFromCart;
         this.changeAttrValue = this.props.changeAttrValue;
     }
@@ -24,6 +25,7 @@ class Cart extends Component {
                                 <React.Fragment key={"cartelement" + index}>
                                     <CartElement
                                         updateProductCartQuantity={this.updateProductCartQuantity}
+                                        updateElementInCart={this.updateElementInCart}
                                         cartElementParams={cartElement}
                                         product={cartElement.product}
                                         selectedAttributes={cartElement.selectedAttributes}
