@@ -11,7 +11,7 @@ class Cart extends Component {
         this.deleteProductFromCart = this.props.deleteProductFromCart;
         this.changeAttrValue = this.props.changeAttrValue;
     }
-
+    
     render(){
         return (
             <section className="cart">

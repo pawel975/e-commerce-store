@@ -10,9 +10,20 @@ class ProductAttribute extends Component {
         this.name = this.props.name
         this.type = this.props.type
         this.attrOptions = this.props.attrOptions
-        this.productAttributesStates = this.props.productAttributesStates;
         this.changeProductAttributesStates = this.props.changeProductAttributesStates;
         this.changeActiveOption = this.changeActiveOption.bind(this);
+        this.isOptionPicked = this.isOptionPicked.bind(this);
+    }
+
+    isOptionPicked(attrId, attrOption, productSelectedAttributes){
+
+        const attribute = productSelectedAttributes.find(attr => attr.attrId === attrId)
+
+        if (attribute) {
+            return attribute.optionParams.id === attrOption.id
+        } else {
+            return false;
+        }
     }
 
     changeActiveOption(e, attrOptionParams){
@@ -43,6 +54,8 @@ class ProductAttribute extends Component {
                     type={this.type}
                     attrSingleOption={attrSingleOption}
                     changeActiveOption={this.changeActiveOption}
+                    productAttributesStates={this.props.productAttributesStates}
+                    isOptionPicked={this.isOptionPicked(this.id, attrSingleOption, this.props.productAttributesStates)}
                 />
             )
         })

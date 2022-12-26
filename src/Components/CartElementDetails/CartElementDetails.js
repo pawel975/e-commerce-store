@@ -16,9 +16,6 @@ class CartElementDetails extends Component {
             productAttributesStates: this.props.selectedAttributes
         }
     }
-
-    componentDidUpdate(){
-    }   
     
     // Changes current attribute value to new picked option
     changeProductAttributesStates(attrId, newOptionParams){
@@ -53,6 +50,7 @@ class CartElementDetails extends Component {
                     amount={price.amount}
                 />
                 <ProductAllAttributes 
+                    productAttributesStates={this.state.productAttributesStates}
                     attributes={attributes}
                     changeAttrValue={this.changeAttrValue}
                     changeProductAttributesStates={this.changeProductAttributesStates}

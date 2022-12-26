@@ -153,6 +153,8 @@ class App extends Component {
     this.setState({cartElements: updatedCartElements}); 
   }
 
+  // TODO: implement algorithm that takes same products with same attributes and merge them if they are different positions
+
   componentDidMount(){
     saveToLocalStorage("state", this.state)
   }

@@ -10,7 +10,6 @@ class CartElement extends Component {
         super(props)
         this.updateProductCartQuantity = this.props.updateProductCartQuantity;
         this.updateElementInCart = this.props.updateElementInCart;
-        this.cartElementParams = this.props.cartElementParams;
         this.product = this.props.product;
         this.changeAttrValue = this.props.changeAttrValue;
 
@@ -19,11 +18,11 @@ class CartElement extends Component {
     }
 
     handleQuantityIncrease(){
-        this.updateProductCartQuantity(this.cartElementParams, this.cartElementParams.quantity + 1)
+        this.updateProductCartQuantity(this.props.cartElementParams, this.props.cartElementParams.quantity + 1)
     }
 
     handleQuantityDecrease(){
-        this.updateProductCartQuantity(this.cartElementParams, this.cartElementParams.quantity - 1)
+        this.updateProductCartQuantity(this.props.cartElementParams, this.props.cartElementParams.quantity - 1)
     }
 
     render(){
@@ -36,11 +35,12 @@ class CartElement extends Component {
                     selectedAttributes={this.props.selectedAttributes}
                     currentCurrencySymbol={this.props.currentCurrencySymbol}
                     updateElementInCart={this.props.updateElementInCart}
+                    cartElementParams={this.props.cartElementParams}
                 />
                 <CartProductQuantity
                     handleQuantityIncrease={this.handleQuantityIncrease}
                     handleQuantityDecrease={this.handleQuantityDecrease}
-                    cartElementParams={this.cartElementParams}
+                    cartElementParams={this.props.cartElementParams}
                     updateProductCartQuantity={this.updateProductCartQuantity}
                 />
 
