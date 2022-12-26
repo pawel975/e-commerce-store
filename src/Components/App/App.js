@@ -20,6 +20,7 @@ class App extends Component {
     this.handleCurrencyChange = this.handleCurrencyChange.bind(this);
     this.handleCurrenciesListOpen = this.handleCurrenciesListOpen.bind(this);
     this.handleSelectCategory = this.handleSelectCategory.bind(this);
+    this.mergeSameCartElements = this.mergeSameCartElements.bind(this);
 
     this.state = getFromLocalStorage("state") || {
       isCartOverlayVisible: false,
@@ -98,7 +99,6 @@ class App extends Component {
             
             element.quantity += 1;
             isExistingProductQuantityUpdated = true;
-            
           }
           
         }
@@ -112,7 +112,8 @@ class App extends Component {
         const orderedProduct = {
           product: product,
           selectedAttributes: productAttributes,
-          quantity: 1
+          quantity: 1,
+          uuid: crypto.randomUUID(),
         };
 
         updatedCartElements.push(orderedProduct);
@@ -123,10 +124,11 @@ class App extends Component {
     } else {
 
         const orderedProduct = {
-            product: product,
-            selectedAttributes: productAttributes,
-            quantity: 1
-          };
+          product: product,
+          selectedAttributes: productAttributes,
+          quantity: 1,
+          uuid: crypto.randomUUID(),
+        };
           
         this.setState({cartElements: [...this.state.cartElements, orderedProduct]})
     }
@@ -138,9 +140,8 @@ class App extends Component {
     const cartElements = this.state.cartElements;
     const productToUpdate = JSON.stringify(product);
 
-    
     // Update attributes of element to update
-    const updatedCartElements = cartElements.map(element => {
+    let updatedCartElements = cartElements.map(element => {
 
       if (JSON.stringify(element) === productToUpdate) {
         element.selectedAttributes = newAttributes;
@@ -150,10 +151,47 @@ class App extends Component {
 
     });
 
+    updatedCartElements = this.mergeSameCartElements(updatedCartElements);
+
     this.setState({cartElements: updatedCartElements}); 
   }
 
-  // TODO: implement algorithm that takes same products with same attributes and merge them if they are different positions
+  mergeSameCartElements(cartElements){
+
+    let updatedCartElements = [];
+
+    for (let i = 0; i < cartElements.length; i++) {
+      for (let j = 0; j < cartElements.length; j++) {
+
+        if (i !== j) {
+
+          const firstCartElementProduct = JSON.stringify(cartElements[i].product);
+          const firstSelectedAttributes = JSON.stringify(cartElements[i].selectedAttributes);
+          const secondCartElementProduct = JSON.stringify(cartElements[j].product);
+          const secondSelectedAttributes = JSON.stringify(cartElements[j].selectedAttributes);
+          
+          if (
+            firstCartElementProduct === secondCartElementProduct && 
+            firstSelectedAttributes === secondSelectedAttributes
+          ){
+
+            // Sum up quantity of the same product with the same attributes
+            cartElements[i].quantity += cartElements[j].quantity;
+
+            // Delete product duplicate
+            cartElements.splice(j,j);
+
+            updatedCartElements = cartElements;
+
+            return updatedCartElements;
+          } 
+        }
+      }
+    }
+
+    return cartElements;
+
+  }
 
   componentDidMount(){
     saveToLocalStorage("state", this.state)
