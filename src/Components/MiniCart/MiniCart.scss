@@ -1,0 +1,14 @@
+@use '../../variables.scss';
+@use '../../globalStyle.scss';
+
+.mini-cart {
+    position: absolute;
+    height: 677px;
+    width: 325px;
+    right: 100px;
+    top: 0;
+    padding: 32px 16px 32px 16px;
+    background: variables.$background;
+    z-index: 4;
+    outline: 2px solid red;
+}

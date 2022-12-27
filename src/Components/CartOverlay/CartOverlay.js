@@ -1,4 +1,5 @@
 import { Component } from "react";
+import MiniCart from "../MiniCart/MiniCart";
 import "./CartOverlay.scss"
 
 class CartOverlay extends Component {
@@ -6,9 +7,7 @@ class CartOverlay extends Component {
         return(
             <section className="cart-overlay">
                 <div className="cart-overlay__background"></div>
-                <div className="cart-overlay__cart">
-                    
-                </div>
+                <MiniCart cartElements={this.props.cartElements}/>
             </section>
         )
     }

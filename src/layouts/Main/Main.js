@@ -59,7 +59,7 @@ class Main extends Component {
         return (
             <main>
 
-                {this.props.isCartOverlayVisible && <CartOverlay/>}
+                {this.props.isCartOverlayVisible && <CartOverlay cartElements={this.props.cartElements}/>}
 
                 <RouterProvider router={
                     createBrowserRouter(
