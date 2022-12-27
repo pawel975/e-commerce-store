@@ -58,21 +58,19 @@ class App extends Component {
     const productToUpdate = JSON.stringify(product);
 
     // Update quantity of particular product and delete if from cart if it's quantity is 0
-    const updatedCartElements = cartElements.map(element => {
+    let updatedCartElements = cartElements.map(element => {
 
       if (JSON.stringify(element) === productToUpdate) {
         element.quantity = quantity;
       }
 
-      if (element.quantity > 0) {
-        return element;
-      } else {
-        return false;
-      }
+      return element;
 
     });
 
-    this.setState({cartElements: updatedCartElements.filter(Boolean)}); 
+    updatedCartElements = updatedCartElements.filter(cartEl => cartEl.quantity > 0);
+
+    this.setState({cartElements: updatedCartElements}); 
   }
 
   addProductToCart = async (productId, selectedAttributes) => {
@@ -158,7 +156,7 @@ class App extends Component {
 
   mergeSameCartElements(cartElements){
 
-    let updatedCartElements = [];
+    let mergedCartElements = [];
 
     for (let i = 0; i < cartElements.length; i++) {
       for (let j = 0; j < cartElements.length; j++) {
@@ -181,9 +179,9 @@ class App extends Component {
             // Delete product duplicate
             cartElements.splice(j,j);
 
-            updatedCartElements = cartElements;
+            mergedCartElements = cartElements;
 
-            return updatedCartElements;
+            return mergedCartElements;
           } 
         }
       }
