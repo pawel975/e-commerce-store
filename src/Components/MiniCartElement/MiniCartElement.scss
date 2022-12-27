@@ -1,0 +1,9 @@
+@use "../../globalStyle.scss";
+@use "../../variables.scss";
+
+.mini-cart-element {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: stretch;
+}
