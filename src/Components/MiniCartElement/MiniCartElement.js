@@ -1,7 +1,7 @@
 import { Component } from "react";
-import CartElementDetails from "../CartElementDetails/CartElementDetails";
 import CartProductPhotos from "../CartProductPhotos/CartProductPhotos";
 import CartProductQuantity from "../CartProductQuantity/CartProductQuantity";
+import MiniCartElementDetails from "../MiniCartElementDetails/MiniCartElementDetails";
 import './MiniCartElement.scss';
 
 class MiniCartElement extends Component {
@@ -29,7 +29,7 @@ class MiniCartElement extends Component {
 
         return (
             <div className="mini-cart-element">
-                <CartElementDetails 
+                <MiniCartElementDetails
                     product={this.product}
                     changeAttrValue={this.changeAttrValue}
                     selectedAttributes={this.props.selectedAttributes}

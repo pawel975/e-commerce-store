@@ -7,22 +7,23 @@ class Price extends Component {
         super(props)
         this.symbol = this.props.symbol;
         this.amount = this.props.amount;
+
+        // Optional to changes styles
         this.headerStyles = this.props.headerStyles;
         this.priceStyles = this.props.priceStyles;
     }
-
+    
     render(){
 
-        console.log(this.headerStyles)
         return (
             <div className="price">
                 <div className="product-details__price">
 
-                    <h3 style={this.headerStyles}>
+                    <h3 style={this.headerStyles ? this.headerStyles : {}}>
                         PRICE:
                     </h3>
 
-                    <span style={this.priceStyles && {}}>
+                    <span style={this.priceStyles ? this.priceStyles : {}}>
                         {this.symbol}{this.amount}
                     </span>
                 </div>

@@ -49,6 +49,7 @@ class CartElementDetails extends Component {
                     symbol={price.currency.symbol} 
                     amount={price.amount}
                 />
+                
                 <ProductAllAttributes 
                     productAttributesStates={this.state.productAttributesStates}
                     attributes={attributes}
