@@ -2,14 +2,36 @@
 @use "../../globalStyle.scss";
 
 .product-attribute {
-
     display: flex;
+    width: 100%;
     gap: 0.75rem;
     flex-direction: column;
+
+    h3 {
+        text-transform: uppercase;
+        font-weight: bold;
+    }
 
     &__all-options {
         display: flex;
         flex-direction: row;
         gap: 1rem;
+        flex-wrap: wrap;
+    }
+}
+
+.product-attribute.small {
+
+    h3 {
+        text-transform: capitalize;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 16px;
+    }
+
+    &__all-options {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
     }
 }

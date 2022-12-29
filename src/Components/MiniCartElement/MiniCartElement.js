@@ -15,6 +15,8 @@ class MiniCartElement extends Component {
 
         this.handleQuantityIncrease = this.handleQuantityIncrease.bind(this);
         this.handleQuantityDecrease = this.handleQuantityDecrease.bind(this);
+
+        this.size = "small"
     }
 
     handleQuantityIncrease(){
@@ -36,16 +38,19 @@ class MiniCartElement extends Component {
                     currentCurrencySymbol={this.props.currentCurrencySymbol}
                     updateElementInCart={this.props.updateElementInCart}
                     cartElementParams={this.props.cartElementParams}
+                    size={this.size}
                 />
                 <CartProductQuantity
                     handleQuantityIncrease={this.handleQuantityIncrease}
                     handleQuantityDecrease={this.handleQuantityDecrease}
                     cartElementParams={this.props.cartElementParams}
                     updateProductCartQuantity={this.updateProductCartQuantity}
+                    size={this.size}
                 />
 
                 <CartProductPhotos
                     productPhotos={this.product.gallery}
+                    size={this.size}
                 />
             </div>
         )

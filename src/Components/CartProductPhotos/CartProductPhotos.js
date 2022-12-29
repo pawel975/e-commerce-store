@@ -6,11 +6,13 @@ class CartProductPhotos extends Component {
     constructor(props){
         super(props)
         this.productPhotos = this.props.productPhotos;
+        
+        this.size = this.props.size ? this.props.size : "";
     }
 
     render(){
         return (
-            <div className="cart-product-photos">
+            <div className={`cart-product-photos ${this.size}`}>
                 {
                     this.productPhotos.map((photo, index) => (
                         <img 

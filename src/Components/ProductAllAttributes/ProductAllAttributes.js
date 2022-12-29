@@ -8,6 +8,9 @@ class ProductAllAttributes extends Component {
         super(props);
         this.attributes = this.props.attributes;
         this.changeProductAttributesStates = this.props.changeProductAttributesStates;
+        this.attrNameStyles = this.props.attrNameStyles;
+
+        this.size = this.props.size ? this.props.size : "";
     }
 
     render(){
@@ -20,17 +23,19 @@ class ProductAllAttributes extends Component {
                 <ProductAttribute 
                     id={id}
                     key={id}
-                    name={name.toUpperCase()}
+                    name={name}
                     type={type}
+                    size={this.size}
                     attrOptions={items}
                     productAttributesStates={this.props.productAttributesStates}
                     changeProductAttributesStates={this.changeProductAttributesStates}
+                    attrNameStyles={this.attrNameStyles}
                 />
             )
         })
 
         return (
-            <div className="product-all-attributes">
+            <div className={`product-all-attributes ${this.size}`}>
                 {productAttributes}
             </div>
         )

@@ -13,6 +13,8 @@ class ProductAttribute extends Component {
         this.changeProductAttributesStates = this.props.changeProductAttributesStates;
         this.changeActiveOption = this.changeActiveOption.bind(this);
         this.isOptionPicked = this.isOptionPicked.bind(this);
+        
+        this.size = this.props.size;
     }
 
     isOptionPicked(attrId, attrOption, productSelectedAttributes){
@@ -52,6 +54,7 @@ class ProductAttribute extends Component {
                 <ProductAttributeOption
                     key={this.id + attrSingleOption.value}
                     type={this.type}
+                    size={this.size}
                     attrSingleOption={attrSingleOption}
                     changeActiveOption={this.changeActiveOption}
                     productAttributesStates={this.props.productAttributesStates}
@@ -61,7 +64,7 @@ class ProductAttribute extends Component {
         })
 
         return(
-            <section className="product-attribute">
+            <section className={`product-attribute ${this.size}`}>
                 <h3>{this.name}:</h3>
                 <div className="product-attribute__all-options">
                     {allAttrOptions}

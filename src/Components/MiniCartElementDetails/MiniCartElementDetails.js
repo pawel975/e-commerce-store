@@ -16,11 +16,7 @@ class MiniCartElementDetails extends Component {
             productAttributesStates: this.props.selectedAttributes
         }
 
-        this.nameStyles = {fontSize: "16px", fontWeight: "300"};
-        this.brandStyles = {fontSize: "16px", fontWeight: "300"};
-        this.headerStyles = {display: "none"};
-        this.priceStyles = {fontSize: "16px"};
-        this.productHeaderContainerStyles = {gap: "2px"};
+        this.size = this.props.size
     }
     
     // Changes current attribute value to new picked option
@@ -49,22 +45,20 @@ class MiniCartElementDetails extends Component {
                 <ProductHeader 
                     name={name} 
                     brand={brand}
-                    nameStyles={this.nameStyles}
-                    brandStyles={this.brandStyles}
-                    productHeaderContainerStyles={this.productHeaderContainerStyles}
+                    size={this.size}
                 />
 
                 <Price 
                     symbol={price.currency.symbol} 
                     amount={price.amount}
-                    headerStyles={this.headerStyles}
-                    priceStyles={this.priceStyles}
+                    size={this.size}
                 />
                 <ProductAllAttributes 
                     productAttributesStates={this.state.productAttributesStates}
                     attributes={attributes}
                     changeAttrValue={this.changeAttrValue}
                     changeProductAttributesStates={this.changeProductAttributesStates}
+                    size={this.size}
                 />
 
             </div>

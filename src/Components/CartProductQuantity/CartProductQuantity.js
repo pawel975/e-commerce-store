@@ -12,17 +12,21 @@ class CartProductQuantity extends Component {
         this.handleQuantityIncrease= this.props.handleQuantityIncrease;
         this.handleQuantityDecrease= this.props.handleQuantityDecrease
 
+        this.size = this.props.size ? this.props.size : "";
+
+        this.minusIconSrc = this.size === "small" ? "/assets/img/minus-icon-small.svg" : "/assets/img/minus-icon.svg"
+        this.plucIconSrc = this.size === "small" ? "/assets/img/plus-icon-small.svg" : "/assets/img/plus-icon.svg"
     }
 
     render(){
         return (
-            <section className="cart-product-quantity">
+            <section className={`cart-product-quantity ${this.size}`}>
                 
                 <button 
                     className="cart-product-quantity__change-amount more"
                     onClick={this.handleQuantityIncrease}
                 >
-                    <img src="/assets/img/plus-icon.svg" alt="add"/>
+                    <img src={this.plucIconSrc} alt="add"/>
                 </button>
                 
                 <div className="cart-product-quantity__quantity">{this.cartElementParams.quantity}</div>
@@ -31,7 +35,7 @@ class CartProductQuantity extends Component {
                     className="cart-product-quantity__change-amount less"
                     onClick={this.handleQuantityDecrease}
                 >
-                    <img src="/assets/img/minus-icon.svg" alt="minus"/>
+                    <img src={this.minusIconSrc} alt="minus"/>
                 </button>
                 
             </section>

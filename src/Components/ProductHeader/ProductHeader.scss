@@ -21,3 +21,15 @@
         font-weight: 400;
     }   
 }
+
+.product-header.small {
+    font-size: 16px;
+    line-height: 25.6px;
+    gap: 0px;
+
+    h1, h2 {
+        font-weight: 300;
+        font-size: 16px;
+        line-height: 25.6px;
+    }
+}

@@ -8,25 +8,16 @@ class Price extends Component {
         this.symbol = this.props.symbol;
         this.amount = this.props.amount;
 
-        // Optional to changes styles
-        this.headerStyles = this.props.headerStyles;
-        this.priceStyles = this.props.priceStyles;
+        this.size = this.props.size;
     }
     
     render(){
 
         return (
-            <div className="price">
-                <div className="product-details__price">
+            <div className={`price ${this.size}`}>
+                    {this.size === "small" ? null : <h3>PRICE:</h3>}
 
-                    <h3 style={this.headerStyles ? this.headerStyles : {}}>
-                        PRICE:
-                    </h3>
-
-                    <span style={this.priceStyles ? this.priceStyles : {}}>
-                        {this.symbol}{this.amount}
-                    </span>
-                </div>
+                    <span>{this.symbol}{this.amount}</span>
             </div>
         )
     }

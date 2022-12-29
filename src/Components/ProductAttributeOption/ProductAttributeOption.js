@@ -9,6 +9,8 @@ class ProductAttributeOption extends Component {
         this.type = this.props.type;
         this.attrSingleOption = this.props.attrSingleOption;
         this.isOptionPicked = this.props.isOptionPicked;
+
+        this.size = this.props.size
     }
     
     render(){
@@ -16,7 +18,7 @@ class ProductAttributeOption extends Component {
         const optionType = this.type === "swatch" ? 
 
             <button 
-                className="product-attribute-option"
+                className={`product-attribute-option ${this.size}`}
                 onClick={(e) => this.changeActiveOption(e, this.attrSingleOption)}
                 data-type="swatch"
                 style={{backgroundColor: this.attrSingleOption.value}}
@@ -26,7 +28,7 @@ class ProductAttributeOption extends Component {
             :
 
             <button 
-                className="product-attribute-option"
+                className={`product-attribute-option ${this.size}`}
                 onClick={(e) => this.changeActiveOption(e, this.attrSingleOption)}
                 data-type="text"
                 aria-pressed={this.isOptionPicked}
