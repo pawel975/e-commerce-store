@@ -14,6 +14,7 @@
     flex-direction: column;
     align-items: flex-start;
     gap: 30px;
+    overflow: hidden;
 
     &__header {
         font-family: variables.$ff-Raleway;

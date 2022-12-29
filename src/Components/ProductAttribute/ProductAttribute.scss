@@ -12,10 +12,10 @@
         font-weight: bold;
     }
 
-    &__all-options {
+    .product-attribute__all-options {
         display: flex;
         flex-direction: row;
-        gap: 1rem;
+        gap: 16px;
         flex-wrap: wrap;
     }
 }
@@ -29,9 +29,10 @@
         line-height: 16px;
     }
 
-    &__all-options {
+    .product-attribute__all-options {
         display: flex;
         flex-direction: row;
+        gap: 8px;
         flex-wrap: wrap;
     }
 }
