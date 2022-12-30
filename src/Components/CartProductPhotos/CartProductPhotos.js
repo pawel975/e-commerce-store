@@ -12,6 +12,9 @@ class CartProductPhotos extends Component {
         
         this.size = this.props.size ? this.props.size : "";
 
+        // Enable only if slider is needed
+        this.isSliderVisible = this.props.isSliderVisible;
+
         this.state = {
             activePhotoIndex: 1,
         }
@@ -45,10 +48,13 @@ class CartProductPhotos extends Component {
                 <div className="cart-product-photos__active-photo">
                     {this.productPhotosArray[this.state.activePhotoIndex]}
                 </div>
-                <PhotoSwitcher
-                    handleActivePhotoIndexIncrement={this.handleActivePhotoIndexIncrement}
-                    handleActivePhotoIndexDecrement={this.handleActivePhotoIndexDecrement}
-                />
+                {
+                    this.isSliderVisible &&
+                    <PhotoSwitcher
+                        handleActivePhotoIndexIncrement={this.handleActivePhotoIndexIncrement}
+                        handleActivePhotoIndexDecrement={this.handleActivePhotoIndexDecrement}
+                    />
+                }
             </div>
         )
     }

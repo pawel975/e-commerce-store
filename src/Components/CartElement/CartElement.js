@@ -45,6 +45,7 @@ class CartElement extends Component {
                 />
 
                 <CartProductPhotos
+                    isSliderVisible={true}
                     productPhotos={this.product.gallery}
                 />
             </div>

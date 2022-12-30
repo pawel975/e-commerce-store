@@ -49,6 +49,7 @@ class MiniCartElement extends Component {
                 />
 
                 <CartProductPhotos
+                    isSliderVisible={false}
                     productPhotos={this.product.gallery}
                     size={this.size}
                 />
