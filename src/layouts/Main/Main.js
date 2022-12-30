@@ -15,6 +15,7 @@ class Main extends Component {
         this.updateElementInCart = this.props.updateElementInCart;
         this.addProductToCart = this.props.addProductToCart;
         this.deleteProductFromCart = this.props.deleteProductFromCart;
+        this.handleCartOverlayVisibleToggle = this.props.handleCartOverlayVisibleToggle;
         this.changeAttrValue = this.changeAttrValue.bind(this);
 
         this.totalCartCost = this.props.cartElements.map(cartEl => {
@@ -73,6 +74,7 @@ class Main extends Component {
                     <CartOverlay 
                         updateProductCartQuantity={this.updateProductCartQuantity}
                         updateElementInCart={this.updateElementInCart}
+                        handleCartOverlayVisibleToggle={this.handleCartOverlayVisibleToggle}
                         cartElements={this.props.cartElements}
                         currentCurrencySymbol={this.props.currentCurrencySymbol}
                         changeAttrValue={this.changeAttrValue}

@@ -9,6 +9,7 @@ class MiniCart extends Component {
         super(props)
         this.updateProductCartQuantity = this.props.updateProductCartQuantity;
         this.updateElementInCart = this.props.updateElementInCart;
+        this.handleCartOverlayVisibleToggle = this.props.handleCartOverlayVisibleToggle;
         this.changeAttrValue = this.props.changeAttrValue;
     }
     
@@ -51,6 +52,22 @@ class MiniCart extends Component {
                     currentCurrencySymbol={this.props.currentCurrencySymbol}
                     totalCartCost={this.props.totalCartCost}
                 />
+                <div className="mini-cart__links-container">
+                    <a 
+                        href="/cart"
+                        className="mini-cart__cart-link"
+                        onClick={this.handleCartOverlayVisibleToggle}
+                    >
+                        VIEW BAG
+                    </a>
+                    <a 
+                        href="#"
+                        className="mini-cart__check-out-link"
+                        onClick={this.handleCartOverlayVisibleToggle}
+                    >
+                        CHECK OUT
+                    </a>
+                </div>
             </div>
         )
     }

@@ -28,4 +28,53 @@
             font-weight: 700;
         }
     }
+
+    &__links-container {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+    }
+
+    &__cart-link {
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 16px 32px;
+        text-decoration: none;
+        width: 140px;
+        height: 43px;
+        color: variables.$clr-primary;
+        background: variables.$clr-light;
+        border: 1px solid variables.$clr-primary;
+        flex: none;
+        order: 0;
+        flex-grow: 0;
+        font-family: variables.$ff-Raleway;
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 120%;
+    }
+
+    &__check-out-link {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        // padding: 16px 32px;
+        width: 140px;
+        height: 43px;
+        background: variables.$clr-accent;
+        flex: none;
+        order: 0;
+        flex-grow: 0;
+        text-decoration: none;
+        font-family: variables.$ff-Raleway;
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 120%;
+        color: variables.$clr-light;
+    }
 }

@@ -219,6 +219,7 @@ class App extends Component {
           currentCurrencySymbol={this.state.currentCurrencySymbol}
           cartElements={this.state.cartElements}
           addProductToCart={this.addProductToCart}
+          handleCartOverlayVisibleToggle={this.handleCartOverlayVisibleToggle}
         />
 
       </div>
