@@ -49,7 +49,7 @@ class CartProductPhotos extends Component {
                     {this.productPhotosArray[this.state.activePhotoIndex]}
                 </div>
                 {
-                    this.isSliderVisible &&
+                    (this.isSliderVisible && this.productPhotosArray.length > 1) &&
                     <PhotoSwitcher
                         handleActivePhotoIndexIncrement={this.handleActivePhotoIndexIncrement}
                         handleActivePhotoIndexDecrement={this.handleActivePhotoIndexDecrement}

@@ -22,9 +22,11 @@ class MiniCart extends Component {
         
         return(
             <div className="mini-cart">
+
                 <header className="mini-cart__header">
                     <span><strong>My Bag</strong>, {itemsCount}</span>
                 </header>
+                
                 {
                     this.props.cartElements.map((cartElement, index) => {
 
@@ -48,10 +50,12 @@ class MiniCart extends Component {
                         
                     }).filter(Boolean)
                 }
+
                 <MiniCartTotalCost
                     currentCurrencySymbol={this.props.currentCurrencySymbol}
                     totalCartCost={this.props.totalCartCost}
                 />
+
                 <div className="mini-cart__links-container">
                     <a 
                         href="/cart"
