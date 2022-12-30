@@ -17,6 +17,16 @@ class Main extends Component {
         this.deleteProductFromCart = this.props.deleteProductFromCart;
         this.changeAttrValue = this.changeAttrValue.bind(this);
 
+        this.totalCartCost = this.props.cartElements.map(cartEl => {
+
+            const unitCost = cartEl.product.prices.find(price => price.currency.symbol === this.props.currentCurrencySymbol).amount;
+
+            const productQuantity = cartEl.quantity;
+
+            return unitCost * productQuantity;
+
+        }).reduce((acc, currentVal) => acc + currentVal, 0).toFixed(2);
+
         this.state = {
             productId: "",
             cartProdcutsAttributesStates: []
@@ -66,6 +76,7 @@ class Main extends Component {
                         cartElements={this.props.cartElements}
                         currentCurrencySymbol={this.props.currentCurrencySymbol}
                         changeAttrValue={this.changeAttrValue}
+                        totalCartCost={this.totalCartCost}
                     />
                 }
 
@@ -133,6 +144,7 @@ class Main extends Component {
                                             cartElements={this.props.cartElements}
                                             currentCurrencySymbol={this.props.currentCurrencySymbol}
                                             changeAttrValue={this.changeAttrValue}
+                                            totalCartCost={this.totalCartCost}
                                         />
                                     }
                                 />

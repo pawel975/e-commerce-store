@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import MiniCartElement from "../MiniCartElement/MiniCartElement";
+import MiniCartTotalCost from "../MiniCortTotalCost/MiniCartTotalCost";
 import './MiniCart.scss';
 
 class MiniCart extends Component {
@@ -46,6 +47,10 @@ class MiniCart extends Component {
                         
                     }).filter(Boolean)
                 }
+                <MiniCartTotalCost
+                    currentCurrencySymbol={this.props.currentCurrencySymbol}
+                    totalCartCost={this.props.totalCartCost}
+                />
             </div>
         )
     }

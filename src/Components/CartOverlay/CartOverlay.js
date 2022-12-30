@@ -21,6 +21,7 @@ class CartOverlay extends Component {
                     changeAttrValue={this.changeAttrValue}
                     cartElements={this.props.cartElements}
                     currentCurrencySymbol={this.props.currentCurrencySymbol}
+                    totalCartCost={this.props.totalCartCost}
                 />
             </section>
         )
