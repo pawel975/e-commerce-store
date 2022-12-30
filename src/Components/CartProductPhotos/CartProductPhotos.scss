@@ -5,6 +5,19 @@
     width: 200px;
     height: 288px;
     overflow-y: scroll;
+
+    .cart-product-photos__photo-container {
+        height: 100%;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        img {
+            width: 100%;
+        }
+    }
+
 }
 
 .cart-product-photos.small {

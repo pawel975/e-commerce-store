@@ -15,11 +15,13 @@ class CartProductPhotos extends Component {
             <div className={`cart-product-photos ${this.size}`}>
                 {
                     this.productPhotos.map((photo, index) => (
-                        <img 
-                            src={photo} 
-                            alt="product" 
-                            key={"cart-product-photo" + index}
-                        />
+                        <div className="cart-product-photos__photo-container">
+                            <img 
+                                src={photo} 
+                                alt="product" 
+                                key={"cart-product-photo" + index}
+                            />
+                        </div>
                     ))
                 }
             </div>
