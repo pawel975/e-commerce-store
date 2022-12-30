@@ -10,7 +10,6 @@ class CartElement extends Component {
         super(props)
         this.updateProductCartQuantity = this.props.updateProductCartQuantity;
         this.updateElementInCart = this.props.updateElementInCart;
-        this.product = this.props.product;
         this.changeAttrValue = this.props.changeAttrValue;
 
         this.handleQuantityIncrease = this.handleQuantityIncrease.bind(this);
@@ -30,8 +29,8 @@ class CartElement extends Component {
         return (
             <div className="cart-element">
                 <CartElementDetails 
-                    product={this.product}
                     changeAttrValue={this.changeAttrValue}
+                    product={this.props.product}
                     selectedAttributes={this.props.selectedAttributes}
                     currentCurrencySymbol={this.props.currentCurrencySymbol}
                     updateElementInCart={this.props.updateElementInCart}
@@ -46,7 +45,7 @@ class CartElement extends Component {
 
                 <CartProductPhotos
                     isSliderVisible={true}
-                    productPhotos={this.product.gallery}
+                    productPhotos={this.props.product.gallery}
                 />
             </div>
         )

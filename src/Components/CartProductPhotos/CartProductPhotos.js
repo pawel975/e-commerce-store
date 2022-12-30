@@ -16,7 +16,7 @@ class CartProductPhotos extends Component {
         this.isSliderVisible = this.props.isSliderVisible;
 
         this.state = {
-            activePhotoIndex: 1,
+            activePhotoIndex: 0,
         }
 
         this.productPhotosArray = this.productPhotos.map((photo, index) => (

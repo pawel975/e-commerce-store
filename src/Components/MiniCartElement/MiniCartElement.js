@@ -10,7 +10,6 @@ class MiniCartElement extends Component {
         super(props)
         this.updateProductCartQuantity = this.props.updateProductCartQuantity;
         this.updateElementInCart = this.props.updateElementInCart;
-        this.product = this.props.product;
         this.changeAttrValue = this.props.changeAttrValue;
 
         this.handleQuantityIncrease = this.handleQuantityIncrease.bind(this);
@@ -32,7 +31,7 @@ class MiniCartElement extends Component {
         return (
             <div className="mini-cart-element">
                 <MiniCartElementDetails
-                    product={this.product}
+                    product={this.props.product}
                     changeAttrValue={this.changeAttrValue}
                     selectedAttributes={this.props.selectedAttributes}
                     currentCurrencySymbol={this.props.currentCurrencySymbol}
@@ -50,7 +49,7 @@ class MiniCartElement extends Component {
 
                 <CartProductPhotos
                     isSliderVisible={false}
-                    productPhotos={this.product.gallery}
+                    productPhotos={this.props.product.gallery}
                     size={this.size}
                 />
             </div>

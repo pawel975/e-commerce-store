@@ -5,9 +5,6 @@ class Price extends Component {
 
     constructor(props){
         super(props)
-        this.symbol = this.props.symbol;
-        this.amount = this.props.amount;
-
         this.size = this.props.size;
     }
     
@@ -17,7 +14,7 @@ class Price extends Component {
             <div className={`price ${this.size}`}>
                     {this.size === "small" ? null : <h3>PRICE:</h3>}
 
-                    <span>{this.symbol}{this.amount}</span>
+                    <span>{this.props.symbol}{this.props.amount}</span>
             </div>
         )
     }

@@ -8,7 +8,6 @@ class CartElementDetails extends Component {
 
     constructor(props){
         super(props)
-        this.product = this.props.product;
         this.changeAttrValue = this.props.changeAttrValue;
         this.changeProductAttributesStates = this.changeProductAttributesStates.bind(this);
         this.updateElementInCart = this.props.updateElementInCart;
@@ -28,12 +27,12 @@ class CartElementDetails extends Component {
         }) 
         
         this.setState({productAttributesStates: newProductAttributesStates});
-        this.updateElementInCart(this.product, this.state.productAttributesStates)
+        this.updateElementInCart(this.props.product, this.state.productAttributesStates)
     }
     
     render(){
 
-        const {name, attributes, prices, brand} = this.product;
+        const {name, attributes, prices, brand} = this.props.product;
 
         const price = prices.find(price => price.currency.symbol === this.props.currentCurrencySymbol)
 
