@@ -2,19 +2,29 @@
 @use '../../variables.scss';
 
 .cart-product-photos {
+    position: relative;
     width: 200px;
-    height: 288px;
+    // height: 288px;
     overflow-y: scroll;
+    display: grid;
+    place-items: center;
 
-    .cart-product-photos__photo-container {
-        height: 100%;
-        width: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+    .cart-product-photos__active-photo {
 
-        img {
+        display: grid;
+        place-items: center;
+
+        .cart-product-photos__photo-container {
+            position: relative;
+            height: 100%;
             width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+    
+            img {
+                width: 100%;
+            }
         }
     }
 

@@ -1,0 +1,22 @@
+@use "../../globalStyle.scss";
+@use "../../variables.scss";
+
+.photo-switcher {
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 8px;
+    right: 16px;
+    bottom: 16px;
+
+    &__next,
+    &__prev {
+        border: none;
+        cursor: pointer;
+        background: rgba(0, 0, 0, 0.73);
+    }
+}
