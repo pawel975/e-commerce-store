@@ -8,7 +8,6 @@ class MiniCart extends Component {
     constructor(props){
         super(props)
         this.updateProductCartQuantity = this.props.updateProductCartQuantity;
-        this.updateElementInCart = this.props.updateElementInCart;
         this.handleCartOverlayVisibleToggle = this.props.handleCartOverlayVisibleToggle;
         this.changeAttrValue = this.props.changeAttrValue;
     }
@@ -35,7 +34,6 @@ class MiniCart extends Component {
                                 <React.Fragment key={"mini__cart__element" + index}>
                                     <MiniCartElement
                                         updateProductCartQuantity={this.updateProductCartQuantity}
-                                        updateElementInCart={this.updateElementInCart}
                                         changeAttrValue={this.changeAttrValue}
                                         currentCurrencySymbol={this.props.currentCurrencySymbol}
                                         cartElementParams={cartElement}

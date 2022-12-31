@@ -9,7 +9,6 @@ class MiniCartElement extends Component {
     constructor(props){
         super(props)
         this.updateProductCartQuantity = this.props.updateProductCartQuantity;
-        this.updateElementInCart = this.props.updateElementInCart;
         this.changeAttrValue = this.props.changeAttrValue;
 
         this.handleQuantityIncrease = this.handleQuantityIncrease.bind(this);
@@ -35,7 +34,6 @@ class MiniCartElement extends Component {
                     changeAttrValue={this.changeAttrValue}
                     selectedAttributes={this.props.selectedAttributes}
                     currentCurrencySymbol={this.props.currentCurrencySymbol}
-                    updateElementInCart={this.props.updateElementInCart}
                     cartElementParams={this.props.cartElementParams}
                     size={this.size}
                 />

@@ -12,7 +12,6 @@ class Main extends Component {
     constructor(props){
         super(props)
         this.updateProductCartQuantity = this.props.updateProductCartQuantity;
-        this.updateElementInCart = this.props.updateElementInCart;
         this.addProductToCart = this.props.addProductToCart;
         this.deleteProductFromCart = this.props.deleteProductFromCart;
         this.handleCartOverlayVisibleToggle = this.props.handleCartOverlayVisibleToggle;
@@ -74,7 +73,6 @@ class Main extends Component {
                 {this.props.isCartOverlayVisible && 
                     <CartOverlay 
                         updateProductCartQuantity={this.updateProductCartQuantity}
-                        updateElementInCart={this.updateElementInCart}
                         handleCartOverlayVisibleToggle={this.handleCartOverlayVisibleToggle}
                         cartElements={this.props.cartElements}
                         currentCurrencySymbol={this.props.currentCurrencySymbol}
@@ -143,7 +141,6 @@ class Main extends Component {
                                     element={
                                         <Cart
                                             updateProductCartQuantity={this.updateProductCartQuantity}
-                                            updateElementInCart={this.updateElementInCart}
                                             cartElements={this.props.cartElements}
                                             currentCurrencySymbol={this.props.currentCurrencySymbol}
                                             changeAttrValue={this.changeAttrValue}

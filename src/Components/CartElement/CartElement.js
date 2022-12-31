@@ -9,9 +9,6 @@ class CartElement extends Component {
     constructor(props){
         super(props)
         this.updateProductCartQuantity = this.props.updateProductCartQuantity;
-        this.updateElementInCart = this.props.updateElementInCart;
-        this.changeAttrValue = this.props.changeAttrValue;
-
         this.handleQuantityIncrease = this.handleQuantityIncrease.bind(this);
         this.handleQuantityDecrease = this.handleQuantityDecrease.bind(this);
     }
@@ -29,11 +26,9 @@ class CartElement extends Component {
         return (
             <div className="cart-element">
                 <CartElementDetails 
-                    changeAttrValue={this.changeAttrValue}
                     product={this.props.product}
                     selectedAttributes={this.props.selectedAttributes}
                     currentCurrencySymbol={this.props.currentCurrencySymbol}
-                    updateElementInCart={this.props.updateElementInCart}
                     cartElementParams={this.props.cartElementParams}
                 />
                 <CartProductQuantity

@@ -15,6 +15,7 @@ class ProductAttribute extends Component {
         this.isOptionPicked = this.isOptionPicked.bind(this);
         
         this.size = this.props.size;
+        this.areAttrsEditable = this.props.areAttrsEditable;
     }
 
     isOptionPicked(attrId, attrOption, productSelectedAttributes){
@@ -29,6 +30,8 @@ class ProductAttribute extends Component {
     }
 
     changeActiveOption(e, attrOptionParams){
+
+        if (!this.areAttrsEditable) return;
         
         // Reset all size buttons to default not pressed state
         const allAttrOptions = [...e.target.parentNode.children];

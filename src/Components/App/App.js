@@ -14,13 +14,11 @@ class App extends Component {
 
     this.addProductToCart = this.addProductToCart.bind(this);
     this.updateProductCartQuantity = this.updateProductCartQuantity.bind(this);
-    this.updateElementInCart = this.updateElementInCart.bind(this);
 
     this.handleCartOverlayVisibleToggle = this.handleCartOverlayVisibleToggle.bind(this);
     this.handleCurrencyChange = this.handleCurrencyChange.bind(this);
     this.handleCurrenciesListOpen = this.handleCurrenciesListOpen.bind(this);
     this.handleSelectCategory = this.handleSelectCategory.bind(this);
-    this.mergeSameCartElements = this.mergeSameCartElements.bind(this);
 
     this.state = getFromLocalStorage("state") || {
       isCartOverlayVisible: false,
@@ -133,64 +131,6 @@ class App extends Component {
 
   }
 
-  updateElementInCart(product, newAttributes){
-    
-    const cartElements = this.state.cartElements;
-    const productToUpdate = JSON.stringify(product);
-
-    // Update attributes of element to update
-    let updatedCartElements = cartElements.map(element => {
-
-      if (JSON.stringify(element) === productToUpdate) {
-        element.selectedAttributes = newAttributes;
-      }
-
-      return element;
-
-    });
-
-    updatedCartElements = this.mergeSameCartElements(updatedCartElements);
-
-    this.setState({cartElements: updatedCartElements}); 
-  }
-
-  mergeSameCartElements(cartElements){
-
-    let mergedCartElements = [];
-
-    for (let i = 0; i < cartElements.length; i++) {
-      for (let j = 0; j < cartElements.length; j++) {
-
-        if (i !== j) {
-
-          const firstCartElementProduct = JSON.stringify(cartElements[i].product);
-          const firstSelectedAttributes = JSON.stringify(cartElements[i].selectedAttributes);
-          const secondCartElementProduct = JSON.stringify(cartElements[j].product);
-          const secondSelectedAttributes = JSON.stringify(cartElements[j].selectedAttributes);
-          
-          if (
-            firstCartElementProduct === secondCartElementProduct && 
-            firstSelectedAttributes === secondSelectedAttributes
-          ){
-
-            // Sum up quantity of the same product with the same attributes
-            cartElements[i].quantity += cartElements[j].quantity;
-
-            // Delete product duplicate
-            cartElements.splice(j,j);
-
-            mergedCartElements = cartElements;
-
-            return mergedCartElements;
-          } 
-        }
-      }
-    }
-
-    return cartElements;
-
-  }
-
   componentDidMount(){
     saveToLocalStorage("state", this.state)
   }
@@ -214,7 +154,6 @@ class App extends Component {
 
         <Main 
           updateProductCartQuantity={this.updateProductCartQuantity}
-          updateElementInCart={this.updateElementInCart}
           isCartOverlayVisible={this.state.isCartOverlayVisible}
           currentCurrencySymbol={this.state.currentCurrencySymbol}
           cartElements={this.state.cartElements}

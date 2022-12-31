@@ -8,7 +8,6 @@ class Cart extends Component {
         super(props)
         this.updateProductCartQuantity = this.props.updateProductCartQuantity;
         this.updateElementInCart = this.props.updateElementInCart;
-        this.changeAttrValue = this.props.changeAttrValue;
     }
     
     render(){
@@ -24,8 +23,6 @@ class Cart extends Component {
                                 <React.Fragment key={"cart__element" + index}>
                                     <CartElement
                                         updateProductCartQuantity={this.updateProductCartQuantity}
-                                        updateElementInCart={this.updateElementInCart}
-                                        changeAttrValue={this.changeAttrValue}
                                         currentCurrencySymbol={this.props.currentCurrencySymbol}
                                         cartElementParams={cartElement}
                                         product={cartElement.product}

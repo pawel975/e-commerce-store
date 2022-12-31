@@ -11,6 +11,9 @@ class ProductAllAttributes extends Component {
         this.attrNameStyles = this.props.attrNameStyles;
 
         this.size = this.props.size ? this.props.size : "";
+        
+        // Set attrs to editable if it's not specified
+        this.areAttrsEditable = this.props.areAttrsEditable ? true : false;
     }
 
     render(){
@@ -30,6 +33,7 @@ class ProductAllAttributes extends Component {
                     productAttributesStates={this.props.productAttributesStates}
                     changeProductAttributesStates={this.changeProductAttributesStates}
                     attrNameStyles={this.attrNameStyles}
+                    areAttrsEditable={this.areAttrsEditable}
                 />
             )
         })

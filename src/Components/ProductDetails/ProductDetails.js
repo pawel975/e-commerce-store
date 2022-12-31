@@ -61,6 +61,7 @@ class ProductDetails extends Component {
                     attributes={attributes}
                     productAttributesStates={this.state.productAttributesStates}
                     changeProductAttributesStates={this.changeProductAttributesStates}
+                    areAttrsEditable={true}
                 />
 
                 <Price 

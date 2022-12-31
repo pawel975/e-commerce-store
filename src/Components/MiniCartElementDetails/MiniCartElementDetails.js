@@ -9,28 +9,8 @@ class MiniCartElementDetails extends Component {
     constructor(props){
         super(props)
         this.product = this.props.product;
-        this.changeAttrValue = this.props.changeAttrValue;
-        this.changeProductAttributesStates = this.changeProductAttributesStates.bind(this);
-        this.updateElementInCart = this.props.updateElementInCart;
-        this.state = {
-            productAttributesStates: this.props.selectedAttributes
-        }
 
         this.size = this.props.size
-    }
-    
-    // Changes current attribute value to new picked option
-    changeProductAttributesStates(attrId, newOptionParams){
-        
-        const newProductAttributesStates = this.state.productAttributesStates.map(attr => {
-            
-            if (attr.attrId === attrId) attr.optionParams = newOptionParams;
-            
-            return attr;
-        }) 
-        
-        this.setState({productAttributesStates: newProductAttributesStates});
-        this.updateElementInCart(this.product, this.state.productAttributesStates)
     }
     
     render(){
@@ -54,10 +34,8 @@ class MiniCartElementDetails extends Component {
                     size={this.size}
                 />
                 <ProductAllAttributes 
-                    productAttributesStates={this.state.productAttributesStates}
+                    productAttributesStates={this.props.selectedAttributes}
                     attributes={attributes}
-                    changeAttrValue={this.changeAttrValue}
-                    changeProductAttributesStates={this.changeProductAttributesStates}
                     size={this.size}
                 />
 
