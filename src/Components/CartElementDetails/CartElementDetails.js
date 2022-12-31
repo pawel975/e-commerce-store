@@ -8,7 +8,7 @@ class CartElementDetails extends Component {
     
     render(){
 
-        const {name, attributes, prices, brand} = this.props.product;
+        const {id, name, attributes, prices, brand} = this.props.product;
 
         const price = prices.find(price => price.currency.symbol === this.props.currentCurrencySymbol)
 
@@ -28,6 +28,7 @@ class CartElementDetails extends Component {
                 <ProductAllAttributes 
                     productAttributesStates={this.props.selectedAttributes}
                     attributes={attributes}
+                    productId={id}
                     areAttrsEditable={false}
                 />
 

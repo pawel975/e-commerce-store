@@ -5,7 +5,6 @@ import Price from "../Price/Price";
 import ProductHeader from "../ProductHeader/ProductHeader";
 import ParsedHtml from "../ParsedHtml/ParsedHtml";
 import AddToCartBtn from "../AddToCartBtn/AddToCartBtn";
-import getDefaultProductAttributes from "../../helpers/getDefaultProductAttributes";
 
 class ProductDetails extends Component {
 
@@ -13,31 +12,6 @@ class ProductDetails extends Component {
         super(props)
         this.productDetails = this.props.productDetails;
         this.addProductToCart = this.props.addProductToCart;
-        this.changeProductAttributesStates = this.changeProductAttributesStates.bind(this);
-        this.state = {
-            productAttributesStates: []
-        }
-    }
-
-    async componentDidMount(){
-
-        // Set init product attributes states to default values
-        const initProductAttributesStates = await getDefaultProductAttributes(this.productDetails.id);
-
-        this.setState({productAttributesStates: initProductAttributesStates})
-    }
-
-    // Changes current attribute value to new picked option
-    changeProductAttributesStates(attrId, newOptionParams){
-
-        const newProductAttributesStates = this.state.productAttributesStates.map(attr => {
-
-            if (attr.attrId === attrId) attr.optionParams = newOptionParams;
-
-            return attr;
-        }) 
-
-        this.setState({productAttributesStates: newProductAttributesStates});
     }
     
     render(){
@@ -59,9 +33,8 @@ class ProductDetails extends Component {
 
                 <ProductAllAttributes 
                     attributes={attributes}
-                    productAttributesStates={this.state.productAttributesStates}
-                    changeProductAttributesStates={this.changeProductAttributesStates}
                     areAttrsEditable={true}
+                    productId={id}
                 />
 
                 <Price 
@@ -72,7 +45,7 @@ class ProductDetails extends Component {
                 <AddToCartBtn 
                     addProductToCart={this.addProductToCart}
                     productId={this.productDetails.id}
-                    selectedAttributes={this.state.productAttributesStates}
+                    selectedAttributes={this.props.selectedAttributes}
                 />
 
                 <ParsedHtml

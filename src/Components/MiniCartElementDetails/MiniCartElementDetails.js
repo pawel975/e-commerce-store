@@ -15,7 +15,7 @@ class MiniCartElementDetails extends Component {
     
     render(){
 
-        const {name, attributes, prices, brand} = this.product;
+        const {id, name, attributes, prices, brand} = this.product;
 
         const price = prices.find(price => price.currency.symbol === this.props.currentCurrencySymbol)
 
@@ -36,7 +36,9 @@ class MiniCartElementDetails extends Component {
                 <ProductAllAttributes 
                     productAttributesStates={this.props.selectedAttributes}
                     attributes={attributes}
+                    productId={id}
                     size={this.size}
+                    areAttrsEditable={false}
                 />
 
             </div>

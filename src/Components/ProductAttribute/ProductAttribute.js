@@ -14,7 +14,8 @@ class ProductAttribute extends Component {
         this.changeActiveOption = this.changeActiveOption.bind(this);
         this.isOptionPicked = this.isOptionPicked.bind(this);
         
-        this.size = this.props.size;
+        this.size = this.props.size ? this.props.size : "";
+
         this.areAttrsEditable = this.props.areAttrsEditable;
     }
 
