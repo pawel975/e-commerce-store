@@ -14,6 +14,7 @@ class App extends Component {
 
     this.addProductToCart = this.addProductToCart.bind(this);
     this.updateProductCartQuantity = this.updateProductCartQuantity.bind(this);
+    this.eraseZeroQuantityCartElements = this.eraseZeroQuantityCartElements.bind(this);
 
     this.handleCartOverlayVisibleToggle = this.handleCartOverlayVisibleToggle.bind(this);
     this.handleCurrencyChange = this.handleCurrencyChange.bind(this);
@@ -50,6 +51,18 @@ class App extends Component {
     this.setState({currentCategory: e.target.textContent})
   }
 
+  eraseZeroQuantityCartElements(cartElements){
+
+    const hasZeroQuantityCartElements = cartElements.find(cartEl => cartEl.quantity < 1);
+
+    if (hasZeroQuantityCartElements) {
+
+      const filteredCartElements = cartElements.filter(cartEl => cartEl.quantity > 0)
+
+      this.setState({cartElements: filteredCartElements})
+    }
+  }
+
   updateProductCartQuantity = (product, quantity) => {
 
     const cartElements = this.state.cartElements;
@@ -65,8 +78,6 @@ class App extends Component {
       return element;
 
     });
-
-    updatedCartElements = updatedCartElements.filter(cartEl => cartEl.quantity > 0);
 
     this.setState({cartElements: updatedCartElements}); 
   }
@@ -132,10 +143,12 @@ class App extends Component {
   }
 
   componentDidMount(){
+    this.eraseZeroQuantityCartElements(this.state.cartElements);
     saveToLocalStorage("state", this.state)
   }
 
   componentDidUpdate(){
+    this.eraseZeroQuantityCartElements(this.state.cartElements);
     saveToLocalStorage("state", this.state);
   }
 
