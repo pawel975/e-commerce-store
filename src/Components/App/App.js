@@ -85,6 +85,8 @@ class App extends Component {
   addProductToCart = async (productId, selectedAttributes) => {
     const product = await querySingleProduct(productId);
 
+    console.log(selectedAttributes)
+
     const productAttributes = selectedAttributes ? selectedAttributes : await getDefaultProductAttributes(productId);
 
     if (this.state.cartElements.length > 0) {

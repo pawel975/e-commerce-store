@@ -23,7 +23,7 @@ class ProductDetails extends Component {
     async componentDidMount(){
 
         // Set init product attributes states to default values
-        const initProductAttributesStates = await getDefaultProductAttributes(this.productId);
+        const initProductAttributesStates = await getDefaultProductAttributes(this.productDetails.id);
 
         this.setState({productAttributesStates: initProductAttributesStates})
     }
@@ -63,6 +63,7 @@ class ProductDetails extends Component {
                     areAttrsEditable={true}
                     productId={id}
                     productAttributesStates={this.state.productAttributesStates}
+                    changeProductAttributesStates={this.changeProductAttributesStates}
                 />
 
                 <Price 
@@ -73,7 +74,7 @@ class ProductDetails extends Component {
                 <AddToCartBtn 
                     addProductToCart={this.addProductToCart}
                     productId={this.productDetails.id}
-                    selectedAttributes={this.state.productAttributesStates}
+                    productAttributesStates={this.state.productAttributesStates}
                 />
 
                 <ParsedHtml

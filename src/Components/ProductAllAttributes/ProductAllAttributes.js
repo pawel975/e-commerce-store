@@ -8,6 +8,7 @@ class ProductAllAttributes extends Component {
         super(props);
         this.attributes = this.props.attributes;
         this.productId = this.props.productId;
+        this.changeProductAttributesStates = this.props.changeProductAttributesStates;
 
         this.size = this.props.size ? this.props.size : "";
         
