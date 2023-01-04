@@ -8,7 +8,6 @@ class ProductAttributeOption extends Component {
         this.changeActiveOption = this.props.changeActiveOption;
         this.type = this.props.type;
         this.attrSingleOption = this.props.attrSingleOption;
-        this.isOptionPicked = this.props.isOptionPicked;
 
         this.size = this.props.size
     }
@@ -22,7 +21,7 @@ class ProductAttributeOption extends Component {
                 onClick={(e) => this.changeActiveOption(e, this.attrSingleOption)}
                 data-type="swatch"
                 style={{backgroundColor: this.attrSingleOption.value}}
-                aria-pressed={this.isOptionPicked}
+                aria-pressed={this.props.isOptionPicked}
             />
             
             :
@@ -31,7 +30,7 @@ class ProductAttributeOption extends Component {
                 className={`product-attribute-option ${this.size}`}
                 onClick={(e) => this.changeActiveOption(e, this.attrSingleOption)}
                 data-type="text"
-                aria-pressed={this.isOptionPicked}
+                aria-pressed={this.props.isOptionPicked}
             >
                 <span className="product-attribute-option__name">{this.attrSingleOption.displayValue}</span>
             </button>
