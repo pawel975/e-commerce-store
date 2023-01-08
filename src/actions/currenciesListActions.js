@@ -1,19 +1,12 @@
 
-const open = () => {
+const toggle = () => {
     return {
-        type: "OPEN"
-    };
-};
-
-const close = () => {
-    return {
-        type: "CLOSE"
+        type: "TOGGLE"
     };
 };
 
 const currenciesListActions = {
-    open,
-    close
+    toggle
 }
 
 export default currenciesListActions;
