@@ -1,10 +1,3 @@
-// this.state = getFromLocalStorage("state") || {
-//     isCartOverlayVisible: false,
-//     isCurrenciesListOpen: false,
-//     currentCurrencySymbol: "$",
-//     cartElements: [],
-//   }
-
 import getFromLocalStorage from "../helpers/getFromLocalStorage";
 
 const initState = getFromLocalStorage("state").cartElements;
