@@ -76,9 +76,9 @@ class CurrencyPicker extends Component {
 }
 
 
-const mapDispatchToProps = (dispatch) => ({
-    toggleCurrenciesListOVisibility: () => dispatch(allActions.currenciesListActions.toggle()),
-})
+const mapDispatchToProps = {
+    toggleCurrenciesListOVisibility: allActions.currenciesListActions.toggle,
+}
 
 const mapStateToProps = (state) => {
     
