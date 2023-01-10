@@ -1,12 +1,12 @@
 
-const toggle = () => {
+const toggleVisibility = () => {
     return {
-        type: "TOGGLE"
+        type: "TOGGLE_VISIBILITY"
     };
 };
 
 const currenciesListActions = {
-    toggle
+    toggleVisibility
 }
 
 export default currenciesListActions;

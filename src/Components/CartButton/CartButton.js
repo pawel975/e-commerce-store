@@ -1,4 +1,6 @@
 import { Component } from "react";
+import { connect } from "react-redux";
+import allActions from "../../actions";
 import './CartButton.scss'
 
 class CartButton extends Component {
@@ -8,7 +10,7 @@ class CartButton extends Component {
             <div className="cart-button">
                 <button 
                     className="cart-button__btn"
-                    onClick={this.props.handleCartOverlayVisibleToggle.bind(this)}
+                    onClick={this.props.toggleCartOverlay}
                 >
                     <img src="/assets/img/cart-dark.svg" alt="cart" className="cart-button__image"/>
                 </button>
@@ -17,4 +19,8 @@ class CartButton extends Component {
     }
 }
 
-export default CartButton;
+const mapDispatchToProps = {
+    toggleCartOverlay: allActions.cartOverlayActions.toggleCartOverlay,
+}
+
+export default connect(null, mapDispatchToProps)(CartButton);

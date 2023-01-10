@@ -1,6 +1,6 @@
 import getFromLocalStorage from "../helpers/getFromLocalStorage";
 
-const initState = getFromLocalStorage("state").cartElements;
+const initState = getFromLocalStorage("state").cartElements || [];
 
 const cartElements = (state = initState, action) => {
     switch(action.type){

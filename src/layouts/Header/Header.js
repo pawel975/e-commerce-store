@@ -5,30 +5,15 @@ import Navigation from "../../Components/Navigation/Navigation";
 import './Header.scss';
 
 class Header extends Component {
-
-    constructor(props){
-        super(props);
-            this.handleCartOverlayVisibleToggle = this.props.handleCartOverlayVisibleToggle;
-            this.handleCurrencyChange = this.props.handleCurrencyChange;
-            this.handleCurrenciesListOpen = this.props.handleCurrenciesListOpen;
-            this.handleSelectCategory = this.props.handleSelectCategory;
-    }
-
     render(){
 
+        debugger
+        
         return (
             <header className="header">         
-                <Navigation
-                    handleSelectCategory={this.handleSelectCategory}
-                /> 
+                <Navigation/> 
                 <Logo/>
-                <Actions
-                    handleCartOverlayVisibleToggle={this.handleCartOverlayVisibleToggle}
-                    handleCurrencyChange={this.handleCurrencyChange}
-                    handleCurrenciesListOpen={this.handleCurrenciesListOpen}
-                    currentCurrencySymbol={this.props.currentCurrencySymbol}
-                    isCurrenciesListOpen={this.props.isCurrenciesListOpen}
-                />
+                <Actions/>
             </header>
         )
     }

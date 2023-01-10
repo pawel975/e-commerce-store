@@ -1,10 +1,4 @@
 
-const getCurrency = () => {
-    return {
-        type: "GET_CURRENCY"
-    };
-};
-
 const setCurrency = (currencySymbol) => {
     return {
         type: "SET_CURRENCY",
@@ -13,7 +7,6 @@ const setCurrency = (currencySymbol) => {
 };
 
 const currentCurrencySymbolActions = {
-    getCurrency,
     setCurrency
 }
 

@@ -1,4 +1,5 @@
 import { Component } from "react";
+import { connect } from "react-redux";
 import "./ProductCard.scss";
 
 class ProductCard extends Component {
@@ -72,4 +73,13 @@ class ProductCard extends Component {
     }
 }
 
-export default ProductCard;
+const mapStateToProps = (state) => {
+
+    const currentCurrencySymbol = state.rootReducer.currentCurrencySymbol;
+
+    return {
+        currentCurrencySymbol
+    }
+}
+  
+export default connect(mapStateToProps, null)(ProductCard);

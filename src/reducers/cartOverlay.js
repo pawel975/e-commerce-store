@@ -1,13 +1,11 @@
 import getFromLocalStorage from "../helpers/getFromLocalStorage"
 
-const initState = getFromLocalStorage("state").isCartOverlayVisible;
+const initState = getFromLocalStorage("state").isCartOverlayVisible || false;
 
 const cartOverlay = (state = initState, action) => {
     switch(action.type) {
-        case "OPEN":
-            return true;
-        case "CLOSE":
-            return false;
+        case "TOGGLE_CART_OVERLAY":
+            return !state;
         default:
             return state;
     }

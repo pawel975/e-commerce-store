@@ -6,17 +6,12 @@ import queryCurrencies from "../../queries/queryCurrencies";
 import { connect } from "react-redux";
 import allActions from "../../actions";
 
+// TODO: Here my code starts to go in infinite loop
 
 class CurrencyPicker extends Component {
 
-    constructor(props){
-        super(props)
-        this.handleCurrencyChange = this.props.handleCurrencyChange;
-    }
-
     render() {
 
-        console.log(this.props)
         return (
             <div className="currency-picker">
 
@@ -24,7 +19,7 @@ class CurrencyPicker extends Component {
 
                     <label htmlFor="show-currencies">{this.props.currentCurrencySymbol}</label>
                     <button 
-                        onClick={this.props.toggleCurrenciesListOVisibility} // TODO: Redux 
+                        onClick={this.props.toggleCurrenciesListVisibility}
                         id="show-currencies"
                         className={`show-currencies ${this.props.isCurrenciesListOpen ? "dash-open" : ""} `}
                     >
@@ -50,7 +45,7 @@ class CurrencyPicker extends Component {
                                     <button
                                         key={label} 
                                         className="currency-option"
-                                        onClick={this.handleCurrencyChange}
+                                        onClick={this.props.setCurrency(symbol)}
                                     >
                                         <span className="currency-symbol">{symbol}</span>
                                         <span className="currency-label">{label}</span>
@@ -75,17 +70,19 @@ class CurrencyPicker extends Component {
     }
 }
 
-
 const mapDispatchToProps = {
-    toggleCurrenciesListOVisibility: allActions.currenciesListActions.toggle,
+    toggleCurrenciesListVisibility: allActions.currenciesListActions.toggleVisibility,
+    setCurrency: allActions.currentCurrencySymbolActions.setCurrency,
 }
 
 const mapStateToProps = (state) => {
     
-    const isCurrenciesListOpen = state.rootReducer.currenciesList;
+    const isCurrenciesListOpen = state.rootReducer.currencyList;
+    const currentCurrencySymbol = state.rootReducer.currentCurrencySymbol
     
     return {
-        isCurrenciesListOpen
+        isCurrenciesListOpen,
+        currentCurrencySymbol
     }
 }
 

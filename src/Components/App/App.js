@@ -6,6 +6,8 @@ import querySingleProduct from '../../queries/querySingleProduct';
 import getFromLocalStorage from '../../helpers/getFromLocalStorage';
 import saveToLocalStorage from '../../helpers/saveToLocalStorage';
 import getDefaultProductAttributes from '../../helpers/getDefaultProductAttributes';
+import { connect } from 'react-redux';
+import allActions from '../../actions';
 
 class App extends Component {
 
@@ -15,40 +17,6 @@ class App extends Component {
     this.addProductToCart = this.addProductToCart.bind(this);
     this.updateProductCartQuantity = this.updateProductCartQuantity.bind(this);
     this.eraseZeroQuantityCartElements = this.eraseZeroQuantityCartElements.bind(this);
-
-    this.handleCartOverlayVisibleToggle = this.handleCartOverlayVisibleToggle.bind(this);
-    this.handleCurrencyChange = this.handleCurrencyChange.bind(this);
-    this.handleCurrenciesListOpen = this.handleCurrenciesListOpen.bind(this);
-    this.handleSelectCategory = this.handleSelectCategory.bind(this);
-
-    this.state = getFromLocalStorage("state") || {
-      isCartOverlayVisible: false,
-      isCurrenciesListOpen: false,
-      currentCurrencySymbol: "$",
-      cartElements: [],
-    }
-  }
-  
-  handleCartOverlayVisibleToggle(){
-    this.setState({isCartOverlayVisible: !this.state.isCartOverlayVisible})
-  }
-
-  handleCurrencyChange(e){
-    
-    const currencyOptionSymbol = e.target.children[0].textContent;
-    
-    this.setState({
-      currentCurrencySymbol: currencyOptionSymbol,
-      isCurrenciesListOpen: !this.state.isCurrenciesListOpen
-    }) 
-  }
-
-  handleCurrenciesListOpen(){
-    this.setState({isCurrenciesListOpen: !this.state.isCurrenciesListOpen});
-  }
-
-  handleSelectCategory(e){
-    this.setState({currentCategory: e.target.textContent})
   }
 
   eraseZeroQuantityCartElements(cartElements){
@@ -65,7 +33,7 @@ class App extends Component {
 
   updateProductCartQuantity = (product, quantity) => {
 
-    const cartElements = this.state.cartElements;
+    const cartElements = this.props.cartElements;
     const productToUpdate = JSON.stringify(product);
 
     // Update quantity of particular product and delete if from cart if it's quantity is 0
@@ -79,23 +47,21 @@ class App extends Component {
 
     });
 
-    this.setState({cartElements: updatedCartElements}); 
+    this.props.setCartElements(updatedCartElements);
   }
 
   addProductToCart = async (productId, selectedAttributes) => {
     const product = await querySingleProduct(productId);
 
-    console.log(selectedAttributes)
-
     const productAttributes = selectedAttributes ? selectedAttributes : await getDefaultProductAttributes(productId);
 
-    if (this.state.cartElements.length > 0) {
+    if (this.props.cartElements.length > 0) {
 
       let isExistingProductQuantityUpdated = false;
 
       const updatedCartElements = [];
 
-      this.state.cartElements.forEach(element => {
+      this.props.cartElements.forEach(element => {
   
         // Check if that type of product exists in cart by comparing ID's
         if (element.product.id === product.id) {
@@ -128,7 +94,7 @@ class App extends Component {
         updatedCartElements.push(orderedProduct);
       }
       
-      this.setState({cartElements: updatedCartElements});
+      this.props.setCartElements(updatedCartElements);
 
     } else {
 
@@ -139,41 +105,48 @@ class App extends Component {
           uuid: crypto.randomUUID(),
         };
           
-        this.setState({cartElements: [...this.state.cartElements, orderedProduct]})
+        this.props.setCartElements([this.props.cartElements, orderedProduct]);
     }
 
   }
 
   componentDidMount(){
-    this.eraseZeroQuantityCartElements(this.state.cartElements);
-    saveToLocalStorage("state", this.state)
+    this.eraseZeroQuantityCartElements(this.props.cartElements);
+    saveToLocalStorage("state", {
+      ...getFromLocalStorage("state") || 
+      {
+        isCartOverlayVisible: false,
+        isCurrenciesListOpen: false,
+        currentCurrencySymbol: "$",
+        cartElements: [],
+        selectedCategory: "all"
+      }
+    })
   }
 
   componentDidUpdate(){
-    this.eraseZeroQuantityCartElements(this.state.cartElements);
-    saveToLocalStorage("state", this.state);
+    this.eraseZeroQuantityCartElements(this.props.cartElements);
+    saveToLocalStorage("state", {
+      ...getFromLocalStorage("state") || 
+      {
+        isCartOverlayVisible: false,
+        isCurrenciesListOpen: false,
+        currentCurrencySymbol: "$",
+        cartElements: [],
+        selectedCategory: "all"
+      }
+    })
   }
 
   render(){
     return (
       <div className="app">
 
-        <Header 
-          handleCartOverlayVisibleToggle={this.handleCartOverlayVisibleToggle}
-          handleCurrencyChange={this.handleCurrencyChange}
-          handleCurrenciesListOpen={this.handleCurrenciesListOpen}
-          handleSelectCategory={this.handleSelectCategory}
-          currentCurrencySymbol={this.state.currentCurrencySymbol}
-          isCurrenciesListOpen={this.state.isCurrenciesListOpen}
-        />
+        <Header/>
 
         <Main 
           updateProductCartQuantity={this.updateProductCartQuantity}
-          isCartOverlayVisible={this.state.isCartOverlayVisible}
-          currentCurrencySymbol={this.state.currentCurrencySymbol}
-          cartElements={this.state.cartElements}
           addProductToCart={this.addProductToCart}
-          handleCartOverlayVisibleToggle={this.handleCartOverlayVisibleToggle}
         />
 
       </div>
@@ -181,4 +154,17 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapDispatchToProps = {
+  setCartElements: allActions.cartElementsActions.setCartElements,
+}
+
+const mapStateToProps = (state) => {
+  
+  const cartElements = state.rootReducer.cartElements;
+  
+  return {
+      cartElements
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

@@ -4,6 +4,7 @@ import capitalizeWord from "../../helpers/capitalizeWord";
 import ProductCard from "../ProductCard/ProductCard";
 import "./CategoryProducts.scss";
 import queryProducts from "../../queries/queryProducts.js";
+import { connect } from "react-redux";
 
 class CategoryProducts extends Component {
     
@@ -17,10 +18,10 @@ class CategoryProducts extends Component {
             <section className="category-products">
 
                 <h2 className="category-products__category-name">
-                    {capitalizeWord(this.props.currentCategory)}
+                    {capitalizeWord(this.props.selectedCategory)}
                 </h2>
 
-                <Query query={queryProducts(this.props.currentCategory)}>
+                <Query query={queryProducts(this.props.selectedCategory)}>
 
                     {({loading, data}) => {
             
@@ -38,7 +39,6 @@ class CategoryProducts extends Component {
                                     productId={id}
                                     addProductToCart={this.addProductToCart}
                                     productParams={productParams}
-                                    currentCurrencySymbol={this.props.currentCurrencySymbol}
                                 />
                             )
                         })
@@ -53,4 +53,14 @@ class CategoryProducts extends Component {
     }
 }
 
-export default CategoryProducts;
+  
+const mapStateToProps = (state) => {
+
+    const selectedCategory = state.rootReducer.selectedCategory;
+
+    return {
+        selectedCategory
+    }
+}
+  
+export default connect(mapStateToProps, null)(CategoryProducts);

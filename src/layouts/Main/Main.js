@@ -1,5 +1,7 @@
 import { Component } from "react";
+import { connect } from "react-redux";
 import { createBrowserRouter, createRoutesFromElements, redirect, Route, RouterProvider } from "react-router-dom";
+import allActions from "../../actions";
 import Cart from "../../Components/Cart/Cart";
 import CartOverlay from "../../Components/CartOverlay/CartOverlay";
 import CategoryProducts from "../../Components/CategoryProducts/CategoryProducts";
@@ -13,8 +15,6 @@ class Main extends Component {
         super(props)
         this.updateProductCartQuantity = this.props.updateProductCartQuantity;
         this.addProductToCart = this.props.addProductToCart;
-        this.deleteProductFromCart = this.props.deleteProductFromCart;
-        this.handleCartOverlayVisibleToggle = this.props.handleCartOverlayVisibleToggle;
         this.changeAttrValue = this.changeAttrValue.bind(this);
 
         this.state = {
@@ -73,9 +73,6 @@ class Main extends Component {
                 {this.props.isCartOverlayVisible && 
                     <CartOverlay 
                         updateProductCartQuantity={this.updateProductCartQuantity}
-                        handleCartOverlayVisibleToggle={this.handleCartOverlayVisibleToggle}
-                        cartElements={this.props.cartElements}
-                        currentCurrencySymbol={this.props.currentCurrencySymbol}
                         changeAttrValue={this.changeAttrValue}
                         totalCartCost={totalCartCost}
                     />
@@ -97,7 +94,6 @@ class Main extends Component {
                                     element={
                                         <CategoryProducts 
                                             currentCategory="all"
-                                            currentCurrencySymbol={this.props.currentCurrencySymbol}
                                             addProductToCart={this.addProductToCart}
                                         />
                                     }
@@ -108,7 +104,6 @@ class Main extends Component {
                                     element={
                                         <CategoryProducts 
                                             currentCategory="clothes"
-                                            currentCurrencySymbol={this.props.currentCurrencySymbol}
                                             addProductToCart={this.addProductToCart}
                                         />
                                     }
@@ -119,7 +114,6 @@ class Main extends Component {
                                     element={
                                         <CategoryProducts 
                                             currentCategory="tech"
-                                            currentCurrencySymbol={this.props.currentCurrencySymbol}
                                             addProductToCart={this.addProductToCart}
                                         />
                                     }
@@ -129,7 +123,6 @@ class Main extends Component {
                                     path={`/product/:productId`}
                                     element={
                                         <ProductPage 
-                                            currentCurrencySymbol={this.props.currentCurrencySymbol}
                                             productId={window.location.pathname.slice(9)}
                                             addProductToCart={this.addProductToCart}
                                         />
@@ -141,8 +134,6 @@ class Main extends Component {
                                     element={
                                         <Cart
                                             updateProductCartQuantity={this.updateProductCartQuantity}
-                                            cartElements={this.props.cartElements}
-                                            currentCurrencySymbol={this.props.currentCurrencySymbol}
                                             changeAttrValue={this.changeAttrValue}
                                             totalCartCost={totalCartCost}
                                         />
@@ -158,4 +149,22 @@ class Main extends Component {
     }
 }   
 
-export default Main;
+const mapDispatchToProps = {
+    setCartElements: allActions.cartElementsActions.setCartElements,
+  }
+  
+  const mapStateToProps = (state) => {
+    
+    const cartElements = state.rootReducer.cartElements;
+    const isCartOverlayVisible = state.rootReducer.isCartOverlayVisible;
+    const currentCurrencySymbol = state.rootReducer.currentCurrencySymbol
+    
+    return {
+        cartElements,
+        isCartOverlayVisible,
+        currentCurrencySymbol
+    }
+  }
+  
+export default connect(mapStateToProps, mapDispatchToProps)(Main);
+

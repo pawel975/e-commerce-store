@@ -1,19 +1,12 @@
 
-const open = () => {
+const toggleCartOverlay = () => {
     return {
-        type: "OPEN"
-    };
-};
-
-const close = () => {
-    return {
-        type: "CLOSE"
+        type: "TOGGLE_CART_OVERLAY"
     };
 };
 
 const cartOverlayActions = {
-    open,
-    close
+    toggleCartOverlay,
 }
 
 export default cartOverlayActions;
