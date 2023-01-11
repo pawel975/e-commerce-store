@@ -4,7 +4,6 @@ import capitalizeWord from "../../helpers/capitalizeWord";
 import ProductCard from "../ProductCard/ProductCard";
 import "./CategoryProducts.scss";
 import queryProducts from "../../queries/queryProducts.js";
-import { connect } from "react-redux";
 
 class CategoryProducts extends Component {
     
@@ -14,14 +13,15 @@ class CategoryProducts extends Component {
     }
 
     render(){
+
         return (
             <section className="category-products">
 
                 <h2 className="category-products__category-name">
-                    {capitalizeWord(this.props.selectedCategory)}
+                    {capitalizeWord(this.props.currentCategory)}
                 </h2>
 
-                <Query query={queryProducts(this.props.selectedCategory)}>
+                <Query query={queryProducts(this.props.currentCategory)}>
 
                     {({loading, data}) => {
             
@@ -53,14 +53,4 @@ class CategoryProducts extends Component {
     }
 }
 
-  
-const mapStateToProps = (state) => {
-
-    const selectedCategory = state.rootReducer.selectedCategory;
-
-    return {
-        selectedCategory
-    }
-}
-  
-export default connect(mapStateToProps, null)(CategoryProducts);
+export default CategoryProducts;

@@ -6,8 +6,6 @@ import queryCurrencies from "../../queries/queryCurrencies";
 import { connect } from "react-redux";
 import allActions from "../../actions";
 
-// TODO: Here my code starts to go in infinite loop
-
 class CurrencyPicker extends Component {
 
     render() {
@@ -45,7 +43,7 @@ class CurrencyPicker extends Component {
                                     <button
                                         key={label} 
                                         className="currency-option"
-                                        onClick={this.props.setCurrency(symbol)}
+                                        onClick={() => this.props.setCurrency(symbol)}
                                     >
                                         <span className="currency-symbol">{symbol}</span>
                                         <span className="currency-label">{label}</span>
@@ -77,7 +75,7 @@ const mapDispatchToProps = {
 
 const mapStateToProps = (state) => {
     
-    const isCurrenciesListOpen = state.rootReducer.currencyList;
+    const isCurrenciesListOpen = state.rootReducer.currenciesList;
     const currentCurrencySymbol = state.rootReducer.currentCurrencySymbol
     
     return {

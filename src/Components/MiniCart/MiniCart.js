@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import allActions from "../../actions";
 import MiniCartElement from "../MiniCartElement/MiniCartElement";
 import MiniCartTotalCost from "../MiniCortTotalCost/MiniCartTotalCost";
 import './MiniCart.scss';
@@ -8,7 +10,6 @@ class MiniCart extends Component {
     constructor(props){
         super(props)
         this.updateProductCartQuantity = this.props.updateProductCartQuantity;
-        this.handleCartOverlayVisibleToggle = this.props.handleCartOverlayVisibleToggle;
         this.changeAttrValue = this.props.changeAttrValue;
     }
     
@@ -35,7 +36,6 @@ class MiniCart extends Component {
                                     <MiniCartElement
                                         updateProductCartQuantity={this.updateProductCartQuantity}
                                         changeAttrValue={this.changeAttrValue}
-                                        currentCurrencySymbol={this.props.currentCurrencySymbol}
                                         cartElementParams={cartElement}
                                         product={cartElement.product}
                                         selectedAttributes={cartElement.selectedAttributes}
@@ -58,14 +58,14 @@ class MiniCart extends Component {
                     <a 
                         href="/cart"
                         className="mini-cart__cart-link"
-                        onClick={this.handleCartOverlayVisibleToggle}
+                        onClick={this.props.toggleCartOverlay}
                     >
                         VIEW BAG
                     </a>
                     <a 
                         href="#"
                         className="mini-cart__check-out-link"
-                        onClick={this.handleCartOverlayVisibleToggle}
+                        onClick={this.props.toggleCartOverlay}
                     >
                         CHECK OUT
                     </a>
@@ -75,4 +75,21 @@ class MiniCart extends Component {
     }
 }
 
-export default MiniCart;
+const mapDispatchToProps = {
+    setCartElements: allActions.cartOverlayActions.toggleCartOverlay,
+  }
+  
+  const mapStateToProps = (state) => {
+    
+    const isCartOverlayVisible = state.rootReducer.cartOverlay;
+    const currentCurrencySymbol = state.rootReducer.currentCurrencySymbol;
+    const cartElements = state.rootReducer.cartElements;
+    
+    return {
+        isCartOverlayVisible,
+        currentCurrencySymbol,
+        cartElements
+    }
+  }
+  
+export default connect(mapStateToProps, mapDispatchToProps)(MiniCart);

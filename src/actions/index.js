@@ -2,7 +2,6 @@ import cartElementsActions from "./cartElementsActions";
 import cartOverlayActions from "./cartOverlayActions";
 import currenciesListActions from "./currenciesListActions";
 import currentCurrencySymbolActions from "./currentCurrencySymbolActions";
-import selectedCategoryActions from "./selectedCategoryActions";
 
 
 const allActions = {
@@ -10,7 +9,6 @@ const allActions = {
   cartOverlayActions,
   currenciesListActions,
   currentCurrencySymbolActions,
-  selectedCategoryActions
 };
 
 export default allActions;

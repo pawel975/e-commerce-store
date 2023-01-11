@@ -156,7 +156,7 @@ const mapDispatchToProps = {
   const mapStateToProps = (state) => {
     
     const cartElements = state.rootReducer.cartElements;
-    const isCartOverlayVisible = state.rootReducer.isCartOverlayVisible;
+    const isCartOverlayVisible = state.rootReducer.cartOverlay;
     const currentCurrencySymbol = state.rootReducer.currentCurrencySymbol
     
     return {

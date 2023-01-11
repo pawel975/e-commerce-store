@@ -7,7 +7,6 @@ class CartOverlay extends Component {
     constructor(props){
         super(props)
         this.updateProductCartQuantity = this.props.updateProductCartQuantity;
-        this.handleCartOverlayVisibleToggle = this.props.handleCartOverlayVisibleToggle;
         this.changeAttrValue = this.props.changeAttrValue;
     }
 
@@ -17,10 +16,7 @@ class CartOverlay extends Component {
                 <div className="cart-overlay__background"></div>
                 <MiniCart 
                     updateProductCartQuantity={this.updateProductCartQuantity}
-                    handleCartOverlayVisibleToggle={this.handleCartOverlayVisibleToggle}
                     changeAttrValue={this.changeAttrValue}
-                    cartElements={this.props.cartElements}
-                    currentCurrencySymbol={this.props.currentCurrencySymbol}
                     totalCartCost={this.props.totalCartCost}
                 />
             </section>

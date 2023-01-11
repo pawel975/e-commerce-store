@@ -8,7 +8,7 @@ const rootReducer = combineReducers({
   cartOverlay,
   currenciesList,
   currentCurrencySymbol,
-  cartElements 
+  cartElements,
 });
 
 export default rootReducer;

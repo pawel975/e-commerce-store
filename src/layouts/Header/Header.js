@@ -6,8 +6,6 @@ import './Header.scss';
 
 class Header extends Component {
     render(){
-
-        debugger
         
         return (
             <header className="header">         

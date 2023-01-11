@@ -1,9 +1,8 @@
 import { Query } from "@apollo/client/react/components";
 import { Component } from "react";
-import { connect } from "react-redux";
 import { BrowserRouter, NavLink } from "react-router-dom";
-import allActions from "../../actions";
 import getCurrentRoute from "../../helpers/getCurrentRoute";
+import setCurrentRoute from "../../helpers/setCurrentRoute";
 import queryCategories from "../../queries/queryCategories";
 import './Navigation.scss';
 
@@ -33,7 +32,7 @@ class Navigation extends Component {
                                 className="categories-list__category"
                                 role="tab"
                                 aria-selected={isSelected}
-                                onClick={this.props.setCategory(name)}
+                                onClick={() => setCurrentRoute(name)}
                                 >
                                 {name}
                             </NavLink>
@@ -53,17 +52,4 @@ class Navigation extends Component {
     }
 }
 
-const mapDispatchToProps = {
-    setCategory: allActions.selectedCategoryActions.setCategory,
-  }
-  
-  const mapStateToProps = (state) => {
-    
-    const selectedCategory = state.rootReducer.selectedCategory;
-    
-    return {
-        selectedCategory
-    }
-  }
-  
-export default connect(mapStateToProps, mapDispatchToProps)(Navigation);
+export default Navigation;

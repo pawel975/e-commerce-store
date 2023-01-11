@@ -1,12 +1,31 @@
 import getFromLocalStorage from "../helpers/getFromLocalStorage";
+import saveToLocalStorage from "../helpers/saveToLocalStorage";
 
-const initState = getFromLocalStorage("state").cartElements || [];
+const localStorageInit = {
+    isCartOverlayVisible: false,
+    isCurrenciesListOpen: false,
+    currentCurrencySymbol: "$",
+    cartElements:[],
+}
+
+let initState;
+
+if (getFromLocalStorage("state") === undefined || getFromLocalStorage("state").cartElements === undefined) {
+
+    saveToLocalStorage("state", {
+        ...getFromLocalStorage("state"),
+        cartElements: []
+    })
+    initState = [];
+
+} else {
+    initState = getFromLocalStorage("state").cartElements;
+}
 
 const cartElements = (state = initState, action) => {
     switch(action.type){
-        case "GET_CART_ELEMENTS":
-            return state;
         case "SET_CART_ELEMENTS":
+            saveToLocalStorage("state", action.payload, "cartElements");
             return action.payload
         default:
             return state;
